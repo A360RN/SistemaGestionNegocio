@@ -4,37 +4,14 @@
     Author     : FERNANDO
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="../includes/head.html"%>
-
-<%@ include file="../includes/navhead.html"%>
-
-<!-- Cuerpo nav -->
-<ul class="navbar-nav mr-auto">
-    <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_productos.jsp">Productos</a>
-    </li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_categorias.jsp">Categorías</a>
-    </li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
-<!-- Fin cuerpo nav -->
-
-<%@ include file="../includes/navfooter.html"%>
+<%@include file="../includes/headerInventario.jsp"%>
 
 <div class="container">
     <div class="titulo">
         <h1 class="text-center">Productos</h1>
-        <a href="producto.jsp" class="btn btn-warning pull-right" id="add-product-btn">Agregar un producto</a>
+        <a href="producto.jsp" class="btn btn-warning pull-right" id="add-producto-btn">Registrar un producto</a>
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">
