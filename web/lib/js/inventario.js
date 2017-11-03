@@ -4,26 +4,28 @@
  * and open the template in the editor.
  */
 function modalConfirm(callbackP, callbackC, callbackU){
-  var idP;
-  var idC;
-  var idU;
+  var id;
   var modalProducto=$("#modalProducto");
   var modalCategoria=$("#modalCategoria");
   var modalUsuario=$("#modalUsuario");
   
-  $(".btn-confirm").on("click", function(){
-    idP=$(this).data("valuep");  
-    idC=$(this).data("valuec");
-    idU=$(this).data("valueu");
-    if(idP !== undefined)
+  $(".btn-producto").on("click", function(){
+    id=$(this).data("value");
+    if(id !== undefined)
         modalProducto.modal('show');
-    if(idC !== undefined)
-        modalCategoria.modal('show');
-    if(idU !== undefined)
+  });
+  $(".btn-usuario").on("click", function(){
+    id=$(this).data("value");
+    if(id !== undefined)
         modalUsuario.modal('show');
   });
+  $(".btn-categoria").on("click", function(){
+    id=$(this).data("value");
+    if(id !== undefined)
+        modalCategoria.modal('show');
+  });
   $("#modalProducto-btn-si").on("click", function(){
-    callbackP(true,idP);
+    callbackP(true,id);
     modalProducto.modal('hide');
   });
   
@@ -32,7 +34,7 @@ function modalConfirm(callbackP, callbackC, callbackU){
   });
   
   $("#modalCategoria-btn-si").on("click", function(){
-    callbackC(true,idC);
+    callbackC(true,id);
     modalCategoria.modal('hide');
   });
   
@@ -41,7 +43,7 @@ function modalConfirm(callbackP, callbackC, callbackU){
   });
   
   $("#modalUsuario-btn-si").on("click", function(){
-    callbackU(true,idU);
+    callbackU(true,id);
     modalUsuario.modal('hide');
   });
   

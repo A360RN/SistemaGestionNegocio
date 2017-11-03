@@ -28,7 +28,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -39,7 +39,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -50,7 +50,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -61,7 +61,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -72,7 +72,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -83,7 +83,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -94,7 +94,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -105,7 +105,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -116,7 +116,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -127,7 +127,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -138,7 +138,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -149,7 +149,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -160,7 +160,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -171,7 +171,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -182,7 +182,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
@@ -193,7 +193,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valuep="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-producto" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Gel 200ml</td>
                     <td>Antioxidantes</td>
