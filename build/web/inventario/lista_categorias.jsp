@@ -6,30 +6,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="../includes/head.html"%>
-
-<%@ include file="../includes/navhead.html"%>
-
-<!-- Cuerpo nav -->
-<ul class="navbar-nav mr-auto">
-    <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_productos.jsp">Productos</a>
-    </li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_categorias.jsp">Categorías</a>
-    </li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
-<!-- Fin cuerpo nav -->
-
-<%@ include file="../includes/navfooter.html"%>
+<%@include file="../includes/headerInventario.jsp"%>
 
 <div class="container">
     <div class="titulo">
@@ -137,22 +114,22 @@
             </table>
         </div>
         <div class="col-md-6">
-            <h3 class="text-center">Agregar una categoría</h3>
+            <h3 class="text-center">Registrar una categoría</h3>
             <form class="" action="" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="brand">Nombre*:</label>
-                        <input class="form-control" type="text" id="brand" name="brand">
+                        <label for="nombre">Nombre*:</label>
+                        <input class="form-control" type="text" id="nombre" name="nombre">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="description">Descripción:</label>
-                        <textarea name="description" id="description" class="form-control" rows="6"></textarea>
+                        <label for="descripcion">Descripción:</label>
+                        <textarea name="descripcion" id="descripcion" class="form-control" rows="6"></textarea>
                     </div>
                 </div>
                 <div class="form-group pull-right">
-                    <input type="submit" class="form-control btn btn-warning pull-right" value="Agregar">
+                    <input type="submit" class="form-control btn btn-warning pull-right" value="Registrar">
                 </div><div class="clearfix"></div>
                 <!--  
                 <div class="form-group pull-right">

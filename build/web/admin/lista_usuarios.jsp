@@ -4,37 +4,14 @@
     Author     : FERNANDO
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="../includes/head.html"%>
-
-<%@ include file="../includes/navhead.html"%>
-
-<!-- Cuerpo nav -->
-<ul class="navbar-nav mr-auto">
-    <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_usuarios.jsp">Usuarios</a>
-    </li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_politicas.jsp">Políticas de negocio</a>
-    </li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
-<!-- Fin cuerpo nav -->
-
-<%@ include file="../includes/navfooter.html"%>
+<%@include file="../includes/headerAdmin.jsp" %>
 
 <div class="container">
     <div class="titulo">
-        <h1 class="text-center">Usuarios</h1
-        <a href="usuario.jsp" class="btn btn-warning pull-right" id="add-product-btn">Agregar un usuario</a>
+        <h1 class="text-center">Usuarios</h1>
+        <a href="usuario.jsp" class="btn btn-warning pull-right" id="add-usuario-btn">Registrar un usuario</a>
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">
