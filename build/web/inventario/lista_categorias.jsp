@@ -25,7 +25,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -33,7 +33,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -41,7 +41,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -49,7 +49,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -57,7 +57,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -65,7 +65,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -73,7 +73,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -81,7 +81,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -89,7 +89,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -97,7 +97,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
@@ -105,7 +105,7 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-confirm" data-valuec="2"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
                         <td>Antioxidantes</td>
                         <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>

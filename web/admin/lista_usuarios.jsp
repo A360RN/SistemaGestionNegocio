@@ -36,7 +36,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -46,7 +46,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -56,7 +56,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -66,7 +66,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -76,7 +76,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -86,7 +86,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -96,7 +96,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -106,7 +106,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -116,7 +116,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -126,7 +126,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -136,7 +136,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
@@ -146,7 +146,7 @@
                 <tr>
                     <td class="text-center icon">
                         <a href="usuario.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-confirm" data-valueu="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>Danielle Torres :c</td>
                     <td>danielle@gmail.com</td>
