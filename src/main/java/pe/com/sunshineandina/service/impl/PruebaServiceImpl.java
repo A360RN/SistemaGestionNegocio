@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.com.sunshineandina.dao.PerfilDAO;
+import pe.com.sunshineandina.dao.ProductoDAO;
 import pe.com.sunshineandina.dao.UsuarioDAO;
 import pe.com.sunshineandina.dto.PerfilTO;
+import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.dto.UsuarioTO;
 import pe.com.sunshineandina.service.PruebaService;
 
@@ -29,6 +31,9 @@ public class PruebaServiceImpl implements PruebaService{
     
     @Autowired
     private PerfilDAO perfilDao;
+    
+    @Autowired
+    private ProductoDAO productoDao;
 
     @Override
     public void prueba() {
@@ -61,6 +66,11 @@ public class PruebaServiceImpl implements PruebaService{
         UsuarioTO usuario = usuarioDao.findById(1);
         
         usuario.getPerfiles().forEach(p -> System.out.println(p));
+    }
+
+    @Override
+    public List<ProductoTO> productos() {
+        return productoDao.findByCategoria(1);
     }
     
     

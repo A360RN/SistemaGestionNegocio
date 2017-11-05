@@ -22,7 +22,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "TipoLider")
 @Table(name = "TSA_TIPO_LIDER")
 public class TipoLiderTO implements Serializable {
 

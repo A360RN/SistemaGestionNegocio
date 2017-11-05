@@ -28,7 +28,7 @@ public class ComisionDaoImpl extends AbstractDAO<Integer, ComisionTO> implements
     @Override
     public List<ComisionTO> findByParameters(int idDistribuidor, int mes, int anio) {
         Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("idDistribuidor", idDistribuidor));
+        criteria.add(Restrictions.eq("distribuidor.idDistribuidor", idDistribuidor));
         if (mes != 0) {
             criteria.add(Restrictions.eq("mes", mes));
         }

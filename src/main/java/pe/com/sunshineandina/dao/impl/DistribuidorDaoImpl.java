@@ -10,32 +10,31 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
-import pe.com.sunshineandina.dao.OfertaDAO;
-import pe.com.sunshineandina.dto.OfertaTO;
+import pe.com.sunshineandina.dao.DistribuidorDAO;
+import pe.com.sunshineandina.dto.DistribuidorTO;
 
 /**
  *
  * @author alonsorn
  */
-@Repository("ofertaDao")
-public class OfertaDaoImpl extends AbstractDAO<Integer, OfertaTO> implements OfertaDAO {
+@Repository("distribuidorDao")
+public class DistribuidorDaoImpl extends AbstractDAO<Integer, DistribuidorTO> implements DistribuidorDAO {
 
     @Override
-    public OfertaTO findById(int id) {
+    public DistribuidorTO findById(int id) {
         return getPorPk(id);
     }
 
     @Override
-    public List<OfertaTO> findAll() {
-        Criteria criteria = createEntityCriteria();
-        return (List<OfertaTO>) criteria.list();
+    public void save(DistribuidorTO distribuidor) {
+        persist(distribuidor);
     }
 
     @Override
-    public List<OfertaTO> findByCategoria(int idCategoria) {
+    public DistribuidorTO findByCodigoDistribuidor(String codigoDistribuidor) {
         Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
-        return (List<OfertaTO>) criteria.list();
+        criteria.add(Restrictions.eq("codigoDistribuidor", codigoDistribuidor));
+        return (DistribuidorTO) criteria.uniqueResult();
     }
 
 }

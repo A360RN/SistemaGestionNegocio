@@ -22,7 +22,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "DetalleCarrito")
 @Table(name = "TSA_DETALLE_CARRITO")
 public class DetalleCarritoTO implements Serializable {
 

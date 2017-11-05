@@ -7,10 +7,12 @@ package pe.com.sunshineandina.dao.impl;
 
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
 import pe.com.sunshineandina.dao.ProductoDAO;
+import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.util.Constantes;
 
@@ -35,7 +37,7 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
     public List<ProductoTO> findByCategoria(int idCategoria) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("estadoProducto", Constantes.ESTADO_ACTIVO));
-        criteria.add(Restrictions.eq("idCategoria", idCategoria));
+        criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
         return (List<ProductoTO>) criteria.list();
     }
 
@@ -43,6 +45,7 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
     public List<ProductoTO> findPaginado(int inicio, int cantidadPagina) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("estadoProducto", Constantes.ESTADO_ACTIVO));
+        criteria.addOrder(Order.asc("nombreProducto"));
         criteria.setFirstResult(inicio);
         criteria.setMaxResults(cantidadPagina);
         return (List<ProductoTO>) criteria.list();
@@ -52,7 +55,7 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
     public List<ProductoTO> findByCategoriaPaginado(int idCategoria, int inicio, int cantidadPagina) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("estadoProducto", Constantes.ESTADO_ACTIVO));
-        criteria.add(Restrictions.eq("idCategoria", idCategoria));
+        criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
         criteria.setFirstResult(inicio);
         criteria.setMaxResults(cantidadPagina);
         return (List<ProductoTO>) criteria.list();

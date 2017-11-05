@@ -24,7 +24,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "Distribuidor")
 @Table(name = "TSA_DISTRIBUIDOR")
 public class DistribuidorTO implements Serializable {
 

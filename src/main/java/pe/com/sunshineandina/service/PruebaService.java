@@ -5,6 +5,9 @@
  */
 package pe.com.sunshineandina.service;
 
+import java.util.List;
+import pe.com.sunshineandina.dto.ProductoTO;
+
 /**
  *
  * @author alonsorn
@@ -16,4 +19,6 @@ public interface PruebaService {
     void pruebaPerfil();
     
     void pruebaPerfilUsuario();
+    
+    List<ProductoTO> productos();
 }

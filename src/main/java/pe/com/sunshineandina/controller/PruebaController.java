@@ -26,12 +26,12 @@ public class PruebaController {
        //pruebaService.prueba();
         
         
-        return "admin/lista_politicas";
+        return "index";
     }
     
     @RequestMapping("/prueba")
     public String prueba(){
-        pruebaService.pruebaPerfilUsuario();
+        pruebaService.productos().forEach(p -> System.out.println(p));
         
         return "index";
     }

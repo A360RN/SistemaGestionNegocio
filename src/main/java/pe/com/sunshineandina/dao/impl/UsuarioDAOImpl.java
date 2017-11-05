@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
 import pe.com.sunshineandina.dao.UsuarioDAO;
 import pe.com.sunshineandina.dto.UsuarioTO;
+import pe.com.sunshineandina.util.Constantes;
 
 /**
  *
@@ -33,6 +34,7 @@ public class UsuarioDAOImpl extends AbstractDAO<Integer, UsuarioTO> implements U
     public UsuarioTO findByRegistro(String registro) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("registroUsuario", registro));
+        criteria.add(Restrictions.eq("estadoUsuario", Constantes.ESTADO_ACTIVO));
         return (UsuarioTO)criteria.uniqueResult();
     }
     

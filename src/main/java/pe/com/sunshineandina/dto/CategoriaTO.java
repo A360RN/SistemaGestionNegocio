@@ -21,7 +21,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "Categoria")
 @Table(name = "TSA_CATEGORIA")
 public class CategoriaTO implements Serializable {
 

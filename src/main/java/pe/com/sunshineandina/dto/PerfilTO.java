@@ -21,7 +21,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "Perfil")
 @Table(name = "TSA_PERFIL")
 public class PerfilTO implements Serializable {
 

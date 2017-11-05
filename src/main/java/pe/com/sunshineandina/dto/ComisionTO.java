@@ -22,7 +22,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "Comision")
 @Table(name="TSA_COMISION")
 public class ComisionTO implements Serializable {
 

@@ -18,7 +18,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "Parametro")
 @Table(name = "TSA_PARAMETROS")
 public class ParametroTO implements Serializable {
 

@@ -19,7 +19,7 @@ import javax.persistence.Table;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "Politica")
 @Table(name = "TSA_POLITICAS")
 public class PoliticaTO implements Serializable {
 

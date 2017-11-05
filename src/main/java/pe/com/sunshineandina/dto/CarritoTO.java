@@ -28,7 +28,7 @@ import javax.persistence.TemporalType;
  *
  * @author alonsorn
  */
-@Entity
+@Entity(name = "Carrito")
 @Table(name = "TSA_CARRITO")
 public class CarritoTO implements Serializable {
 
