@@ -230,4 +230,4 @@
     </div>
 </div>
 
-<%@ include file="../includes/footer.html"%>
+<%@ include file="../includes/footer.jsp"%>
