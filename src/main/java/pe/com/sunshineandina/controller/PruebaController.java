@@ -5,8 +5,10 @@
  */
 package pe.com.sunshineandina.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pe.com.sunshineandina.service.PruebaService;
 
 /**
  *
@@ -16,8 +18,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class PruebaController {
     
+    @Autowired
+    private PruebaService pruebaService;
+    
     @RequestMapping(value = "/")
     public String index(){
+       //pruebaService.prueba();
+        
+        
+        return "admin/lista_politicas";
+    }
+    
+    @RequestMapping("/prueba")
+    public String prueba(){
+        pruebaService.pruebaPerfilUsuario();
+        
         return "index";
     }
 }

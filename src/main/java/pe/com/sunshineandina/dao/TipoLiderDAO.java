@@ -5,10 +5,18 @@
  */
 package pe.com.sunshineandina.dao;
 
+import java.util.List;
+import pe.com.sunshineandina.dto.TipoLiderTO;
+
 /**
  *
  * @author alonsorn
  */
-public class BorrarEstaClaseDAO {
+public interface TipoLiderDAO {
     
+    TipoLiderTO findById(int id);
+    
+    TipoLiderTO findByDescTipoLider(String descTipoLider);
+    
+    List<TipoLiderTO> findAll();
 }

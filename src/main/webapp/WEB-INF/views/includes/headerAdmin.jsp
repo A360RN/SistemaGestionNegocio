@@ -4,9 +4,9 @@
     Author     : FERNANDO
 --%>
 
-<%@ include file="../includes/head.html"%>
+<%@ include file="../includes/head.jsp"%>
 
-<%@ include file="../includes/navhead.html"%>
+<%@ include file="../includes/navhead.jsp"%>
 
 <!-- Cuerpo nav -->
 <ul class="navbar-nav mr-auto">
@@ -27,4 +27,4 @@
 </ul>
 <!-- Fin cuerpo nav -->
 
-<%@ include file="../includes/navfooter.html"%>
+<%@ include file="../includes/navfooter.jsp"%>

@@ -28,6 +28,9 @@ public class PoliticaTO implements Serializable {
     @Column(name = "id_politica")
     private int idPolitica;
 
+    @Column(name = "desc_politica")
+    private String descPolitica;
+
     @Column(name = "min_puntos")
     private int minPuntos;
 
@@ -46,6 +49,14 @@ public class PoliticaTO implements Serializable {
 
     public void setIdPolitica(int idPolitica) {
         this.idPolitica = idPolitica;
+    }
+
+    public String getDescPolitica() {
+        return descPolitica;
+    }
+
+    public void setDescPolitica(String descPolitica) {
+        this.descPolitica = descPolitica;
     }
 
     public int getMinPuntos() {

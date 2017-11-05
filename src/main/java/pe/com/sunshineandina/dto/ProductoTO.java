@@ -45,6 +45,9 @@ public class ProductoTO implements Serializable {
     @Column(name = "stock_producto")
     private int stockProducto;
 
+    @Column(name = "imagen_producto")
+    private String imagenProducto;
+
     @Column(name = "estado_producto")
     private int estadoProducto;
 
@@ -99,6 +102,14 @@ public class ProductoTO implements Serializable {
 
     public void setStockProducto(int stockProducto) {
         this.stockProducto = stockProducto;
+    }
+
+    public String getImagenProducto() {
+        return imagenProducto;
+    }
+
+    public void setImagenProducto(String imagenProducto) {
+        this.imagenProducto = imagenProducto;
     }
 
     public int getEstadoProducto() {

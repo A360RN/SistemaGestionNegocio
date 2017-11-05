@@ -35,6 +35,7 @@ DROP TABLE IF EXISTS `sunshine_andina_db`.`TSA_POLITICAS` ;
 
 CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_POLITICAS` (
   `id_politica` INT NOT NULL AUTO_INCREMENT,
+  `desc_politica` VARCHAR(100) NULL,
   `min_puntos` INT NULL,
   `max_puntos` INT NULL,
   `porcentaje_descuento` DECIMAL(4,2) NULL,
@@ -67,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_PRODUCTO` (
   `precio_producto` DECIMAL(10,2) NULL,
   `puntos_producto` INT NULL,
   `stock_producto` INT NULL,
+  `imagen_producto` VARCHAR(500) NULL,
   `estado_producto` TINYINT(1) NULL,
   PRIMARY KEY (`id_producto`),
   INDEX `fk_TSA_PRODUCTO_TSA_CATEGORIA1_idx` (`id_categoria` ASC),
