@@ -4,7 +4,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/lib/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/lib/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/lib/css/inventario.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">

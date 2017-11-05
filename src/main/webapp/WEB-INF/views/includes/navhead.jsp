@@ -4,7 +4,7 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#"><img src="../lib/images/sunshine.png" alt="sainchan" class="nav-image"></a>
+  <a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/resources/lib/images/sunshine.png" alt="sainchan" class="nav-image"></a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <!-- Fin Nav head -->
