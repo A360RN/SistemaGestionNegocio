@@ -262,12 +262,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `sunshine_andina_db`.`TSA_USUARIO_PERFIL` ;
 
 CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_USUARIO_PERFIL` (
-  `id_usuario_perfil` INT NOT NULL AUTO_INCREMENT,
   `id_perfil` INT NOT NULL,
   `id_usuario` INT NOT NULL,
-  PRIMARY KEY (`id_usuario_perfil`),
   INDEX `fk_TSA_USUARIO_PERFIL_TSA_PERFIL_idx` (`id_perfil` ASC),
   INDEX `fk_TSA_USUARIO_PERFIL_TSA_USUARIO1_idx` (`id_usuario` ASC),
+  PRIMARY KEY (`id_perfil`, `id_usuario`),
   CONSTRAINT `fk_TSA_USUARIO_PERFIL_TSA_PERFIL`
     FOREIGN KEY (`id_perfil`)
     REFERENCES `sunshine_andina_db`.`TSA_PERFIL` (`id_perfil`)
@@ -305,11 +304,13 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_DISTRIBUIDOR` (
   `id_distribuidor` INT NOT NULL AUTO_INCREMENT,
   `id_cliente` INT NOT NULL,
   `id_tipo_lider` INT NOT NULL,
+  `id_distribuidor_padre` INT NULL,
   `codigo_distribuidor` VARCHAR(10) NULL,
   UNIQUE INDEX `codigo_distribuidor_UNIQUE` (`codigo_distribuidor` ASC),
   INDEX `fk_TSA_DISTRIBUIDOR_TSA_CLIENTE1_idx` (`id_cliente` ASC),
   PRIMARY KEY (`id_distribuidor`),
   INDEX `fk_TSA_DISTRIBUIDOR_TSA_TIPO_LIDER1_idx` (`id_tipo_lider` ASC),
+  INDEX `fk_TSA_DISTRIBUIDOR_TSA_DISTRIBUIDOR1_idx` (`id_distribuidor_padre` ASC),
   CONSTRAINT `fk_TSA_DISTRIBUIDOR_TSA_CLIENTE1`
     FOREIGN KEY (`id_cliente`)
     REFERENCES `sunshine_andina_db`.`TSA_CLIENTE` (`id_cliente`)
@@ -318,6 +319,11 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_DISTRIBUIDOR` (
   CONSTRAINT `fk_TSA_DISTRIBUIDOR_TSA_TIPO_LIDER1`
     FOREIGN KEY (`id_tipo_lider`)
     REFERENCES `sunshine_andina_db`.`TSA_TIPO_LIDER` (`id_tipo_lider`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TSA_DISTRIBUIDOR_TSA_DISTRIBUIDOR1`
+    FOREIGN KEY (`id_distribuidor_padre`)
+    REFERENCES `sunshine_andina_db`.`TSA_DISTRIBUIDOR` (`id_distribuidor`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
