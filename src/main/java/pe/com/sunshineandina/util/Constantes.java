@@ -14,4 +14,8 @@ public class Constantes {
     // CONSTANTES DE BASE DE DATOS
     public static final int ESTADO_ACTIVO = 1;
     public static final int ESTADO_INACTIVO = 0;
+    
+    //**************************** MENSAJES ERROR *************************
+    public static final String ERROR_AUTENTICACION_USERNAME = "Este usuario no existe";
+    public static final String ERROR_AUTENTICACION_PASSWORD = "Contraseña errada";
 }

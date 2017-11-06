@@ -5,9 +5,14 @@
  */
 package pe.com.sunshineandina.controller;
 
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pe.com.sunshineandina.dto.PerfilTO;
+import pe.com.sunshineandina.dto.UsuarioTO;
+import pe.com.sunshineandina.service.LoginService;
 import pe.com.sunshineandina.service.PruebaService;
 import pe.com.sunshineandina.util.HashPassword;
 
@@ -22,6 +27,9 @@ public class PruebaController {
     @Autowired
     private PruebaService pruebaService;
     
+    @Autowired
+    private LoginService loginService;
+    
     @RequestMapping(value = "/")
     public String index(){
        //pruebaService.prueba();
@@ -32,10 +40,25 @@ public class PruebaController {
     
     @RequestMapping("/prueba")
     public String prueba(){
-        String hex = HashPassword.hashPassword("qwer0086");
+        String hex = HashPassword.hashPassword("admin");
         
         System.out.println(hex);
         
+        hex = HashPassword.hashPassword("prueba");
+        System.out.println(hex);
+        
+        return "index";
+    }
+    
+    @RequestMapping("/login")
+    public String login(){
+        UsuarioTO usuario = new UsuarioTO();
+        usuario.setIdUsuario(3);
+        usuario.setRegistroUsuario("prueba");
+        usuario.setPassUsuario("prueba");
+        List<PerfilTO> perfiles = loginService.perfilesUsuario(usuario);
+        System.out.println(perfiles.size());
+        perfiles.forEach(p -> System.out.println(p));
         return "index";
     }
 }
