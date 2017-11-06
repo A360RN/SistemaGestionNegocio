@@ -13,7 +13,7 @@
 
 ### Front:  
 
-* Boostrap 4
+* Bootstrap 4
 * jQuery v3.2.1
 * Chart.js
 
