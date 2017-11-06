@@ -27,9 +27,9 @@
 
 ### Para ejecutar la aplicación:
 
-* Ejecutar los scripts de la base de datos (ubicados en la carpeta BD), en el orden indicado por su nombre
+* Ejecutar los scripts de la base de datos (ubicados en la carpeta BD), en el orden indicado por su nombre, utilizando el gestor MySQL
 
-* Tener algun servidor donde poder deployar el .war (Apache Tomcat, JBoss, Glashfish)
+* Tener algun servidor donde poder deployar el .war (Apache Tomcat, JBoss, Glassfish)
 
 * Construir el .war, ya sea con Maven desde línea de comandos o desde un IDE (puede ser cualquiera)
 
