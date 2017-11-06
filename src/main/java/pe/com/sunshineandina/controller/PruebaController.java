@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pe.com.sunshineandina.service.PruebaService;
+import pe.com.sunshineandina.util.HashPassword;
 
 /**
  *
@@ -31,7 +32,9 @@ public class PruebaController {
     
     @RequestMapping("/prueba")
     public String prueba(){
-        pruebaService.productos().forEach(p -> System.out.println(p));
+        String hex = HashPassword.hashPassword("qwer0086");
+        
+        System.out.println(hex);
         
         return "index";
     }
