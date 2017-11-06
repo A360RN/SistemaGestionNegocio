@@ -31,7 +31,7 @@
 
 * Tener algun servidor donde poder deployar el .war (Apache Tomcat, JBoss, Glashfish)
 
-* Construir el .war, ya sea con Maven desde líena de comandos o desde un IDE (puede ser cualquiera)
+* Construir el .war, ya sea con Maven desde línea de comandos o desde un IDE (puede ser cualquiera)
 
 * Deployar el .war en el servidor y arrancar la aplicación (Si se hizo la construcción desde el IDE probablemente ya esté deployado)
 
