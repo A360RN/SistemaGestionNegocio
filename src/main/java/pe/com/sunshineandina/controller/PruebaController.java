@@ -58,7 +58,9 @@ public class PruebaController {
         usuario.setPassUsuario("prueba");
         List<PerfilTO> perfiles = loginService.perfilesUsuario(usuario);
         System.out.println(perfiles.size());
-        perfiles.forEach(p -> System.out.println(p));
+        for(PerfilTO perfil : perfiles){
+        	System.out.println(perfil);	
+        }
         return "index";
     }
 }

@@ -65,7 +65,7 @@ public class PruebaServiceImpl implements PruebaService{
         
         UsuarioTO usuario = usuarioDao.findById(1);
         
-        usuario.getPerfiles().forEach(p -> System.out.println(p));
+        //usuario.getPerfiles().forEach(p -> System.out.println(p));
     }
 
     @Override
