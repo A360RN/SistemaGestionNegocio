@@ -19,6 +19,8 @@ public interface CarritoDAO {
     
     void save(CarritoTO carrito);
     
+    void destroy(CarritoTO carrito);
+    
     List<CarritoTO> findByCliente(int idCliente);
     
     List<CarritoTO> findByClienteFecha(int idCliente, Date fechaInicio, Date fechaFin);

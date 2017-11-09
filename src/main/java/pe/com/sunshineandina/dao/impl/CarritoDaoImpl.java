@@ -58,6 +58,11 @@ public class CarritoDaoImpl extends AbstractDAO<Integer, CarritoTO> implements C
         criteria.setMaxResults(cantidadPagina);
         return (List<CarritoTO>) criteria.list();
     }
+
+    @Override
+    public void destroy(CarritoTO carrito) {
+        delete(carrito);
+    }
     
     
 }
