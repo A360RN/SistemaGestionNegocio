@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-6 offset-3">
             <h3>Ingresar a la plataforma</h3>
-            <form action="">
+            <form action="login" method="POST">
                 <div class="form-group">
                     <label for="usuario">Ingrese usuario: </label>
-                    <input id="usuario" type="text" class="form-control">    
+                    <input id="usuario" name="usuario" type="text" class="form-control">    
                 </div>
                 <div class="form-group">
                     <label for="password">Ingrese contraseña:</label>
-                    <input id="password" type="password" class="form-control">
+                    <input id="password" name="password" type="password" class="form-control">
                 </div>
                 <button class="btn btn-primary" type="submit">Ingresar</button>
                 <button class="btn btn-primary">Registrarse</button>     

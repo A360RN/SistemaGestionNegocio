@@ -1,5 +1,5 @@
 <!-- Nav Footer -->
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <div class="my-2 my-lg-0">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown mr-sm-5 asd">
