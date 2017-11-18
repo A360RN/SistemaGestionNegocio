@@ -11,7 +11,7 @@
 <!-- Cuerpo nav -->
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_usuarios.jsp">Usuarios</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/listaUsuarios">Usuarios</a>
     </li>
 </ul>
 <ul class="navbar-nav mr-auto">
@@ -19,7 +19,7 @@
 </ul>
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_politicas.jsp">Políticas de negocio</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/listaPoliticas">Políticas de negocio</a>
     </li>
 </ul>
 <ul class="navbar-nav mr-auto">
