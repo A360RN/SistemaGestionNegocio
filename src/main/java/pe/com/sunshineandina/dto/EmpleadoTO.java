@@ -7,6 +7,7 @@ package pe.com.sunshineandina.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -54,7 +55,7 @@ public class EmpleadoTO implements Serializable {
     @Column(name = "ruc")
     private String ruc;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
     private UsuarioTO usuario;
 

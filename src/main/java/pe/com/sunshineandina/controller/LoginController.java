@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pe.com.sunshineandina.dto.PerfilTO;
 import pe.com.sunshineandina.dto.UsuarioTO;
 import pe.com.sunshineandina.service.LoginService;
-import pe.com.sunshineandina.service.PruebaService;
 import pe.com.sunshineandina.util.Constantes;
 import pe.com.sunshineandina.util.HashPassword;
 
@@ -67,7 +66,7 @@ public class LoginController {
             case Constantes.PERFIL_ENCARGADO_INV:
                 return "inventario/lista_productos";
             case Constantes.PERFIL_ENCARGADO_ADM:
-                return "admin/lista_usuarios";
+                return "redirect:/admin/listaEmpleados";
             default:
                 return "redirect:/perfil";
         }
