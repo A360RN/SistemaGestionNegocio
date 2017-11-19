@@ -50,5 +50,12 @@ public class EmpleadoDaoImpl extends AbstractDAO<Integer, EmpleadoTO> implements
         criteria.setMaxResults(cantidadPagina);
         return (List<EmpleadoTO>) criteria.list();
     }
+
+    @Override
+    public EmpleadoTO findByUsuario(int idUsuario) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("usuario.idUsuario", idUsuario));
+        return (EmpleadoTO) criteria.uniqueResult();
+    }
     
 }

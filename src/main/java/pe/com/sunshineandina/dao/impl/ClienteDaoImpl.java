@@ -35,6 +35,13 @@ public class ClienteDaoImpl extends AbstractDAO<Integer, ClienteTO> implements C
         criteria.add(Restrictions.eq("dni", dni));
         return (ClienteTO) criteria.uniqueResult();
     }
+
+    @Override
+    public ClienteTO findByUsuario(int idUsuario) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("usuario.idUsuario", idUsuario));
+        return (ClienteTO) criteria.uniqueResult();
+    }
     
     
 }

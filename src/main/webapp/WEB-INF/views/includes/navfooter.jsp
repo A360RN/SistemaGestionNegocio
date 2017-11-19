@@ -7,9 +7,9 @@
             <span class="fa fa-user-circle fa-lg drop"> Fernando</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Perfil</a>
-            <a class="dropdown-item" href="#">Cambiar contraseÃ±a</a>
-            <a class="dropdown-item" href="#">Cerrar sesión</a>
+            <a class="dropdown-item" href="${pageContext.request.contextPath}/perfil">Perfil</a>
+            <a class="dropdown-item" href="#">Cambiar contraseña</a>
+            <a class="dropdown-item" href="${pageContext.request.contextPath}/cerrarSesion">Cerrar sesión</a>
           </div>
         </li>
       </ul>

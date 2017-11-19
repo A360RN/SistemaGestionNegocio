@@ -26,62 +26,57 @@ import pe.com.sunshineandina.util.HashPassword;
 @Controller
 @RequestMapping("/")
 public class LoginController {
-    
+
     @Autowired
     private LoginService loginService;
-    
+
     @RequestMapping("/")
-    public String index(){
-        
+    public String index() {
+
         return "general/login";
     }
-    
-    @RequestMapping("/prueba")
-    public String prueba(){
-        String hex = HashPassword.hashPassword("admin");
-        
-        System.out.println(hex);
-        
-        hex = HashPassword.hashPassword("prueba");
-        System.out.println(hex);
-        
-        return "index";
-    }
-    
+
     @RequestMapping("/login")
     public String login(
             @RequestParam("usuario") String usuario,
             @RequestParam("password") String password,
-            HttpSession session){
-        
+            HttpSession session) {
+
         /* Usuario a comprobar si es el autentico*/
         UsuarioTO usuarioPosible = new UsuarioTO();
         usuarioPosible.setRegistroUsuario(usuario);
         usuarioPosible.setPassUsuario(password);
-        
+
         /* Verificamos si es autentico*/
         Map<String, Object> mapResultado = loginService.autenticacion(usuarioPosible);
-        
-        UsuarioTO usuarioReal = (UsuarioTO)mapResultado.get("usuario");
-        
+
+        UsuarioTO usuarioReal = (UsuarioTO) mapResultado.get("usuario");
+
         /* Si no existe el usuario*/
-        if(usuarioReal == null){
+        if (usuarioReal == null) {
             return "redirect:/";
         }
-        
+
         usuarioReal.setPerfiles(loginService.perfilesUsuario(usuarioReal));
         session.setAttribute("usuario", usuarioReal);
-        
+
         PerfilTO perfil = usuarioReal.getPerfiles().get(0);
-        
+        session.setAttribute("perfil", perfil);
         /* DEPENDIENDO DEL PERFIL, LLEVAMOS A LA PAGINA DE INICIO*/
-        switch(perfil.getCodigoPerfil()){  
+        switch (perfil.getCodigoPerfil()) {
             case Constantes.PERFIL_ENCARGADO_INV:
                 return "inventario/lista_productos";
             case Constantes.PERFIL_ENCARGADO_ADM:
                 return "admin/lista_usuarios";
             default:
-                return "index";
+                return "redirect:/perfil";
         }
+    }
+
+    @RequestMapping("/cerrarSesion")
+    public String cerrarSession(HttpSession session) {
+        session.invalidate();
+
+        return "redirect:/";
     }
 }

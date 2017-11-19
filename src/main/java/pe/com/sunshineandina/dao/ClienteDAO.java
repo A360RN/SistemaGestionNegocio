@@ -15,6 +15,8 @@ public interface ClienteDAO {
     
     ClienteTO findById(int id);
     
+    ClienteTO findByUsuario(int idUsuario);
+    
     void save(ClienteTO cliente);
     
     ClienteTO findByDni(String dni);

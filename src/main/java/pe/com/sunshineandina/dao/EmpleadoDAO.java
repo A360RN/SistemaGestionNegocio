@@ -16,6 +16,8 @@ public interface EmpleadoDAO {
     
     EmpleadoTO findById(int id);
     
+    EmpleadoTO findByUsuario(int idUsuario);
+    
     void save(EmpleadoTO empleado);
     
     EmpleadoTO findByRuc(String ruc);
