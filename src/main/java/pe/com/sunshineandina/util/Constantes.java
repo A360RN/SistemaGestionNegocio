@@ -24,4 +24,6 @@ public class Constantes {
     //**************************** MENSAJES ERROR *************************
     public static final String ERROR_AUTENTICACION_USERNAME = "Este usuario no existe";
     public static final String ERROR_AUTENTICACION_PASSWORD = "Contraseña errada";
+
+    public static final String ERROR_CONTRASEÑAS_NO_COINCIDEN = "Las contraseñas no coinciden"; 
 }

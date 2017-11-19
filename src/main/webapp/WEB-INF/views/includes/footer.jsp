@@ -3,6 +3,7 @@
   <script src="${pageContext.request.contextPath}/resources/lib/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/lib/js/bootstrap.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/lib/js/inventario.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/lib/js/usuarioadm.js"></script>
 </body>
 </html>
 <!-- Fin Footer -->
