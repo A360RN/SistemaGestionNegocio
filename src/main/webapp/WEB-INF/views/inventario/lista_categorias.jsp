@@ -22,100 +22,22 @@
                 <th>Descripción</th>
                 </thead>
                 <tbody>
+                    <c:forEach items="${listaCategorias}" var="categoria">
                     <tr>
                         <td class="text-center icon">
                             <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <button class="btn btn-sm btn-categoria" data-value="${categoria.idCategoria}"><span class="fa fa-times-circle fa-2x"></span></button>
                         </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
+                        <td>${categoria.nombreCategoria}</td>
+                        <td>${categoria.descCategoria}</td>
                     </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="2"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>Antioxidantes</td>
-                        <td>Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd Descripción xd</td>
-                    </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
         <div class="col-md-6">
             <h3 class="text-center">Registrar una categoría</h3>
-            <form class="" action="" method="post" enctype="multipart/form-data">
+            <form action="listaCategorias" method="POST">
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="nombre">Nombre*:</label>

@@ -18,8 +18,7 @@ button{
 	color: orange;
 }
 img.nav-image{
-	width: 60%;
-	margin:0px auto;
+	width: 150px;
 }
 input[type=submit], button{
 	cursor:pointer;

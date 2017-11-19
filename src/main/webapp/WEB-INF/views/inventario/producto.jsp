@@ -11,21 +11,28 @@
 <div class="container">
     <h1 class="text-center">Registrar un producto</h1>
     <hr>
-    <form class="" action="" method="post" enctype="multipart/form-data">
+    <form action="listaProductos" method="POST">
         <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="nombre">Nombre*:</label>
-                <input type="text" name="nombre" class="form-control" id="nombre" value="">
+                <input class="form-control" type="text" id="nombre" name="nombre">
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="categoria">Categoría*:</label>
                 <select class="form-control" id="categoria" name="categoria">
-                    <option value=""  selected></option>
+                    <option value="" selected="" disabled="">Seleccione una opción</option>
+                    <c:forEach items="${listaCategorias}" var="cat">
+                        <option value="${cat.idCategoria}">${cat.nombreCategoria}</option>
+                    </c:forEach>
                 </select>
             </div>
             <div class="form-group col-md-2">
                 <label for="precio">Precio*:</label>
                 <input type="text" name="precio" id="precio" class="form-control" value="">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="puntos">Puntos*:</label>
+                <input type="text" name="puntos" id="puntos" class="form-control" value="">
             </div>
             <div class="form-group col-md-2">
                 <label for="cantidad">Cantidad*:</label>
@@ -47,7 +54,7 @@
             <input type="submit" class="form-control btn btn-warning pull-right" value="Registrar">
         </div><div class="clearfix"></div>
         <div class="form-group pull-right">
-            <a href="lista_productos.jsp" class="form-control btn btn-secondary">Cancelar</a>
+            <a href="${pageContext.request.contextPath}/inventario/listaProductos" class="form-control btn btn-secondary">Cancelar</a>
         </div><div class="clearfix"></div>
     </form>
 
