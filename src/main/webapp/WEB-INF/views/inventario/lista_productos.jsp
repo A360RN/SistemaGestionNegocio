@@ -38,7 +38,7 @@
                         <button class="btn btn-sm btn-producto" data-value="${producto.idProducto}"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>${producto.nombreProducto}</td>
-                    <td>nombreCategoria</td>
+                    <td>${producto.categoria.nombreCategoria}</td>
                     <td>${producto.stockProducto}</td>
                     <td>${producto.precioProducto}</td>
                     <td> <a href="" class="btn-sm"><span class="fa fa-trash fa-lg"></span></a>Sí</td>

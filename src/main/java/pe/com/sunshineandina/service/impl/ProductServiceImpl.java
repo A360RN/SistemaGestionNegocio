@@ -28,6 +28,9 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductoTO> findAllProductos() {
         List<ProductoTO> listaProductos= productoDao.findPaginado(0,10);
+        for(ProductoTO producto : listaProductos){
+            Hibernate.initialize(producto.getCategoria());
+        }
         return listaProductos;
     }
 
