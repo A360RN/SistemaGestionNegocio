@@ -5,13 +5,18 @@
  */
 package pe.com.sunshineandina.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.EmpleadoTO;
 import pe.com.sunshineandina.dto.PerfilTO;
@@ -148,6 +153,49 @@ public class GenericoController {
             datosPersonalesService.actualizarDatosEmpleado(empleado);
         }
 
+        return "redirect:/perfil";
+    }
+    
+    @RequestMapping(value = "/cambiarContraseña", method = RequestMethod.GET)
+    public String cambiarContraseña(){
+        
+        return "general/cambiarContraseña";
+    }
+    
+    @RequestMapping(value = "/passwordCorrecta", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonNode verificarPasswordCorrecta(@RequestBody ObjectNode nodoJson, HttpSession session){
+        /* Obtenemos las contraseñas del json */
+        String passwordPosible = nodoJson.get("passwordActual").asText();
+        String passwordNueva = nodoJson.get("passwordNueva").asText();
+        String passwordConfirmacion = nodoJson.get("passwordConfirmacion").asText();
+        
+        /* Usuario en la sesion */
+        UsuarioTO usuario = (UsuarioTO)session.getAttribute("usuario");
+        
+        /* String para responder el call ajax */
+        String rpta = datosPersonalesService.validarPassword(passwordPosible, passwordNueva, passwordConfirmacion, usuario);
+        
+        /* Si paso todos los filtros */
+        if(rpta == null){
+            UsuarioTO actualizado = new UsuarioTO();
+            actualizado.setIdUsuario(usuario.getIdUsuario());
+            actualizado.setPassUsuario(passwordNueva);
+            actualizado = datosPersonalesService.actualizarUsuario(actualizado);
+            session.setAttribute("usuario", actualizado);
+        }
+        
+        /* Se arma el json de respuesta */
+        ObjectMapper mapper = new ObjectMapper();
+        
+        JsonNode jsonNode = mapper.createObjectNode();
+        ((ObjectNode) jsonNode).put("rpta", rpta);
+        return jsonNode;
+    }
+    
+    @RequestMapping(value = "/cambiarContraseña", method = RequestMethod.PUT)
+    public String actualizarContraseña(){
+        
         return "redirect:/perfil";
     }
 }

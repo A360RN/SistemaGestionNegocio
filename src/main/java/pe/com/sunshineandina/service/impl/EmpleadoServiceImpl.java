@@ -75,7 +75,6 @@ public class EmpleadoServiceImpl implements EmpleadoService{
     @Override
     public List<EmpleadoTO> findAllEmpleados() {
         List<EmpleadoTO> lstEmpleados = empleadoDao.findAll();
-        System.out.println("toy listando");
         for(EmpleadoTO empleado: lstEmpleados){
             Hibernate.initialize(empleado.getUsuario());
             Hibernate.initialize(empleado.getUsuario().getPerfiles());

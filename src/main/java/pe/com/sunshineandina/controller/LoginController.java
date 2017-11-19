@@ -58,6 +58,7 @@ public class LoginController {
 
         usuarioReal.setPerfiles(loginService.perfilesUsuario(usuarioReal));
         session.setAttribute("usuario", usuarioReal);
+        System.out.println("id en login controller: " + usuarioReal.getIdUsuario());
 
         PerfilTO perfil = usuarioReal.getPerfiles().get(0);
         session.setAttribute("perfil", perfil);

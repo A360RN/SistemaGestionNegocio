@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-6 offset-3">
             <a href="${pageContext.request.contextPath}/actualizarDatos" class="btn btn-success">Actualizar datos personales</a>
-            <a href="#" class="btn btn-danger">Cambiar contraseña</a>
+            <a href="${pageContext.request.contextPath}/cambiarContraseña" class="btn btn-danger">Cambiar contraseña</a>
             <form>
                 <c:if test="${sessionScope.swCliente eq 1}">
                 <div class="form-group">
