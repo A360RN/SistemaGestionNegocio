@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_PRODUCTO` (
   `stock_producto` INT NULL,
   `imagen_producto` VARCHAR(500) NULL,
   `estado_producto` TINYINT(1) NULL,
+  `descripcion_producto` VARCHAR(400) NULL,
   PRIMARY KEY (`id_producto`),
   INDEX `fk_TSA_PRODUCTO_TSA_CATEGORIA1_idx` (`id_categoria` ASC),
   CONSTRAINT `fk_TSA_PRODUCTO_TSA_CATEGORIA1`

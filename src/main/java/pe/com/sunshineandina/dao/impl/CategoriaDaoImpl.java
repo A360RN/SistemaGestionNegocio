@@ -21,6 +21,11 @@ import pe.com.sunshineandina.dto.CategoriaTO;
 public class CategoriaDaoImpl extends AbstractDAO<Integer, CategoriaTO> implements CategoriaDAO{
 
     @Override
+    public void save(CategoriaTO categoria) {
+        persist(categoria);
+    }
+    
+    @Override
     public CategoriaTO findById(int id) {
         return getPorPk(id);
     }

@@ -64,7 +64,7 @@ public class LoginController {
         /* DEPENDIENDO DEL PERFIL, LLEVAMOS A LA PAGINA DE INICIO*/
         switch (perfil.getCodigoPerfil()) {
             case Constantes.PERFIL_ENCARGADO_INV:
-                return "inventario/lista_productos";
+                return "redirect:/inventario/listaProductos";
             case Constantes.PERFIL_ENCARGADO_ADM:
                 return "redirect:/admin/listaEmpleados";
             default:

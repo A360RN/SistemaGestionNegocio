@@ -3,23 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.com.sunshineandina.dao;
+package pe.com.sunshineandina.service;
 
 import java.util.List;
 import pe.com.sunshineandina.dto.CategoriaTO;
 
 /**
  *
- * @author alonsorn
+ * @author FERNANDO
  */
-public interface CategoriaDAO {
+public interface CategoriaService {
+    List<CategoriaTO> findAllCategorias();
     
-    void save(CategoriaTO categoria);
+    CategoriaTO findCategoriaById(int id);
     
-    CategoriaTO findById(int id);
-    
-    List<CategoriaTO> findAll();
-    
-    CategoriaTO findByNombreCategoria(String nombreCategoria);
-    
+    void addCategoria(CategoriaTO categoria);
 }

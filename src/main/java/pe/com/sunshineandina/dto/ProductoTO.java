@@ -50,6 +50,9 @@ public class ProductoTO implements Serializable {
 
     @Column(name = "estado_producto")
     private int estadoProducto;
+    
+    @Column(name = "descripcion_producto")
+    private String descripcionProducto;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria")
@@ -118,6 +121,14 @@ public class ProductoTO implements Serializable {
 
     public void setEstadoProducto(int estadoProducto) {
         this.estadoProducto = estadoProducto;
+    }
+    
+    public String getDescripcionProducto() {
+        return descripcionProducto;
+    }
+
+    public void setDescripcionProducto(String descripcionProducto) {
+        this.descripcionProducto = descripcionProducto;
     }
 
     public CategoriaTO getCategoria() {
@@ -191,7 +202,7 @@ public class ProductoTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ProductoTO{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", precioProducto=" + precioProducto + ", puntosProducto=" + puntosProducto + ", stockProducto=" + stockProducto + ", estadoProducto=" + estadoProducto + '}';
+        return "ProductoTO{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", precioProducto=" + precioProducto + ", puntosProducto=" + puntosProducto + ", stockProducto=" + stockProducto + ", estadoProducto=" + estadoProducto + ", descripcionProducto=" + descripcionProducto + '}';
     }
 
 }
