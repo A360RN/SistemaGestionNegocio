@@ -17,4 +17,6 @@ public interface PoliticaService {
     List<PoliticaTO> findAllPoliticas();
     
     void actualizarPolitica(PoliticaTO politica);
+    
+    PoliticaTO findById(int idPolitica);
 }

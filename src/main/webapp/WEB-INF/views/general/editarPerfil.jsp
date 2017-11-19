@@ -8,8 +8,6 @@
 <div class="container">
     <div class="row">
         <div class="col-6 offset-3">
-            <a href="#" class="btn btn-success">Actualizar datos personales</a>
-            <a href="#" class="btn btn-danger">Cambiar contraseña</a>
             <form action="actualizarDatos" method="POST">
                 <c:if test="${sessionScope.swCliente eq 1}">
                 <div class="form-group">

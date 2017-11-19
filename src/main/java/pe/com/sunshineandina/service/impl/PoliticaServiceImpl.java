@@ -36,8 +36,13 @@ public class PoliticaServiceImpl implements PoliticaService{
             politicaEntity.setMaxPuntos(politica.getMaxPuntos());
             politicaEntity.setMinPuntos(politica.getMinPuntos());
             politicaEntity.setPorcentajeDescuento(politica.getPorcentajeDescuento());
-            politicaDao.save(politica);
+            politicaDao.save(politicaEntity);
         }
+    }
+
+    @Override
+    public PoliticaTO findById(int idPolitica) {
+        return politicaDao.findById(idPolitica);
     }
     
 }
