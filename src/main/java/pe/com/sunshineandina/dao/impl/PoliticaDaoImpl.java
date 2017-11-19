@@ -38,4 +38,9 @@ public class PoliticaDaoImpl extends AbstractDAO<Integer, PoliticaTO> implements
         return (PoliticaTO) criteria.uniqueResult();
     }
 
+    @Override
+    public void save(PoliticaTO politica) {
+        persist(politica);
+    }
+
 }

@@ -10,9 +10,34 @@
 
 <div class="container">
     <div class="titulo">
-        <h1 class="text-center">Políticas de negocio</h1>
-        <div class="clearfix"></div><hr>
+        <h1 class="text-center">Lista de Políticas de Negocio</h1>
+        <hr>
     </div>
+    <div class="row">
+        <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-inverse">
+            <th></th>
+            <th>Política</th>
+            <th>Puntos mínimos</th>
+            <th>Puntos máximo</th>
+            <th>Porcentaje de descuento</th>
+            </thead>
+            <tbody>
+                <c:forEach items="${lstPoliticas}" var="politica">
+                <tr>
+                    <td class="text-center icon">
+                        <a href="#" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
+                    </td>
+                    <td>${politica.descPolitica}</td>
+                    <td>${politica.minPuntos}</td>
+                    <td>${politica.maxPuntos}</td>
+                    <td>${politica.porcentajeDescuento}</td>
+                </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
 <%@ include file="../includes/footer.jsp"%>

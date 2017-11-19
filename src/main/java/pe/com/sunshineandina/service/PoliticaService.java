@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.com.sunshineandina.dao;
+package pe.com.sunshineandina.service;
 
 import java.util.List;
 import pe.com.sunshineandina.dto.PoliticaTO;
@@ -12,13 +12,9 @@ import pe.com.sunshineandina.dto.PoliticaTO;
  *
  * @author alonsorn
  */
-public interface PoliticaDAO {
+public interface PoliticaService {
     
-    PoliticaTO findById(int id);
+    List<PoliticaTO> findAllPoliticas();
     
-    List<PoliticaTO> findAll(); 
-    
-    PoliticaTO findByDescPolitica(String descPolitica);
-    
-    void save(PoliticaTO politica);
+    void actualizarPolitica(PoliticaTO politica);
 }

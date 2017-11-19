@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.com.sunshineandina.dto.EmpleadoTO;
 import pe.com.sunshineandina.dto.PerfilTO;
+import pe.com.sunshineandina.dto.PoliticaTO;
 import pe.com.sunshineandina.dto.UsuarioTO;
 import pe.com.sunshineandina.service.EmpleadoService;
+import pe.com.sunshineandina.service.PoliticaService;
 import pe.com.sunshineandina.util.Constantes;
 
 /**
@@ -29,13 +31,16 @@ public class AdministracionController {
 
     @Autowired
     private EmpleadoService empleadoService;
+    
+    @Autowired
+    private PoliticaService politicaService;
 
     @RequestMapping(value = "/listaEmpleados", method = RequestMethod.GET)
     public String listaEmpleados(Model model) {
         /* Hallamos todos los empleados OJO HAY QUE CAMBIAR POR PAGINADO*/
         List<EmpleadoTO> lstEmpleados = empleadoService.findAllEmpleados();
         model.addAttribute("lstEmpleados", lstEmpleados);
-        
+
         return "admin/lista_empleados";
     }
 
@@ -52,14 +57,14 @@ public class AdministracionController {
             @RequestParam("usuario") String usuario,
             @RequestParam("password") String password,
             @RequestParam("perfiles") String[] perfiles) {
-        
+
         /* Creamos el usuario */
         UsuarioTO usuarioEntity = new UsuarioTO();
         usuarioEntity.setRegistroUsuario(usuario);
         usuarioEntity.setPassUsuario(password);
         usuarioEntity.setEstadoUsuario(Constantes.ESTADO_ACTIVO);
-        usuarioEntity.setFechaRegistro(new Date());      
-        
+        usuarioEntity.setFechaRegistro(new Date());
+
         /* Creamos el empleado */
         EmpleadoTO empleadoEntity = new EmpleadoTO();
         empleadoEntity.setPrimerNombre(primerNombre.toUpperCase());
@@ -70,17 +75,12 @@ public class AdministracionController {
         empleadoEntity.setTelefonoCelular(telCelular);
         empleadoEntity.setTelefonoFijo(telefonoFijo);
         empleadoEntity.setEmail(email.toUpperCase());
-        
+
         empleadoEntity.setUsuario(usuarioEntity);
         /* Guardamos el nuevo empleado */
         empleadoService.addEmpleado(empleadoEntity, perfiles);
 
         return "redirect:/admin/listaEmpleados";
-    }
-
-    @RequestMapping(value = "/listaPoliticas", method = RequestMethod.GET)
-    public String listaPoliticas() {
-        return "admin/lista_politicas";
     }
 
     @RequestMapping(value = "/nuevoEmpleado", method = RequestMethod.GET)
@@ -90,5 +90,14 @@ public class AdministracionController {
 
         model.addAttribute("lstPerfiles", lstPerfiles);
         return "admin/empleado";
+    }
+
+    @RequestMapping(value = "/listaPoliticas", method = RequestMethod.GET)
+    public String listaPoliticas(Model model) {
+        List<PoliticaTO> lstPoliticas = politicaService.findAllPoliticas();
+        
+        model.addAttribute("lstPoliticas", lstPoliticas);
+        
+        return "admin/lista_politicas";
     }
 }
