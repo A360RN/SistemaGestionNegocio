@@ -6,7 +6,6 @@
 package pe.com.sunshineandina.controller;
 
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,22 +26,41 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
     
-    @RequestMapping(value = "/listaCategorias", method = RequestMethod.GET)
-    public String listaEmpleados(Model model) {
+    @RequestMapping(value = "/listaCategorias",  method = RequestMethod.GET)
+    public String listaCategorias(@RequestParam(value="edit", required=false) Object id ,Model model) {
         List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
         model.addAttribute("listaCategorias", listaCategorias);
-
+        //Cuando se dé click en editar
+        if(id!=null)
+        {
+            int idCategoria=Integer.parseInt((String) id) ;
+            CategoriaTO categoria=categoriaService.findCategoriaById(idCategoria);
+            System.out.println(categoria.getDescCategoria());
+            model.addAttribute("categoria",categoria);
+            model.addAttribute("swEditar",1);
+        }
         return "inventario/lista_categorias";
     }
     
-    @RequestMapping(value = "/listaCategorias", method = RequestMethod.POST)
-    public String nuevaCategoria(
+    @RequestMapping(value = "/categoria", method = RequestMethod.POST)
+    public String addOrEditCategoria(
+            @RequestParam("id") int id,
             @RequestParam("nombre") String nombre,
             @RequestParam("descripcion") String descripcion){
         CategoriaTO categoriaNew= new CategoriaTO();
         categoriaNew.setNombreCategoria(nombre);
         categoriaNew.setDescCategoria(descripcion);
-        categoriaService.addCategoria(categoriaNew);
+        //Hidden agregar
+        if(id==0)
+        {
+            categoriaService.addCategoria(categoriaNew);
+        }
+        //Hidden editar con id
+        else{
+            categoriaNew.setIdCategoria(id);
+            categoriaService.updateCategoria(categoriaNew);
+        }
+        
         return "redirect:listaCategorias";
     }
 }

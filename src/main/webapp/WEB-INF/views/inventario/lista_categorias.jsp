@@ -23,41 +23,62 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${listaCategorias}" var="categoria">
-                    <tr>
-                        <td class="text-center icon">
-                            <a href="" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-categoria" data-value="${categoria.idCategoria}"><span class="fa fa-times-circle fa-2x"></span></button>
-                        </td>
-                        <td>${categoria.nombreCategoria}</td>
-                        <td>${categoria.descCategoria}</td>
-                    </tr>
+                        <tr>
+                            <td class="text-center icon">
+                                <a href="${pageContext.request.contextPath}/inventario/listaCategorias?edit=${categoria.idCategoria}" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
+                                <button class="btn btn-sm btn-categoria" data-value="${categoria.idCategoria}"><span class="fa fa-times-circle fa-2x"></span></button>
+                            </td>
+                            <td>${categoria.nombreCategoria}</td>
+                            <td>${categoria.descCategoria}</td>
+                        </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
         <div class="col-md-6">
-            <h3 class="text-center">Registrar una categoría</h3>
-            <form action="listaCategorias" method="POST">
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="nombre">Nombre*:</label>
-                        <input class="form-control" type="text" id="nombre" name="nombre">
+            <h3 class="text-center">
+                <c:choose><c:when test="${swEditar eq 1}">Editar </c:when><c:otherwise>Agregar </c:otherwise></c:choose>una categoría
+                    </h3>
+
+                    <form action="categoria" method="POST">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="nombre">Nombre*:</label>
+                        
+                        <c:choose>
+                            <c:when test="${swEditar eq 1}">
+                                <input type="hidden" name="id" value="${categoria.idCategoria}">
+                                <input value="${categoria.nombreCategoria}" class="form-control" type="text" id="nombre" name="nombre">
+                            </c:when>
+                            <c:otherwise>
+                                <input type="hidden" name="id" value="0">
+                                <input class="form-control" type="text" id="nombre" name="nombre">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="descripcion">Descripción:</label>
-                        <textarea name="descripcion" id="descripcion" class="form-control" rows="6"></textarea>
+                        <c:choose>
+                            <c:when test="${swEditar eq 1}">
+                                <textarea name="descripcion" id="descripcion" class="form-control" rows="6">${categoria.descCategoria}</textarea>
+                            </c:when>
+                            <c:otherwise>
+                                <textarea name="descripcion" id="descripcion" class="form-control" rows="6"></textarea>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="form-group pull-right">
-                    <input type="submit" class="form-control btn btn-warning pull-right" value="Registrar">
-                </div><div class="clearfix"></div>
-                <!--  
-                <div class="form-group pull-right">
-                  <a href="lista_categorias.jsp" class="form-control btn btn-secondary">Cancelar</a>
-                </div><div class="clearfix"></div>
-                -->
+                    <input type="submit" class="form-control btn btn-warning pull-right" value="<c:choose><c:when test="${swEditar eq 1}">Editar</c:when><c:otherwise>Registrar</c:otherwise></c:choose>">
+                        </div><div class="clearfix"></div>
+
+                <c:if test="${swEditar eq 1}">
+                    <div class="form-group pull-right">
+                        <a href="${pageContext.request.contextPath}/inventario/listaCategorias" class="form-control btn btn-secondary">Cancelar</a>
+                    </div><div class="clearfix"></div>
+                </c:if>
             </form>
         </div>
     </div>

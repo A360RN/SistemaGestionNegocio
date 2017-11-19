@@ -18,4 +18,6 @@ public interface CategoriaService {
     CategoriaTO findCategoriaById(int id);
     
     void addCategoria(CategoriaTO categoria);
+    
+    void updateCategoria(CategoriaTO categoria);
 }
