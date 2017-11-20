@@ -39,4 +39,19 @@ public class CategoriaServiceImpl implements CategoriaService {
         categoriaDao.save(categoria);
     }
     
+    @Override
+    public void updateCategoria(CategoriaTO categoria) {
+        if(categoria != null){
+            CategoriaTO categoriaUpd = categoriaDao.findById(categoria.getIdCategoria());
+            categoriaUpd.setNombreCategoria(categoria.getNombreCategoria());
+            categoriaUpd.setDescCategoria(categoria.getDescCategoria());
+            categoriaDao.save(categoriaUpd);
+        }
+    }
+    
+    @Override
+    public CategoriaTO findCategoriaByNombre(String nombre) {
+        return categoriaDao.findByNombreCategoria(nombre);
+    }
+    
 }

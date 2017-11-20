@@ -36,11 +36,27 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public ProductoTO findProductoById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ProductoTO producto=productoDao.findById(id);
+        Hibernate.initialize(producto.getCategoria());
+        return producto;
     }
 
     @Override
     public void addProducto(ProductoTO producto) {
         productoDao.save(producto);
+    }
+
+    @Override
+    public void editProducto(ProductoTO producto) {
+        if(producto != null){
+            ProductoTO productoUpd = productoDao.findById(producto.getIdProducto());
+            productoUpd.setNombreProducto(producto.getNombreProducto());
+            productoUpd.setCategoria(producto.getCategoria());
+            productoUpd.setDescripcionProducto(producto.getDescripcionProducto());
+            productoUpd.setPrecioProducto(producto.getPrecioProducto());
+            productoUpd.setPuntosProducto(producto.getPuntosProducto());
+            productoUpd.setStockProducto(producto.getStockProducto());
+            productoDao.save(productoUpd);
+        }
     }
 }
