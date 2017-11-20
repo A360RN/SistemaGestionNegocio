@@ -38,13 +38,13 @@
         <div class="col-md-6">
             <h3 class="text-center">
                 <c:choose><c:when test="${swEditar eq 1}">Editar </c:when><c:otherwise>Agregar </c:otherwise></c:choose>una categoría
-                    </h3>
+            </h3>
+            
+            <form action="categoria" method="POST">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="nombre">Nombre*:</label>
 
-                    <form action="categoria" method="POST">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label for="nombre">Nombre*:</label>
-                        
                         <c:choose>
                             <c:when test="${swEditar eq 1}">
                                 <input type="hidden" name="id" value="${categoria.idCategoria}">

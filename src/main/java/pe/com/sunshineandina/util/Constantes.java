@@ -26,4 +26,6 @@ public class Constantes {
     public static final String ERROR_AUTENTICACION_PASSWORD = "Contraseña errada";
 
     public static final String ERROR_CONTRASEÑAS_NO_COINCIDEN = "Las contraseñas no coinciden"; 
+    
+    public static final String ERROR_CATEGORIA_REPETIDA="La categoria ingresada ya existe";
 }

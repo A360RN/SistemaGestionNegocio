@@ -18,4 +18,6 @@ public interface ProductService {
      ProductoTO findProductoById(int id);
      
      void addProducto(ProductoTO producto);
+     
+     void editProducto(ProductoTO producto);
 }

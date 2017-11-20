@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.service.CategoriaService;
+import pe.com.sunshineandina.util.Constantes;
 
 /**
  *
@@ -30,7 +31,7 @@ public class CategoriaController {
     public String listaCategorias(@RequestParam(value="edit", required=false) Object id ,Model model) {
         List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
         model.addAttribute("listaCategorias", listaCategorias);
-        //Cuando se dé click en editar
+        //Cuando dé click en editar
         if(id!=null)
         {
             int idCategoria=Integer.parseInt((String) id) ;
@@ -38,6 +39,7 @@ public class CategoriaController {
             System.out.println(categoria.getDescCategoria());
             model.addAttribute("categoria",categoria);
             model.addAttribute("swEditar",1);
+            
         }
         return "inventario/lista_categorias";
     }
@@ -46,7 +48,8 @@ public class CategoriaController {
     public String addOrEditCategoria(
             @RequestParam("id") int id,
             @RequestParam("nombre") String nombre,
-            @RequestParam("descripcion") String descripcion){
+            @RequestParam("descripcion") String descripcion,
+            Model model){
         CategoriaTO categoriaNew= new CategoriaTO();
         categoriaNew.setNombreCategoria(nombre);
         categoriaNew.setDescCategoria(descripcion);

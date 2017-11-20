@@ -17,6 +17,8 @@ public interface CategoriaService {
     
     CategoriaTO findCategoriaById(int id);
     
+    CategoriaTO findCategoriaByNombre(String nombre);
+    
     void addCategoria(CategoriaTO categoria);
     
     void updateCategoria(CategoriaTO categoria);

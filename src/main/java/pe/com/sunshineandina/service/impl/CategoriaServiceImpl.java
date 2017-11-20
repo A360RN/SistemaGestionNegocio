@@ -49,4 +49,9 @@ public class CategoriaServiceImpl implements CategoriaService {
         }
     }
     
+    @Override
+    public CategoriaTO findCategoriaByNombre(String nombre) {
+        return categoriaDao.findByNombreCategoria(nombre);
+    }
+    
 }

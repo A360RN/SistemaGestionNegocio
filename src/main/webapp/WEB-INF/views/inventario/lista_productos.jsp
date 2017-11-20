@@ -34,7 +34,7 @@
                 <c:forEach items="${listaProductos}" var="producto">
                 <tr>
                     <td class="text-center icon">
-                        <a href="producto.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
+                        <a href="${pageContext.request.contextPath}/inventario/nuevoProducto?edit=${producto.idProducto}" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
                         <button class="btn btn-sm btn-producto" data-value="${producto.idProducto}"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td>${producto.nombreProducto}</td>
