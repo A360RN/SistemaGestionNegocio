@@ -89,9 +89,8 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService{
     }
 
     @Override
-    public UsuarioTO actualizarUsuario(UsuarioTO usuario) {
+    public UsuarioTO actualizarPassword(UsuarioTO usuario) {
         if(usuario != null){
-            System.out.println("id: " + usuario.getIdUsuario());
             UsuarioTO entity = usuarioDao.findById(usuario.getIdUsuario());
             if(entity != null){
                 entity.setPassUsuario(HashPassword.hashPassword(usuario.getPassUsuario()));

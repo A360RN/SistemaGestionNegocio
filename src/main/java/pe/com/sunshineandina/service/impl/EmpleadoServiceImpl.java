@@ -16,7 +16,9 @@ import pe.com.sunshineandina.dao.PerfilDAO;
 import pe.com.sunshineandina.dao.UsuarioDAO;
 import pe.com.sunshineandina.dto.EmpleadoTO;
 import pe.com.sunshineandina.dto.PerfilTO;
+import pe.com.sunshineandina.dto.UsuarioTO;
 import pe.com.sunshineandina.service.EmpleadoService;
+import pe.com.sunshineandina.util.Constantes;
 import pe.com.sunshineandina.util.HashPassword;
 
 /**
@@ -80,6 +82,21 @@ public class EmpleadoServiceImpl implements EmpleadoService{
             Hibernate.initialize(empleado.getUsuario().getPerfiles());
         }
         return lstEmpleados;
+    }
+
+    @Override
+    public void inactivarEmpleado(int idUsuario) {
+        UsuarioTO usuario = usuarioDao.findById(idUsuario);
+        System.out.println("id: " + usuario.getIdUsuario());
+        usuario.setEstadoUsuario(Constantes.ESTADO_INACTIVO);
+        usuarioDao.saveUsuario(usuario);
+    }
+
+    @Override
+    public void activarEmpleado(int idUsuario) {
+        UsuarioTO usuario = usuarioDao.findById(idUsuario);
+        usuario.setEstadoUsuario(Constantes.ESTADO_ACTIVO);
+        usuarioDao.saveUsuario(usuario);
     }
     
 }

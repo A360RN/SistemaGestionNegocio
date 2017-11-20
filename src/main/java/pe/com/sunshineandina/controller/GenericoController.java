@@ -181,7 +181,7 @@ public class GenericoController {
             UsuarioTO actualizado = new UsuarioTO();
             actualizado.setIdUsuario(usuario.getIdUsuario());
             actualizado.setPassUsuario(passwordNueva);
-            actualizado = datosPersonalesService.actualizarUsuario(actualizado);
+            actualizado = datosPersonalesService.actualizarPassword(actualizado);
             session.setAttribute("usuario", actualizado);
         }
         

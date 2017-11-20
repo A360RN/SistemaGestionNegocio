@@ -97,6 +97,23 @@ public class AdministracionController {
         model.addAttribute("lstPerfiles", lstPerfiles);
         return "admin/empleado";
     }
+    
+    @RequestMapping(value = "/listaEmpleados", method = RequestMethod.DELETE)
+    @ResponseBody
+    public JsonNode inactivaEmpleado(@RequestBody ObjectNode nodoJson){
+        /* Obtenemos el id del usuario relacionado con el empleado */
+        int idUsuario = nodoJson.get("idUsuario").asInt();
+        
+        /* Actualizamos el empleado */
+        empleadoService.inactivarEmpleado(idUsuario);
+        
+        /* Json de respuesta */
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonRpta = mapper.createObjectNode();
+        ((ObjectNode)jsonRpta).put("rpta", "ok");
+        
+        return jsonRpta;
+    } 
 
     @RequestMapping(value = "/listaPoliticas", method = RequestMethod.GET)
     public String listaPoliticas(Model model) {

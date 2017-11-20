@@ -23,13 +23,14 @@
             <th>Correo electrónico</th>
             <th>Fecha de registro</th>
             <th>Perfiles</th>
+            <th>Estado</th>
             </thead>
             <tbody>
                 <c:forEach items="${lstEmpleados}" var="empleado">
                 <tr>
                     <td class="text-center icon">
                         <a href="#" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-usuario" data-value="1"><span class="fa fa-times-circle fa-2x"></span></button>
+                        <button class="btn btn-sm btn-usuario" data-toggle="modal" data-target="#modalEmpleadoInactivar" data-value="${empleado.usuario.idUsuario}"><span class="fa fa-times-circle fa-2x"></span></button>
                     </td>
                     <td><c:out value="${empleado.primerNombre}"></c:out>  <c:out value="${empleado.primerApellido}"></c:out></td>
                     <td>${empleado.email}</td>
@@ -39,6 +40,16 @@
                             <c:out value="${perfil.codigoPerfil}"></c:out>
                         </c:forEach>
                     </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${empleado.usuario.estadoUsuario eq 1}">
+                                <c:out value="ACTIVO"></c:out>
+                            </c:when>
+                            <c:when test="${empleado.usuario.estadoUsuario eq 0}">
+                                <c:out value="INACTIVO"></c:out>
+                            </c:when>
+                        </c:choose>
+                    </td>
                 </tr>
                 </c:forEach>
             </tbody>
@@ -47,22 +58,23 @@
 
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modalUsuario">
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modalEmpleadoInactivar">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="centrar-texto-modal">
-                    <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">Confirmar</h4>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <p class="text-center">¿Está seguro de eliminar al usuario?</p>
+                <p class="text-center">¿Está seguro de desactivar al empleado?</p>
+                <input type="hidden" name="idUsuario">
             </div>
             <div class="modal-footer">
                 <div class="centrar-texto-modal">
-                    <button type="button" class="btn btn-danger" id="modalUsuario-btn-si">Si</button>
-                    <button type="button" class="btn btn-secondary" id="modalUsuario-btn-no">No</button>
+                    <button type="button" class="btn btn-danger" id="modalEmpleadoInactivar-btn-si">Si</button>
+                    <button type="button" class="btn btn-secondary" id="modalEmpleadoInactivar-btn-no">No</button>
                 </div>
             </div>
 

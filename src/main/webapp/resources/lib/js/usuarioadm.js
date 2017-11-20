@@ -5,9 +5,12 @@ let btnModalPasswordNo = $('#modalPassword-btn-no');
 let btnEditarPolitica = $('.btn-editar-politica');
 let btnEditarPoliticanSi = $('#modalEditarPolitica-btn-si');
 let btnEditarPoliticaNo = $('#modalEditarPolitica-btn-no');
+let btnModalEmpleadoInactivarSi = $('#modalEmpleadoInactivar-btn-si');
+let btnModalEmpleadoInactivarNo = $('#modalEmpleadoInactivar-btn-no');
 
 let modalPassword = $('#modalPassword');
 let modalEditarPolitica = $('#modalEditarPolitica');
+let modalEmpleadoInactivar = $('#modalEmpleadoInactivar');
 
 /* 
     Para regresar a la pantalla anterior cuando se cambia
@@ -134,3 +137,38 @@ btnEditarPoliticanSi.on('click', function (e) {
         window.location.href='listaPoliticas';
     });
 })
+
+/* Modal para inactivar al empleado */
+modalEmpleadoInactivar.on('show.bs.modal', function(e){
+    let button = $(e.relatedTarget);
+    let idUsuario = button.data('value');
+    let modal = $(this);
+
+    modal.find('.modal-body input').val(idUsuario);
+});
+
+btnModalEmpleadoInactivarNo.on('click', function(e){
+    modalEmpleadoInactivar.modal('hide');
+});
+
+btnModalEmpleadoInactivarSi.on('click', function(e){
+    e.preventDefault();
+
+    let idUsuario =  modalEmpleadoInactivar.find('.modal-body input').val();
+
+    let data = {
+        idUsuario: idUsuario
+    };
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'DELETE',
+        url: 'listaEmpleados',
+        data: JSON.stringify(data)
+    }).done(function(response){
+        window.location.href = 'listaEmpleados';
+    });
+});
