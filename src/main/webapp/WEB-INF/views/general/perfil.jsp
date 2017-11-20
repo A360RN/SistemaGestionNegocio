@@ -2,8 +2,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../includes/head.jsp" %>
 
-<!-- ESTO HAY QUE BORRAR, ES SOLO PARA PRUEBA -->
-<%@include file="../includes/headerAdmin.jsp" %>
+<%@include file="../includes/headerGenerico.jsp" %>
 
 <div class="container">
     <div class="row">
