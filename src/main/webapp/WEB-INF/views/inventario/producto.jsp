@@ -9,34 +9,78 @@
 <%@include file="../includes/headerInventario.jsp"%>
 
 <div class="container">
-    <h1 class="text-center">Registrar un producto</h1>
-    <hr>
-    <form action="listaProductos" method="POST">
-        <div class="row">
-            <div class="form-group col-md-3">
-                <label for="nombre">Nombre*:</label>
-                <input class="form-control" type="text" id="nombre" name="nombre">
+    <h3 class="text-center">
+        <c:choose><c:when test="${swEditar eq 1}">Editar </c:when><c:otherwise>Agregar </c:otherwise></c:choose>un producto
+            </h3>
+            <hr>
+            <form action="listaProductos" method="POST">
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="nombre">Nombre*:</label>
+                <c:choose>
+                    <c:when test="${swEditar eq 1}">
+                        <input type="hidden" name="id" value="${producto.idProducto}">
+                        <input value="${producto.nombreProducto}" class="form-control" type="text" id="nombre" name="nombre">
+                    </c:when>
+                    <c:otherwise>
+                        <input type="hidden" name="id" value="0">
+                        <input class="form-control" type="text" id="nombre" name="nombre">
+                    </c:otherwise>
+                </c:choose>
+
             </div>
             <div class="form-group col-md-3">
                 <label for="categoria">Categoría*:</label>
                 <select class="form-control" id="categoria" name="categoria">
                     <option value="" selected="" disabled="">Seleccione una opción</option>
-                    <c:forEach items="${listaCategorias}" var="cat">
-                        <option value="${cat.idCategoria}">${cat.nombreCategoria}</option>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${swEditar eq 1}">
+                            <c:forEach items="${listaCategorias}" var="cat">
+                                <option value="${cat.idCategoria}" <c:if test="${producto.categoria.nombreCategoria == cat.nombreCategoria}"> selected</c:if>>${cat.nombreCategoria}</option>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${listaCategorias}" var="cat">
+                                <option value="${cat.idCategoria}">${cat.nombreCategoria}</option>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </select>
             </div>
             <div class="form-group col-md-2">
                 <label for="precio">Precio*:</label>
-                <input type="text" name="precio" id="precio" class="form-control" value="">
+                <c:choose>
+                    <c:when test="${swEditar eq 1}">
+                        <input type="text" name="precio" id="precio" class="form-control" value="${producto.precioProducto}">
+                    </c:when>
+                    <c:otherwise>
+                        <input type="text" name="precio" id="precio" class="form-control" value="">
+                    </c:otherwise>
+                </c:choose>            
             </div>
             <div class="form-group col-md-2">
                 <label for="puntos">Puntos*:</label>
-                <input type="text" name="puntos" id="puntos" class="form-control" value="">
+                <c:choose>
+                    <c:when test="${swEditar eq 1}">
+                        <input type="text" name="puntos" id="puntos" class="form-control" value="${producto.puntosProducto}">
+                    </c:when>
+                    <c:otherwise>
+                        <input type="text" name="puntos" id="puntos" class="form-control" value="">
+                    </c:otherwise>
+                </c:choose>
+
             </div>
             <div class="form-group col-md-2">
                 <label for="cantidad">Cantidad*:</label>
-                <input type="text" name="cantidad" id="cantidad" class="form-control" value="">
+                <c:choose>
+                    <c:when test="${swEditar eq 1}">
+                        <input type="text" name="cantidad" id="cantidad" class="form-control" value="${producto.stockProducto}">
+                    </c:when>
+                    <c:otherwise>
+                        <input type="text" name="cantidad" id="cantidad" class="form-control" value="">
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </div>
         <div class="row">
@@ -47,7 +91,15 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="descripcion">Descripción:</label>
-                <textarea name="descripcion" id="descripcion" class="form-control" rows="6"></textarea>
+                <c:choose>
+                    <c:when test="${swEditar eq 1}">
+                        <textarea name="descripcion" id="descripcion" class="form-control" rows="6">${producto.descripcionProducto}</textarea>
+                    </c:when>
+                    <c:otherwise>
+                        <textarea name="descripcion" id="descripcion" class="form-control" rows="6"></textarea>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </div>
         <div class="form-group pull-right">

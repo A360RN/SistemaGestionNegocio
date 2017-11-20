@@ -7,7 +7,6 @@ package pe.com.sunshineandina.controller;
 
 import java.math.BigDecimal;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,14 +40,15 @@ public class ProductoController {
     }
     
     @RequestMapping(value="/listaProductos", method=RequestMethod.POST)
-    public String nuevoProducto(  
+    public String addOrEditProducto(
+            @RequestParam("id") int id,
             @RequestParam("categoria") int categoria,
             @RequestParam("nombre") String nombre,
             @RequestParam("descripcion") String descripcion,
             @RequestParam("precio") BigDecimal precio,
             @RequestParam("cantidad") int cantidad,
-            @RequestParam("puntos") int puntos
-            ){
+            @RequestParam("puntos") int puntos,
+            Model model){
         CategoriaTO categoriaFind;
         categoriaFind=categoriaService.findCategoriaById(categoria);
         ProductoTO productoNew=new ProductoTO();
@@ -59,15 +59,32 @@ public class ProductoController {
         productoNew.setPuntosProducto(puntos);
         productoNew.setEstadoProducto(1);
         productoNew.setDescripcionProducto(descripcion);
-        productService.addProducto(productoNew);
+        //Hidden agregar
+        if(id==0)
+        {
+            productService.addProducto(productoNew);
+        }
+        //Hidden editar con id
+        else{
+            productoNew.setIdProducto(id);
+            productService.editProducto(productoNew);
+        }
+        
         return "redirect:/inventario/listaProductos";
     }
     
     @RequestMapping(value = "/nuevoProducto", method = RequestMethod.GET)
-    public String listarCategorias(Model model){
+    public String listarCategorias(@RequestParam(value="edit", required=false) Object id, Model model){
         List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
         model.addAttribute("listaCategorias", listaCategorias);
-        System.out.println(listaCategorias);
+        //Cuando dé click en editar
+        if(id!=null)
+        {
+            int idProducto=Integer.parseInt((String) id) ;
+            ProductoTO producto=productService.findProductoById(idProducto);
+            model.addAttribute("producto",producto);
+            model.addAttribute("swEditar",1);
+        }
         return "inventario/producto";
     }
 }
