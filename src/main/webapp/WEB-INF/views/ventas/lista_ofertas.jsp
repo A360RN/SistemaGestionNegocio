@@ -14,7 +14,12 @@
         <a href="oferta.jsp" class="btn btn-warning pull-right" id="add-oferta-btn">Registrar una oferta</a>
         <div class="clearfix"></div><hr>
     </div>
+    
+    
+    
+    
 </div>
+
 
 <%@ include file="../includes/footer.jsp"%>
 
