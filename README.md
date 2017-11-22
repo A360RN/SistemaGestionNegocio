@@ -10,6 +10,7 @@
 * javax.servlet-api 3.1.0
 * javax.servlet.jsp-api 2.3.1
 * jstl 1.2
+* jackson v2.9.2
 
 ### Front:  
 
