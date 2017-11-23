@@ -3,6 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var botonEstadoProducto =$(".btn-cambiar-estado-producto");
+
+botonEstadoProducto.on('click', function(e){
+    let idProducto=$(this).data("idproducto");
+    let data={idProducto:idProducto};
+    $.ajax({
+        method: 'POST',
+        url: 'cambiarEstado',
+        data: data
+    }).done(function (e) {
+        window.location.href='listaProductos';
+    });
+    
+});
 function modalConfirm(callbackP, callbackC, callbackU){
   var id;
   var modalProducto=$("#modalProducto");

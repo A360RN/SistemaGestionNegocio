@@ -25,9 +25,10 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductoDAO productoDao;
     
+    //Lista productos en inventario
     @Override
-    public List<ProductoTO> findAllProductos() {
-        List<ProductoTO> listaProductos= productoDao.findPaginado(0,10);
+    public List<ProductoTO> findAllProductosInventario() {
+        List<ProductoTO> listaProductos= productoDao.findInventario();
         for(ProductoTO producto : listaProductos){
             Hibernate.initialize(producto.getCategoria());
         }
@@ -56,6 +57,20 @@ public class ProductServiceImpl implements ProductService{
             productoUpd.setPrecioProducto(producto.getPrecioProducto());
             productoUpd.setPuntosProducto(producto.getPuntosProducto());
             productoUpd.setStockProducto(producto.getStockProducto());
+            productoDao.save(productoUpd);
+        }
+    }
+    
+    @Override
+    public void changeProductState(ProductoTO producto){
+        if(producto!=null){
+            ProductoTO productoUpd=productoDao.findById(producto.getIdProducto());
+            if(productoUpd.getEstadoProducto()==1){
+                productoUpd.setEstadoProducto(0);
+            }
+            else if(productoUpd.getEstadoProducto()==0){
+                productoUpd.setEstadoProducto(1);
+            }
             productoDao.save(productoUpd);
         }
     }
