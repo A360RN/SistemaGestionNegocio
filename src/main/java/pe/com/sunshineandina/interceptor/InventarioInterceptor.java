@@ -17,38 +17,35 @@ import pe.com.sunshineandina.util.Constantes;
  *
  * @author alonsorn
  */
-public class AdminInterceptor extends HandlerInterceptorAdapter {
+public class InventarioInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private HttpSession session;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        /* vemos si viene del login, para no ocasionar bucle infinito */
         if (!request.getRequestURI().equals("/SistemaGestionNegocio/")
                 && !request.getRequestURI().equals("/SistemaGestionNegocio/login")) {
             session = request.getSession();
-            /* Obtenemos el perfil */
-            PerfilTO perfil = (PerfilTO) session.getAttribute("perfil");
+            
+            /* Obtenemos el codigo de perfil */
+            PerfilTO perfil = (PerfilTO)session.getAttribute("perfil");
             String codigoPerfil = perfil.getCodigoPerfil();
-
-            /* Si viene de las urls del adm pero no es adm */
-            if(!codigoPerfil.equals(Constantes.PERFIL_ENCARGADO_ADM) && (request.getRequestURI().equals("/SistemaGestionNegocio/admin/listaEmpleados")
-                    || request.getRequestURI().equals("/SistemaGestionNegocio/admin/nuevoEmpleado")
-                    || request.getRequestURI().equals("/SistemaGestionNegocio/admin/listaPoliticas"))){
-                
+            
+            /* Verificamos si tiene perfil de inv*/
+            if(!codigoPerfil.equals(Constantes.PERFIL_ENCARGADO_INV) && (
+                    request.getRequestURI().matches("/SistemaGestionNegocio/inventario/listaCategorias.*") ||
+                    request.getRequestURI().matches("/SistemaGestionNegocio/inventario/listaProductos.*")) ){
                 switch(codigoPerfil){
-                    case Constantes.PERFIL_ENCARGADO_INV:
-                        response.sendRedirect("/SistemaGestionNegocio/inventario/listaProductos");
+                    case Constantes.PERFIL_ENCARGADO_ADM:
+                        response.sendRedirect("/SistemaGestionNegocio/admin/listaEmpleados");
                         return false;
                     default:
                         response.sendRedirect("/SistemaGestionNegocio/");
                         return false;
                 }
-                
             }
         }
-
         return true;
     }
 
