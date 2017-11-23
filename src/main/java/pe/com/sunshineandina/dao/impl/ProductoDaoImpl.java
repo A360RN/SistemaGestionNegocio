@@ -40,7 +40,16 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
         criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
         return (List<ProductoTO>) criteria.list();
     }
-
+    
+    //Mostrar productos en inventario, estén o no disponibles
+    @Override
+    public List<ProductoTO> findInventario() {
+        Criteria criteria = createEntityCriteria();
+        criteria.addOrder(Order.asc("nombreProducto"));
+        return (List<ProductoTO>) criteria.list();
+    }
+    
+    //Mostrar productos en tienda, SOLO disponibles, con paginación
     @Override
     public List<ProductoTO> findPaginado(int inicio, int cantidadPagina) {
         Criteria criteria = createEntityCriteria();

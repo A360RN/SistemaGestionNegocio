@@ -22,5 +22,7 @@ public interface ProductoDAO {
     
     List<ProductoTO> findPaginado(int inicio, int cantidadPagina);
     
+    List<ProductoTO> findInventario();
+    
     List<ProductoTO> findByCategoriaPaginado(int idCategoria, int inicio, int cantidadPagina);
 }

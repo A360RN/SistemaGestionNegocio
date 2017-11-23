@@ -5,14 +5,20 @@
  */
 package pe.com.sunshineandina.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.math.BigDecimal;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.CategoriaService;
@@ -34,7 +40,7 @@ public class ProductoController {
     
     @RequestMapping(value = "/listaProductos", method = RequestMethod.GET)
     public String listaProductos(Model model){
-        List<ProductoTO> listaProductos=productService.findAllProductos();
+        List<ProductoTO> listaProductos=productService.findAllProductosInventario();
         model.addAttribute("listaProductos", listaProductos);
         return "inventario/lista_productos";
     }
@@ -86,5 +92,13 @@ public class ProductoController {
             model.addAttribute("swEditar",1);
         }
         return "inventario/producto";
+    }
+    
+    @RequestMapping(value = "/cambiarEstado", method = RequestMethod.POST)
+    @ResponseBody
+    public void cambiarEstado(@RequestParam("idProducto") int idProducto)
+    {
+        ProductoTO producto=productService.findProductoById(idProducto);
+        productService.changeProductState(producto);
     }
 }
