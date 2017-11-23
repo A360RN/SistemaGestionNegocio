@@ -17,7 +17,7 @@ botonEstadoProducto.on('click', function(e){
     });
     
 });
-function modalConfirm(callbackP, callbackC, callbackU){
+function modalConfirm(callbackP, callbackC){
   var id;
   var modalProducto = $("#modalProducto");
   var modalCategoria = $("#modalCategoria");
