@@ -35,25 +35,25 @@
                     <tr>
                         <td class="text-center icon">
                             <a href="${pageContext.request.contextPath}/inventario/nuevoProducto?edit=${producto.idProducto}" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                            <button class="btn btn-sm btn-producto" data-value="${producto.idProducto}"><span class="fa fa-times-circle fa-2x"></span></button>
+                            <c:if test="${producto.estadoProducto == 1}">
+                                <button class="btn btn-sm btn-cambiar-estado-producto" data-idproducto="${producto.idProducto}">
+                                    <span class="fa fa-times-circle fa-2x"></span>
+                                </button>
+                            </c:if>
+                            <c:if test="${producto.estadoProducto == 0}">
+                                <button class="btn btn-sm btn-cambiar-estado-producto" data-idproducto="${producto.idProducto}">
+                                    <span class="fa fa-refresh fa-2x"></span>
+                                </button>
+                            </c:if>  
+                                
                         </td>
                         <td>${producto.nombreProducto}</td>
                         <td>${producto.categoria.nombreCategoria}</td>
                         <td>${producto.stockProducto}</td>
                         <td>${producto.precioProducto}</td>
                         <td>
-                            <c:if test="${producto.estadoProducto == 1}">
-                                <button class="btn btn-sm btn-cambiar-estado-producto" data-idproducto="${producto.idProducto}">
-                                    <span class="fa fa-trash fa-lg"></span>
-                                </button>
-                                <label>Sí</label>
-                            </c:if>
-                            <c:if test="${producto.estadoProducto == 0}">
-                                <button class="btn btn-sm btn-cambiar-estado-producto" data-idproducto="${producto.idProducto}">
-                                    <span class="fa fa-refresh fa-lg"></span>
-                                </button>
-                                <label>No</label>
-                            </c:if>  
+                            <c:if test="${producto.estadoProducto == 1}">Sí</c:if>
+                            <c:if test="${producto.estadoProducto == 0}">No</c:if>  
                         </td>
                     </tr>
                 </c:forEach>
