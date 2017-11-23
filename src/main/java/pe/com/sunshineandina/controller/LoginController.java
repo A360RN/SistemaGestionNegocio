@@ -55,7 +55,9 @@ public class LoginController {
         }
 
         usuarioReal.setPerfiles(loginService.perfilesUsuario(usuarioReal));
+        System.out.println("antes de setear el usuario");
         session.setAttribute("usuario", usuarioReal);
+        System.out.println("dsp de setear usuario");
         System.out.println("id en login controller: " + usuarioReal.getIdUsuario());
 
         /* Obtenemos el perfil*/
@@ -67,6 +69,8 @@ public class LoginController {
                 return "redirect:/inventario/listaProductos";
             case Constantes.PERFIL_ENCARGADO_ADM:
                 return "redirect:/admin/listaEmpleados";
+            case Constantes.PERFIL_ENCARGADO_VENTAS:
+                return "redirect:/ventas/listaPedidos";            
             default:
                 return "redirect:/perfil";
         }
@@ -74,6 +78,7 @@ public class LoginController {
 
     @RequestMapping("/cerrarSesion")
     public String cerrarSession(HttpSession session) {
+        session.removeAttribute("üsuario");
         session.invalidate();
 
         return "redirect:/";

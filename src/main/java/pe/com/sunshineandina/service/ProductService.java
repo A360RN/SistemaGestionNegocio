@@ -13,11 +13,13 @@ import pe.com.sunshineandina.dto.ProductoTO;
  * @author FERNANDO
  */
 public interface ProductService {
-     List<ProductoTO> findAllProductos();
+     List<ProductoTO> findAllProductosInventario();
      
      ProductoTO findProductoById(int id);
      
      void addProducto(ProductoTO producto);
      
      void editProducto(ProductoTO producto);
+     
+     void changeProductState(ProductoTO producto);
 }

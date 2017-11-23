@@ -12,36 +12,28 @@
 <!-- Cuerpo nav -->
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="dashboard.jsp">Dashboard</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/ventas/dashboard">Dashboard</a>
     </li>
 </ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
+
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_pedidos.jsp">Pedidos</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/ventas/listaPedidos">Pedidos</a>
     </li>
-</ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
+</ul>   
+
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_clientes.jsp">Clientes</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/ventas/listaClientes">Clientes</a>
     </li>
 </ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
+
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="lista_ofertas.jsp">Ofertas</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/ventas/listaOfertas">Ofertas</a>
     </li>
 </ul>
-<ul class="navbar-nav mr-auto">
-    <li class="linea"></li>
-</ul>
+
 <!-- Fin cuerpo nav -->
 
 <%@include file="../includes/navfooter.jsp" %>
