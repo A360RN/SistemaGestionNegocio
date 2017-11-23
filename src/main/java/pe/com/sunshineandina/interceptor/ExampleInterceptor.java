@@ -23,14 +23,10 @@ public class ExampleInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("aca estoy " + request.getRequestURI());
-        if (!request.getRequestURI().equals("/SistemaGestionNegocio/") &&
-                !request.getRequestURI().equals("/SistemaGestionNegocio/login")) {
-            System.out.println("dsp del uri");
+        if (!request.getRequestURI().equals("/SistemaGestionNegocio/")
+                && !request.getRequestURI().equals("/SistemaGestionNegocio/login")) {
             session = request.getSession();
-            System.out.println((UsuarioTO)session.getAttribute("usuario"));
             if (session.getAttribute("usuario") == null) {
-                System.out.println("dsp del usuario");
                 response.sendRedirect("/SistemaGestionNegocio/");
                 return false;
             }
