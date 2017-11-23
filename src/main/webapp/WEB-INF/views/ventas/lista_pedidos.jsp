@@ -18,113 +18,25 @@
         <table class="table table-sm table-hover table-bordered">
             <thead class="thead-inverse">
             <th></th>
-            <th>Número de pedido</th>
+            <th>Nº de pedido</th>
             <th>Cliente</th>
             <th>Importe total</th>
             <th>Fecha de registro</th>
             <th>Estado</th>
             </thead>
             <tbody>
+                <c:forEach items="${listaPedidos}" var="pedido">
                 <tr>
                     <td class="text-center icon">
                         <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
                     </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
+                    <td>${pedido.idPedido}</td>
+                    <td><c:out value="${pedido.cliente.primerNombre}"></c:out> <c:out value="${pedido.cliente.primerApellido}"></c:out></td>
+                    <td>${pedido.precioAcumuladoPedido}</td>
+                    <td>${pedido.fechaCreacion}</td>
+                    <td>${pedido.estadoPedido}</td>
                 </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pagado</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>cancelado</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
-                </tr>
-                <tr>
-                    <td class="text-center icon">
-                        <a href="pedido.jsp?edit=1" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                    </td>
-                    <td>0051</td>
-                    <td>Luz Candelaria</td>
-                    <td>$150.00</td>
-                    <td>October 31,2017 12:04 am</td>
-                    <td>pedido</td>
-                </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>

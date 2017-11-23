@@ -19,6 +19,8 @@ public interface PedidoDAO {
     
     void save(PedidoTO pedido);
     
+    List<PedidoTO> findAllPedidos();
+    
     List<PedidoTO> findByCliente(int idCliente);
     
     List<PedidoTO> findByClienteFecha(int idCliente, Date fechaInicio, Date fechaFin);

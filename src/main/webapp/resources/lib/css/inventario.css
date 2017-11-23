@@ -19,6 +19,7 @@ button{
 }
 img.nav-image{
 	width: 150px;
+        margin-right:50px;
 }
 input[type=submit], button{
 	cursor:pointer;
@@ -32,10 +33,6 @@ header{
 .nav-item-section{
 	font-size:20px;
 
-}
-.linea{
-	border-left:1px solid #F18421;
-	opacity:0.5; 
 }
 .icon{
 	width:100px;
