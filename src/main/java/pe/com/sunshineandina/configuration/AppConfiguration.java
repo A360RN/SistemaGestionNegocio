@@ -15,7 +15,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import pe.com.sunshineandina.interceptor.ExampleInterceptor;
+import pe.com.sunshineandina.interceptor.AdminInterceptor;
+import pe.com.sunshineandina.interceptor.GeneralInterceptor;
 
 
 /**
@@ -43,7 +44,8 @@ public class AppConfiguration extends WebMvcConfigurerAdapter{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new ExampleInterceptor());
+        registry.addInterceptor(new GeneralInterceptor());
+        registry.addInterceptor(new AdminInterceptor());
     }
     
     

@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import pe.com.sunshineandina.dto.UsuarioTO;
 
 /**
  *
  * @author FERNANDO
  */
-public class ExampleInterceptor extends HandlerInterceptorAdapter {
+public class GeneralInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private HttpSession session;
@@ -26,7 +25,7 @@ public class ExampleInterceptor extends HandlerInterceptorAdapter {
         if (!request.getRequestURI().equals("/SistemaGestionNegocio/")
                 && !request.getRequestURI().equals("/SistemaGestionNegocio/login")) {
             session = request.getSession();
-            if (session.getAttribute("usuario") == null) {
+            if (session.getAttribute("usuario") == null || session.getAttribute("perfil") == null) {
                 response.sendRedirect("/SistemaGestionNegocio/");
                 return false;
             }
