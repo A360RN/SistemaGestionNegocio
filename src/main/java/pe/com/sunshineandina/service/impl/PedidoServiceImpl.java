@@ -16,24 +16,19 @@ import pe.com.sunshineandina.dao.PedidoDAO;
 import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
-import pe.com.sunshineandina.service.VentasService;
+import pe.com.sunshineandina.service.PedidoService;
 
 /**
  *
  * @author FERNANDO
  */
-@Service("ventasService")
+@Service("pedidoService")
 @Transactional
-public class VentasServiceImpl implements VentasService {
+public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
     PedidoDAO pedidoDao;
     
-    @Autowired
-    ClienteDAO clienteDao;
-    
-    @Autowired
-    OfertaDAO ofertaDao;
     
     @Override
     public List<PedidoTO> findAllPedidos() {
@@ -43,28 +38,11 @@ public class VentasServiceImpl implements VentasService {
         }
         return listaPedidos;
     }
-    
-    @Override
-    public List<ClienteTO> findAllClientes() {
-        List<ClienteTO> listaClientes=clienteDao.findAllClientes();
-        /*for(ClienteTO cliente : listaClientes){
-            Hibernate.initialize(cliente.getDistribuidor());
-        }*/
-        return listaClientes;
-    }
-    
-    @Override
-    public List<OfertaTO> findAllOfertas() {
-        List<OfertaTO> listaOfertas=ofertaDao.findAllOfertas();
-        for(OfertaTO oferta : listaOfertas){
-            Hibernate.initialize(oferta.getCategoria());
-        }
-        return listaOfertas;
-    }
 
     @Override
     public PedidoTO findPedidoById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PedidoTO pedido=pedidoDao.findById(id);
+        return pedido;
     }
     
 }

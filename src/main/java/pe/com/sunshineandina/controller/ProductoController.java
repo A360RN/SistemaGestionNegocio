@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.CategoriaService;
-import pe.com.sunshineandina.service.ProductService;
+import pe.com.sunshineandina.service.ProductoService;
 
 /**
  *
@@ -28,14 +28,14 @@ import pe.com.sunshineandina.service.ProductService;
 public class ProductoController {
     
     @Autowired
-    private ProductService productService;
+    private ProductoService productoService;
     
     @Autowired
     private CategoriaService categoriaService;
     
     @RequestMapping(value = "/listaProductos", method = RequestMethod.GET)
     public String listaProductos(Model model){
-        List<ProductoTO> listaProductos=productService.findAllProductosInventario();
+        List<ProductoTO> listaProductos=productoService.findAllProductosInventario();
         model.addAttribute("listaProductos", listaProductos);
         return "inventario/lista_productos";
     }
@@ -63,12 +63,12 @@ public class ProductoController {
         //Hidden agregar
         if(id==0)
         {
-            productService.addProducto(productoNew);
+            productoService.addProducto(productoNew);
         }
         //Hidden editar con id
         else{
             productoNew.setIdProducto(id);
-            productService.editProducto(productoNew);
+            productoService.editProducto(productoNew);
         }
         
         return "redirect:/inventario/listaProductos";
@@ -82,7 +82,7 @@ public class ProductoController {
         if(id!=null)
         {
             int idProducto=Integer.parseInt((String) id) ;
-            ProductoTO producto=productService.findProductoById(idProducto);
+            ProductoTO producto=productoService.findProductoById(idProducto);
             model.addAttribute("producto",producto);
             model.addAttribute("swEditar",1);
         }
@@ -93,7 +93,7 @@ public class ProductoController {
     @ResponseBody
     public void cambiarEstado(@RequestParam("idProducto") int idProducto)
     {
-        ProductoTO producto=productService.findProductoById(idProducto);
-        productService.changeProductState(producto);
+        ProductoTO producto=productoService.findProductoById(idProducto);
+        productoService.changeProductState(producto);
     }
 }
