@@ -46,6 +46,8 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
     public List<ProductoTO> findInventario() {
         Criteria criteria = createEntityCriteria();
         criteria.addOrder(Order.asc("nombreProducto"));
+        /*criteria.setFirstResult(inicio);
+        criteria.setMaxResults(cantidadPagina);*/
         return (List<ProductoTO>) criteria.list();
     }
     

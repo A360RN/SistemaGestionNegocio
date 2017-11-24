@@ -3,24 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.com.sunshineandina.dao;
+package pe.com.sunshineandina.service;
 
 import java.util.List;
 import pe.com.sunshineandina.dto.ClienteTO;
 
 /**
  *
- * @author alonsorn
+ * @author FERNANDO
  */
-public interface ClienteDAO {
-    
-    ClienteTO findById(int id);
-  
-    ClienteTO findByUsuario(int idUsuario);
-    
-    void save(ClienteTO cliente);
-    
-    ClienteTO findByDni(String dni);
+public interface ClienteService {
     
     List<ClienteTO> findAllClientes();
+      
+    ClienteTO findById(int idCliente);
 }

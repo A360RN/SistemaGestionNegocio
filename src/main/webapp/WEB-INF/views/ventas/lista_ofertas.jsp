@@ -4,6 +4,7 @@
     Author     : FERNANDO
 --%>
 
+<%@page import="pe.com.sunshineandina.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="../includes/headerVentas.jsp" %>
@@ -14,10 +15,34 @@
         <a href="oferta.jsp" class="btn btn-warning pull-right" id="add-oferta-btn">Registrar una oferta</a>
         <div class="clearfix"></div><hr>
     </div>
-    
-    
-    
-    
+    <div class="row">
+        <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-inverse">     
+            <th></th>
+            <th>ID</th>
+            <th>Oferta en</th>
+            <th>Porcentaje</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Fin</th>
+            </thead>
+            <tbody>
+                <c:forEach items="${listaOfertas}" var="oferta">
+                    <tr>
+                        <td class="text-center icon">
+                            <button class="btn btn-sm btn-editar-oferta" data-toggle="modal" data-target="#modalEditarOferta" data-idoferta="${oferta.idOferta}">
+                                <span class="fa fa-pencil fa-2x"></span>
+                            </button>
+                        </td>
+                        <td>${oferta.idOferta}</td>
+                        <td>${oferta.categoria.nombreCategoria}</td>
+                        <td><c:out value="${oferta.porcentajeOferta}"></c:out>%</td>
+                        <td>${oferta.fechaInicio}</td>
+                        <td>${oferta.fechaFin}</td>
+                        </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

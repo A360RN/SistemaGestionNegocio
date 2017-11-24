@@ -41,3 +41,7 @@ values (4, "JUAN", null, "BOLIVAR", "COLON", "987654321", "4879654", "JUAN.BOLIV
 
 INSERT INTO sunshine_andina_db.tsa_empleado (id_usuario, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_celular, tel_fijo, email, ruc)
 values (5, "JOSE", null, "PIZARRO", "BOLIVAR", "987654321", "4879655", "JOSE.BOLIVAR@GMAIL.COM", 10787946433);
+
+/*TSA_PEDIDO */
+INSERT INTO `sunshine_andina_db`.`tsa_pedido` (`id_cliente`, `estado_pedido`, `precio_acumulado_pedido`, `puntos_acumulado_pedido`) VALUES ('2', 'PAGADO', '10', '30');
+INSERT INTO `sunshine_andina_db`.`tsa_pedido` (`id_cliente`, `estado_pedido`, `precio_acumulado_pedido`, `puntos_acumulado_pedido`) VALUES ('1', 'CANCELADO', '15', '20');

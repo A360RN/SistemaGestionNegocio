@@ -36,12 +36,12 @@
                         <td class="text-center icon">
                             <a href="${pageContext.request.contextPath}/inventario/nuevoProducto?edit=${producto.idProducto}" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
                             <c:if test="${producto.estadoProducto == 1}">
-                                <button class="btn btn-sm btn-cambiar-estado-producto" data-idproducto="${producto.idProducto}">
+                                <button class="btn btn-sm btn-cambiar-estado-producto" data-toggle="tooltip" data-placement="top" title="Archivar el producto" data-idproducto="${producto.idProducto}">
                                     <span class="fa fa-times-circle fa-2x"></span>
                                 </button>
                             </c:if>
                             <c:if test="${producto.estadoProducto == 0}">
-                                <button class="btn btn-sm btn-cambiar-estado-producto" data-idproducto="${producto.idProducto}">
+                                <button class="btn btn-sm btn-cambiar-estado-producto" data-toggle="tooltip" data-placement="top" title="Desarchivar el producto" data-idproducto="${producto.idProducto}">
                                     <span class="fa fa-refresh fa-2x"></span>
                                 </button>
                             </c:if>  

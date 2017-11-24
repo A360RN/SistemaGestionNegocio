@@ -61,6 +61,9 @@ public class ClienteTO implements Serializable {
     @JoinColumn(name = "id_usuario")
     private UsuarioTO usuario;
 
+    @OneToOne(mappedBy="cliente", fetch=FetchType.EAGER)
+    private DistribuidorTO distribuidor;
+            
     public ClienteTO() {
     }
 
@@ -150,6 +153,14 @@ public class ClienteTO implements Serializable {
 
     public void setUsuario(UsuarioTO usuario) {
         this.usuario = usuario;
+    }
+    
+    public DistribuidorTO getDistribuidor(){
+        return distribuidor;
+    }
+
+    public void setDistribuidor(DistribuidorTO distribuidor) {
+        this.distribuidor = distribuidor;
     }
 
     @Override

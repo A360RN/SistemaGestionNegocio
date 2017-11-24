@@ -10,23 +10,28 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pe.com.sunshineandina.dao.ClienteDAO;
+import pe.com.sunshineandina.dao.OfertaDAO;
 import pe.com.sunshineandina.dao.PedidoDAO;
+import pe.com.sunshineandina.dto.ClienteTO;
+import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
-import pe.com.sunshineandina.service.VentasService;
+import pe.com.sunshineandina.service.PedidoService;
 
 /**
  *
  * @author FERNANDO
  */
-@Service("ventasService")
+@Service("pedidoService")
 @Transactional
-public class VentasServiceImpl implements VentasService {
+public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
     PedidoDAO pedidoDao;
     
+    
     @Override
-    public List<PedidoTO> findAllVentas() {
+    public List<PedidoTO> findAllPedidos() {
         List<PedidoTO> listaPedidos=pedidoDao.findAllPedidos();
         for(PedidoTO pedido : listaPedidos){
             Hibernate.initialize(pedido.getCliente());
@@ -35,8 +40,9 @@ public class VentasServiceImpl implements VentasService {
     }
 
     @Override
-    public PedidoTO findVentasById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public PedidoTO findPedidoById(int id) {
+        PedidoTO pedido=pedidoDao.findById(id);
+        return pedido;
     }
     
 }

@@ -12,15 +12,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.com.sunshineandina.dao.ProductoDAO;
 import pe.com.sunshineandina.dto.ProductoTO;
-import pe.com.sunshineandina.service.ProductService;
+import pe.com.sunshineandina.service.ProductoService;
 
 /**
  *
  * @author FERNANDO
  */
-@Service("productService")  
+@Service("productoService")  
 @Transactional
-public class ProductServiceImpl implements ProductService{
+public class ProductoServiceImpl implements ProductoService{
     
     @Autowired
     private ProductoDAO productoDao;

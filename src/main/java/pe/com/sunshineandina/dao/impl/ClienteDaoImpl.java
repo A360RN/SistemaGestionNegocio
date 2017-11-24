@@ -5,7 +5,9 @@
  */
 package pe.com.sunshineandina.dao.impl;
 
+import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
@@ -17,7 +19,7 @@ import pe.com.sunshineandina.dto.ClienteTO;
  * @author alonsorn
  */
 @Repository("clienteDao")
-public class ClienteDaoImpl extends AbstractDAO<Integer, ClienteTO> implements ClienteDAO{
+public class ClienteDaoImpl extends AbstractDAO<Integer, ClienteTO> implements ClienteDAO {
 
     @Override
     public ClienteTO findById(int id) {
@@ -42,6 +44,14 @@ public class ClienteDaoImpl extends AbstractDAO<Integer, ClienteTO> implements C
         criteria.add(Restrictions.eq("usuario.idUsuario", idUsuario));
         return (ClienteTO) criteria.uniqueResult();
     }
-    
-    
+
+    @Override
+    public List<ClienteTO> findAllClientes() {
+        Criteria criteria = createEntityCriteria();
+        criteria.addOrder(Order.asc("primerNombre"));
+         /*criteria.setFirstResult(inicio);
+        criteria.setMaxResults(cantidadPagina);*/
+        return (List<ClienteTO>) criteria.list();
+    }
+
 }

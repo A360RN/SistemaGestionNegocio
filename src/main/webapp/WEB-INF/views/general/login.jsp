@@ -3,19 +3,21 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6 offset-3">
+        <div class="col-6 offset-3 login">
             <h3>Ingresar a la plataforma</h3>
+            <br>
             <form action="login" method="POST">
                 <div class="form-group">
                     <label for="usuario">Ingrese usuario: </label>
                     <input id="usuario" name="usuario" type="text" class="form-control">    
                 </div>
+                <br>
                 <div class="form-group">
                     <label for="password">Ingrese contraseña:</label>
                     <input id="password" name="password" type="password" class="form-control">
                 </div>
-                <button class="btn btn-primary" type="submit">Ingresar</button>
-                <button class="btn btn-primary">Registrarse</button>     
+                <br>
+                <button class="btn btn-warning" type="submit">Ingresar</button> 
             </form>     
         </div>
     </div>

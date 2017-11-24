@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.com.sunshineandina.dao;
+package pe.com.sunshineandina.service;
 
 import java.util.List;
+import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.OfertaTO;
+import pe.com.sunshineandina.dto.PedidoTO;
 
 /**
  *
- * @author alonsorn
+ * @author FERNANDO
  */
-public interface OfertaDAO {
+public interface PedidoService {
+    List<PedidoTO> findAllPedidos();
     
-    OfertaTO findById(int id);
-    
-    List<OfertaTO> findAllOfertas();
-    
-    List<OfertaTO> findByCategoria(int idCategoria);
+    PedidoTO findPedidoById(int id);
 }
