@@ -26,7 +26,7 @@ public class OfertaDaoImpl extends AbstractDAO<Integer, OfertaTO> implements Ofe
     }
 
     @Override
-    public List<OfertaTO> findAll() {
+    public List<OfertaTO> findAllOfertas() {
         Criteria criteria = createEntityCriteria();
         return (List<OfertaTO>) criteria.list();
     }

@@ -6,6 +6,8 @@
 package pe.com.sunshineandina.service;
 
 import java.util.List;
+import pe.com.sunshineandina.dto.ClienteTO;
+import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 
 /**
@@ -13,7 +15,11 @@ import pe.com.sunshineandina.dto.PedidoTO;
  * @author FERNANDO
  */
 public interface VentasService {
-    List<PedidoTO> findAllVentas();
+    List<PedidoTO> findAllPedidos();
     
-    PedidoTO findVentasById(int id);
+    PedidoTO findPedidoById(int id);
+    
+    List<ClienteTO> findAllClientes();
+    
+    List<OfertaTO> findAllOfertas();
 }

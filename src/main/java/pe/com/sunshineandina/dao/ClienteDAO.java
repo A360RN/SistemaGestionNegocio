@@ -5,6 +5,7 @@
  */
 package pe.com.sunshineandina.dao;
 
+import java.util.List;
 import pe.com.sunshineandina.dto.ClienteTO;
 
 /**
@@ -20,4 +21,6 @@ public interface ClienteDAO {
     void save(ClienteTO cliente);
     
     ClienteTO findByDni(String dni);
+    
+    List<ClienteTO> findAllClientes();
 }

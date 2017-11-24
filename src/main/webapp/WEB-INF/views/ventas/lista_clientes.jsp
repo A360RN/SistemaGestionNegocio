@@ -13,6 +13,69 @@
         <h1 class="text-center">Clientes</h1>
         <div class="clearfix"></div><hr>
     </div>
+    <div class="row">
+        <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-inverse">        
+            <th>Cliente</th>
+            <th>DNI</th>
+            <th>Teléfono</th>
+            <th>Correo electrónico</th>
+            <th>Tipo de cliente</th>
+            </thead>
+            <tbody>
+                <c:forEach items="${listaClientes}" var="cliente">
+                    <tr>
+                        <td>${cliente.dni}</td>
+                        <td><c:out value="${cliente.primerNombre}"></c:out> <c:out value="${cliente.primerApellido}"></c:out></td>
+                        <td>${cliente.telefonoCelular}</td>
+                        <td>${cliente.email}</td>
+                        <td>
+                            <button class="btn btn-sm btn-editar-cliente" data-toggle="modal" data-target="#modalEditarCliente" data-idcliente="${cliente.idCliente}">
+                                <span class="fa fa-pencil fa-2x"></span>
+                            </button>
+                            <c:choose>
+                                <c:when test="${cliente.distribuidor eq null}">
+                                    Normal
+                                </c:when>
+                                <c:otherwise>
+                                    Distribuidor
+                                </c:otherwise>
+                            </c:choose>
+                         </td>
+                        </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="modalEditarCliente">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="centrar-texto-modal">
+                        <h4 class="modal-title" id="myModalLabel">Fernando Zuñe</h4>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <select type="text" class="form-control" name="cliente" id="txtCliente">
+                            <option value="">Distribuidor</option>
+                            <option value="">Normal</option>
+                        </select>
+                        <p><small><b>Nota:</b> Solo un cliente distribuidor accede a descuentos exclusivos por la compra de productos de la tienda.</small></p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="centrar-texto-modal">
+                        <button type="button" class="btn btn-warning" id="modalEditarCliente-btn-si">Guardar cambios</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalEditarCliente-btn-no">Cancelar</button>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
 </div>
 
 <%@ include file="../includes/footer.jsp"%>

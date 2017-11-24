@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import pe.com.sunshineandina.dto.ClienteTO;
+import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 import pe.com.sunshineandina.service.VentasService;
 
@@ -29,7 +31,7 @@ public class VentasController {
     
     @RequestMapping(value = "/listaPedidos", method = RequestMethod.GET)
     public String listaPedidos(Model model){
-        List<PedidoTO> listaPedidos=ventasService.findAllVentas();
+        List<PedidoTO> listaPedidos=ventasService.findAllPedidos();
         model.addAttribute("listaPedidos", listaPedidos);
         return "ventas/lista_pedidos";
     }
@@ -42,13 +44,15 @@ public class VentasController {
     
     @RequestMapping(value = "/listaClientes", method = RequestMethod.GET)
     public String listaClientes(Model model){
-        
+        List<ClienteTO> listaClientes=ventasService.findAllClientes();
+        model.addAttribute("listaClientes", listaClientes);        
         return "ventas/lista_clientes";
     }
     
     @RequestMapping(value = "/listaOfertas", method = RequestMethod.GET)
     public String listaOfertas(Model model){
-        
+        List<OfertaTO> listaOfertas=ventasService.findAllOfertas();
+        model.addAttribute("listaOfertas", listaOfertas);
         return "ventas/lista_ofertas";
     }
     
