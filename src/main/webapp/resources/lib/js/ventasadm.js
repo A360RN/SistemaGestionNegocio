@@ -25,7 +25,7 @@ modalEditarCliente.on('show.bs.modal', function (e) {
         url: 'editarCliente',
         data: data
     }).done(function(response) {
-        window.location.href='listaPedidos';
+        
     });
 });
 
@@ -38,7 +38,6 @@ modalEditarPedido.on('show.bs.modal', function (e) {
     };
 
     $.ajax({
-        
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -47,6 +46,6 @@ modalEditarPedido.on('show.bs.modal', function (e) {
         url: 'editarPedido',
         data: JSON.stringify(data)
     }).done(function(response) {
-        window.location.href='listaPedidos';
+        
     });
 });

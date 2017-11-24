@@ -30,10 +30,11 @@
                     <td><c:out value="${pedido.cliente.primerNombre}"></c:out> <c:out value="${pedido.cliente.primerApellido}"></c:out></td>
                     <td>${pedido.precioAcumuladoPedido}</td>
                     <td>${pedido.fechaCreacion}</td>
-                    <td class="text-center icon">
+                    <td>
                         <button class="btn btn-sm btn-editar-pedido" data-toggle="modal" data-target="#modalEditarPedido" data-idpedido="${pedido.idPedido}">
                             <span class="fa fa-pencil fa-2x"></span>
                         </button>
+                        <c:out value="${pedido.estadoPedido}"></c:out>
                     </td>
                 </tr>
                 </c:forEach>
