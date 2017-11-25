@@ -13,6 +13,7 @@
     </div>
     <div class="row">
         <div class="col-6">
+            <h2>Actividad de mi grupo - Ventas</h2>
             <canvas id="cuadroComisiones"></canvas>
         </div>
     </div>
