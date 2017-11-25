@@ -36,6 +36,9 @@ public class CategoriaTO implements Serializable {
     @Column(name = "desc_categoria")
     private String descCategoria;
 
+    @Column(name = "estado_categoria")
+    private int estadoCategoria;
+
     @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY)
     private List<ProductoTO> productos;
 
@@ -83,6 +86,14 @@ public class CategoriaTO implements Serializable {
 
     public void setOfertas(List<OfertaTO> ofertas) {
         this.ofertas = ofertas;
+    }
+
+    public int getEstadoCategoria() {
+        return estadoCategoria;
+    }
+
+    public void setEstadoCategoria(int estadoCategoria) {
+        this.estadoCategoria = estadoCategoria;
     }
 
     @Override

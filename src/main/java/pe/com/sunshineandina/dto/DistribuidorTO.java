@@ -36,6 +36,9 @@ public class DistribuidorTO implements Serializable {
     @Column(name = "codigo_distribuidor")
     private String codigoDistribuidor;
 
+    @Column(name = "estado_distribuidor")
+    private int estadoDistribuidor;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_lider")
     private TipoLiderTO tipoLider;
