@@ -31,11 +31,17 @@ public class HistoricoDistribuidorTO implements Serializable {
     @Column(name = "id_historico_distribuidor")
     private int idHistoricoDistribuidor;
 
-    @Column(name = "puntos_historico")
-    private int puntosHistorico;
+    @Column(name = "puntos_individual")
+    private int puntosIndividual;
 
-    @Column(name = "venta_soles_historico")
-    private BigDecimal ventaSolesHistorico;
+    @Column(name = "puntos_grupal")
+    private int puntosGrupal;
+
+    @Column(name = "venta_soles_ind")
+    private BigDecimal ventaSolesIndividual;
+
+    @Column(name = "venta_soles_grupal")
+    private BigDecimal ventaSolesGrupal;
 
     @Column(name = "mes_historico")
     private int mesHistorico;
@@ -58,20 +64,36 @@ public class HistoricoDistribuidorTO implements Serializable {
         this.idHistoricoDistribuidor = idHistoricoDistribuidor;
     }
 
-    public int getPuntosHistorico() {
-        return puntosHistorico;
+    public int getPuntosIndividual() {
+        return puntosIndividual;
     }
 
-    public void setPuntosHistorico(int puntosHistorico) {
-        this.puntosHistorico = puntosHistorico;
+    public void setPuntosIndividual(int puntosIndividual) {
+        this.puntosIndividual = puntosIndividual;
     }
 
-    public BigDecimal getVentaSolesHistorico() {
-        return ventaSolesHistorico;
+    public int getPuntosGrupal() {
+        return puntosGrupal;
     }
 
-    public void setVentaSolesHistorico(BigDecimal ventaSolesHistorico) {
-        this.ventaSolesHistorico = ventaSolesHistorico;
+    public void setPuntosGrupal(int puntosGrupal) {
+        this.puntosGrupal = puntosGrupal;
+    }
+
+    public BigDecimal getVentaSolesIndividual() {
+        return ventaSolesIndividual;
+    }
+
+    public void setVentaSolesIndividual(BigDecimal ventaSolesIndividual) {
+        this.ventaSolesIndividual = ventaSolesIndividual;
+    }
+
+    public BigDecimal getVentaSolesGrupal() {
+        return ventaSolesGrupal;
+    }
+
+    public void setVentaSolesGrupal(BigDecimal ventaSolesGrupal) {
+        this.ventaSolesGrupal = ventaSolesGrupal;
     }
 
     public int getMesHistorico() {
@@ -100,12 +122,14 @@ public class HistoricoDistribuidorTO implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.idHistoricoDistribuidor;
-        hash = 97 * hash + this.puntosHistorico;
-        hash = 97 * hash + Objects.hashCode(this.ventaSolesHistorico);
-        hash = 97 * hash + this.mesHistorico;
-        hash = 97 * hash + this.anioHistorico;
+        int hash = 7;
+        hash = 59 * hash + this.idHistoricoDistribuidor;
+        hash = 59 * hash + this.puntosIndividual;
+        hash = 59 * hash + this.puntosGrupal;
+        hash = 59 * hash + Objects.hashCode(this.ventaSolesIndividual);
+        hash = 59 * hash + Objects.hashCode(this.ventaSolesGrupal);
+        hash = 59 * hash + this.mesHistorico;
+        hash = 59 * hash + this.anioHistorico;
         return hash;
     }
 
@@ -124,7 +148,10 @@ public class HistoricoDistribuidorTO implements Serializable {
         if (this.idHistoricoDistribuidor != other.idHistoricoDistribuidor) {
             return false;
         }
-        if (this.puntosHistorico != other.puntosHistorico) {
+        if (this.puntosIndividual != other.puntosIndividual) {
+            return false;
+        }
+        if (this.puntosGrupal != other.puntosGrupal) {
             return false;
         }
         if (this.mesHistorico != other.mesHistorico) {
@@ -133,7 +160,10 @@ public class HistoricoDistribuidorTO implements Serializable {
         if (this.anioHistorico != other.anioHistorico) {
             return false;
         }
-        if (!Objects.equals(this.ventaSolesHistorico, other.ventaSolesHistorico)) {
+        if (!Objects.equals(this.ventaSolesIndividual, other.ventaSolesIndividual)) {
+            return false;
+        }
+        if (!Objects.equals(this.ventaSolesGrupal, other.ventaSolesGrupal)) {
             return false;
         }
         return true;
@@ -141,7 +171,7 @@ public class HistoricoDistribuidorTO implements Serializable {
 
     @Override
     public String toString() {
-        return "HistoricoDistribuidorTO{" + "idHistoricoDistribuidor=" + idHistoricoDistribuidor + ", puntosHistorico=" + puntosHistorico + ", ventaSolesHistorico=" + ventaSolesHistorico + ", mesHistorico=" + mesHistorico + ", anioHistorico=" + anioHistorico + '}';
+        return "HistoricoDistribuidorTO{" + "idHistoricoDistribuidor=" + idHistoricoDistribuidor + ", puntosIndividual=" + puntosIndividual + ", puntosGrupal=" + puntosGrupal + ", ventaSolesIndividual=" + ventaSolesIndividual + ", ventaSolesGrupal=" + ventaSolesGrupal + ", mesHistorico=" + mesHistorico + ", anioHistorico=" + anioHistorico + '}';
     }
 
 }

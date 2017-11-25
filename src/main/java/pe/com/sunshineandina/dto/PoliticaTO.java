@@ -31,11 +31,17 @@ public class PoliticaTO implements Serializable {
     @Column(name = "desc_politica")
     private String descPolitica;
 
-    @Column(name = "min_puntos")
-    private int minPuntos;
+    @Column(name = "min_puntos_ind")
+    private int minPuntosIndividual;
 
-    @Column(name = "max_puntos")
-    private int maxPuntos;
+    @Column(name = "max_puntos_ind")
+    private int maxPuntosIndividual;
+
+    @Column(name = "min_puntos_grupal")
+    private int minPuntosGrupal;
+
+    @Column(name = "max_puntos_grupal")
+    private int maxPuntosGrupal;
 
     @Column(name = "porcentaje_descuento")
     private BigDecimal porcentajeDescuento;
@@ -59,20 +65,36 @@ public class PoliticaTO implements Serializable {
         this.descPolitica = descPolitica;
     }
 
-    public int getMinPuntos() {
-        return minPuntos;
+    public int getMinPuntosIndividual() {
+        return minPuntosIndividual;
     }
 
-    public void setMinPuntos(int minPuntos) {
-        this.minPuntos = minPuntos;
+    public void setMinPuntosIndividual(int minPuntosIndividual) {
+        this.minPuntosIndividual = minPuntosIndividual;
     }
 
-    public int getMaxPuntos() {
-        return maxPuntos;
+    public int getMaxPuntosIndividual() {
+        return maxPuntosIndividual;
     }
 
-    public void setMaxPuntos(int maxPuntos) {
-        this.maxPuntos = maxPuntos;
+    public void setMaxPuntosIndividual(int maxPuntosIndividual) {
+        this.maxPuntosIndividual = maxPuntosIndividual;
+    }
+
+    public int getMinPuntosGrupal() {
+        return minPuntosGrupal;
+    }
+
+    public void setMinPuntosGrupal(int minPuntosGrupal) {
+        this.minPuntosGrupal = minPuntosGrupal;
+    }
+
+    public int getMaxPuntosGrupal() {
+        return maxPuntosGrupal;
+    }
+
+    public void setMaxPuntosGrupal(int maxPuntosGrupal) {
+        this.maxPuntosGrupal = maxPuntosGrupal;
     }
 
     public BigDecimal getPorcentajeDescuento() {
@@ -85,11 +107,14 @@ public class PoliticaTO implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + this.idPolitica;
-        hash = 89 * hash + this.minPuntos;
-        hash = 89 * hash + this.maxPuntos;
-        hash = 89 * hash + Objects.hashCode(this.porcentajeDescuento);
+        int hash = 7;
+        hash = 59 * hash + this.idPolitica;
+        hash = 59 * hash + Objects.hashCode(this.descPolitica);
+        hash = 59 * hash + this.minPuntosIndividual;
+        hash = 59 * hash + this.maxPuntosIndividual;
+        hash = 59 * hash + this.minPuntosGrupal;
+        hash = 59 * hash + this.maxPuntosGrupal;
+        hash = 59 * hash + Objects.hashCode(this.porcentajeDescuento);
         return hash;
     }
 
@@ -108,10 +133,19 @@ public class PoliticaTO implements Serializable {
         if (this.idPolitica != other.idPolitica) {
             return false;
         }
-        if (this.minPuntos != other.minPuntos) {
+        if (this.minPuntosIndividual != other.minPuntosIndividual) {
             return false;
         }
-        if (this.maxPuntos != other.maxPuntos) {
+        if (this.maxPuntosIndividual != other.maxPuntosIndividual) {
+            return false;
+        }
+        if (this.minPuntosGrupal != other.minPuntosGrupal) {
+            return false;
+        }
+        if (this.maxPuntosGrupal != other.maxPuntosGrupal) {
+            return false;
+        }
+        if (!Objects.equals(this.descPolitica, other.descPolitica)) {
             return false;
         }
         if (!Objects.equals(this.porcentajeDescuento, other.porcentajeDescuento)) {
@@ -122,7 +156,7 @@ public class PoliticaTO implements Serializable {
 
     @Override
     public String toString() {
-        return "PoliticaTO{" + "idPolitica=" + idPolitica + ", minPuntos=" + minPuntos + ", maxPuntos=" + maxPuntos + ", porcentajeDescuento=" + porcentajeDescuento + '}';
+        return "PoliticaTO{" + "idPolitica=" + idPolitica + ", descPolitica=" + descPolitica + ", minPuntosIndividual=" + minPuntosIndividual + ", maxPuntosIndividual=" + maxPuntosIndividual + ", minPuntosGrupal=" + minPuntosGrupal + ", maxPuntosGrupal=" + maxPuntosGrupal + ", porcentajeDescuento=" + porcentajeDescuento + '}';
     }
 
 }

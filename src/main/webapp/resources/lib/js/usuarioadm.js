@@ -101,8 +101,10 @@ modalEditarPolitica.on('show.bs.modal', function (e) {
     }).done(function (response) {
         modal.find('.modal-body input[type="hidden"]').val(idPolitica);
         modal.find('.modal-body input#txtPolitica').val(response.descPolitica);
-        modal.find('.modal-body input#txtPuntosMin').val(response.minPuntos);
-        modal.find('.modal-body input#txtPuntosMax').val(response.maxPuntos);
+        modal.find('.modal-body input#txtPuntosMinInd').val(response.minPuntosIndividual);
+        modal.find('.modal-body input#txtPuntosMaxInd').val(response.maxPuntosIndividual);
+        modal.find('.modal-body input#txtPuntosMinGru').val(response.minPuntosGrupal);
+        modal.find('.modal-body input#txtPuntosMaxGru').val(response.maxPuntosGrupal);
         modal.find('.modal-body input#txtPorcentaje').val(response.porcentajeDescuento);
     });
 });
@@ -112,15 +114,19 @@ btnEditarPoliticanSi.on('click', function (e) {
 
     let idPolitica = modalEditarPolitica.find('.modal-body input[type="hidden"]').val();
     let descPolitica = modalEditarPolitica.find('.modal-body input#txtPolitica').val();
-    let minPuntos = modalEditarPolitica.find('.modal-body input#txtPuntosMin').val();
-    let maxPuntos = modalEditarPolitica.find('.modal-body input#txtPuntosMax').val();
+    let minPuntosInd = modalEditarPolitica.find('.modal-body input#txtPuntosMinInd').val();
+    let maxPuntosInd = modalEditarPolitica.find('.modal-body input#txtPuntosMaxInd').val();
+    let minPuntosGru = modalEditarPolitica.find('.modal-body input#txtPuntosMinGru').val();
+    let maxPuntosGru = modalEditarPolitica.find('.modal-body input#txtPuntosMaxGru').val();
     let porcentajeDescuento = modalEditarPolitica.find('.modal-body input#txtPorcentaje').val();
 
     let data = {
         idPolitica: idPolitica,
         descPolitica: descPolitica,
-        minPuntos: minPuntos,
-        maxPuntos: maxPuntos,
+        minPuntosIndividual: minPuntosInd,
+        maxPuntosIndividual: maxPuntosInd,
+        minPuntosGrupal: minPuntosGru,
+        maxPuntosGrupal : maxPuntosGru,
         porcentajeDescuento: porcentajeDescuento
     };
 

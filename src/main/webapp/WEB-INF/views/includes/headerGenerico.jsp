@@ -11,5 +11,8 @@
     <c:when test="${sessionScope.perfil.codigoPerfil eq 'VEN'}">
         <%@include file="../includes/headerVentas.jsp" %>
     </c:when>
+    <c:when test="${sessionScope.perfil.codigoPerfil eq 'DIS'}">
+        <%@include file="../includes/headerDistribuidor.jsp" %>
+    </c:when>
 </c:choose>
 
