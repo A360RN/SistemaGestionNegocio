@@ -23,6 +23,7 @@ import pe.com.sunshineandina.dto.ComisionTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.HistoricoDistribuidorTO;
 import pe.com.sunshineandina.dto.UsuarioTO;
+import pe.com.sunshineandina.mapper.ResponseMapper;
 import pe.com.sunshineandina.service.DistribuidorService;
 
 /**
@@ -54,8 +55,9 @@ public class DistribuidorController {
 
         List<HistoricoDistribuidorTO> lstVentasDescendientes
                 = distribuidorService.findVentasByPadreAndParameters(idDistribuidor, 11, 2017);
+        JsonNode jsonRpta = ResponseMapper.ventasDistribuidorMapper(lstVentasDescendientes);
         
-        return null;
+        return jsonRpta;
     }
 
     @RequestMapping(value = "/listaPedidos", method = RequestMethod.GET)

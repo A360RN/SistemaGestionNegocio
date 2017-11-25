@@ -57,9 +57,10 @@ public class DistribuidorServiceImpl implements DistribuidorService{
         List<DistribuidorTO> descendientes = padre.getDescendientes();
         
         for(DistribuidorTO descendiente: descendientes){
-            System.out.println("id descendiente: " + descendiente.getIdDistribuidor());
             HistoricoDistribuidorTO historicoDescendiente = 
                     historicoDistribuidorDao.findByParameters(descendiente.getIdDistribuidor(), mes, anio).get(0);
+            Hibernate.initialize(historicoDescendiente.getDistribuidor());
+            Hibernate.initialize(historicoDescendiente.getDistribuidor().getCliente());
             ventasDescendientes.add(historicoDescendiente);
         }
         return ventasDescendientes;
