@@ -54,7 +54,7 @@ public class PedidoTO implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date fechaModificacion;
 
-    @OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<DetallePedidoTO> detallePedidos;
 
     @ManyToOne(fetch = FetchType.LAZY)

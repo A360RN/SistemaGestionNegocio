@@ -51,7 +51,7 @@ public class CarritoTO implements Serializable {
     @Column(name = "fecha_modificacion")
     private Date fechaModificacion;
 
-    @OneToMany(mappedBy = "carrito", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "carrito", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<DetalleCarritoTO> detalleCarritos;
 
     @ManyToOne(fetch = FetchType.LAZY)

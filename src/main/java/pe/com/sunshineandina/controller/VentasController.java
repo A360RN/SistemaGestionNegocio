@@ -80,6 +80,9 @@ public class VentasController {
     public PedidoTO editarPedido(@RequestBody ObjectNode nodoJson){
         int idPedido = nodoJson.get("idPedido").asInt();
         PedidoTO pedido = pedidoService.findPedidoById(idPedido);
-        return pedido;
+        
+        PedidoTO pedidoJson = new PedidoTO();
+        pedido.setEstadoPedido(pedido.getEstadoPedido());
+        return pedidoJson;
     } 
 }
