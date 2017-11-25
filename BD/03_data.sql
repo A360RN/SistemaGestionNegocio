@@ -85,12 +85,12 @@ INSERT INTO `sunshine_andina_db`.`tsa_tipo_lider` (`desc_tipo_lider`, `lideres_m
 INSERT INTO `sunshine_andina_db`.`tsa_tipo_lider` (`desc_tipo_lider`, `lideres_min`, `lideres_max`, `porcentaje`) VALUES ('DIAMANTE', '17', '30', '0.13');
 
 /* TSA_DISTRIBUIDOR */
-INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor) VALUES ('3',3,null,2-000001);
-INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor) VALUES ('4',2,1,2-000002);
-INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor) VALUES ('5',2,1,2-000003);
-INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor) VALUES ('6',1,2,2-000004);
-INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor) VALUES ('7',1,2,2-000005);
-INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor) VALUES ('8',1,3,2-000006);
+INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor,estado_distribuidor) VALUES ('3',3,null,2-000001,1);
+INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor,estado_distribuidor) VALUES ('4',2,1,2-000002,1);
+INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor,estado_distribuidor) VALUES ('5',2,1,2-000003,1);
+INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor,estado_distribuidor) VALUES ('6',1,2,2-000004,1);
+INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor,estado_distribuidor) VALUES ('7',1,2,2-000005,1);
+INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor,estado_distribuidor) VALUES ('8',1,3,2-000006,1);
 INSERT INTO sunshine_andina_db.tsa_distribuidor(id_cliente,id_tipo_lider,id_distribuidor_padre,codigo_distribuidor) VALUES ('9',1,3,2-000007);
 
 /* TSA_HISTORICO_DISTRIBUIDOR*/
