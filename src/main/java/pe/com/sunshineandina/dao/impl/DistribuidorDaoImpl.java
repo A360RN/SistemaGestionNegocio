@@ -5,7 +5,9 @@
  */
 package pe.com.sunshineandina.dao.impl;
 
+import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
@@ -47,6 +49,18 @@ public class DistribuidorDaoImpl extends AbstractDAO<Integer, DistribuidorTO> im
     @Override
     public void destroy(DistribuidorTO distribuidor) {
         delete(distribuidor);
+    }
+
+    @Override
+    public DistribuidorTO findByUsuario(int idUsuario) {
+        Query query = getSession().createQuery("from Distribuidor d join d.cliente c join c.usuario u "
+                + "where u.idUsuario = :idUsuario")
+                .setParameter("idUsuario", idUsuario);
+
+        List<Object[]> list = query.list();
+        /* obtenemos el distribuidor */
+        return (DistribuidorTO) list.get(0)[0];
+
     }
 
 }

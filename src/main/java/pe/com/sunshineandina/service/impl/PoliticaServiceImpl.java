@@ -33,8 +33,10 @@ public class PoliticaServiceImpl implements PoliticaService{
     public void actualizarPolitica(PoliticaTO politica) {
         if(politica != null){
             PoliticaTO politicaEntity = politicaDao.findById(politica.getIdPolitica());
-            politicaEntity.setMaxPuntos(politica.getMaxPuntos());
-            politicaEntity.setMinPuntos(politica.getMinPuntos());
+            politicaEntity.setMinPuntosIndividual(politica.getMinPuntosIndividual());
+            politicaEntity.setMaxPuntosIndividual(politica.getMaxPuntosIndividual());
+            politicaEntity.setMinPuntosGrupal(politica.getMinPuntosGrupal());
+            politicaEntity.setMaxPuntosGrupal(politica.getMaxPuntosGrupal());
             politicaEntity.setPorcentajeDescuento(politica.getPorcentajeDescuento());
             politicaDao.save(politicaEntity);
         }

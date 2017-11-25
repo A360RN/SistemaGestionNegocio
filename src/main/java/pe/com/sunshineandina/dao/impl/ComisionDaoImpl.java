@@ -30,10 +30,10 @@ public class ComisionDaoImpl extends AbstractDAO<Integer, ComisionTO> implements
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("distribuidor.idDistribuidor", idDistribuidor));
         if (mes != 0) {
-            criteria.add(Restrictions.eq("mes", mes));
+            criteria.add(Restrictions.eq("mesComision", mes));
         }
         if (anio != 0) {
-            criteria.add(Restrictions.eq("anio", anio));
+            criteria.add(Restrictions.eq("anioComision", anio));
         }
         return (List<ComisionTO>) criteria.list();
     }

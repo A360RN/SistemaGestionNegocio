@@ -18,8 +18,9 @@
             <thead class="thead-inverse">
             <th></th>
             <th>Política</th>
-            <th>Puntos mínimos</th>
-            <th>Puntos máximo</th>
+            <th>Puntos mínimos individuales</th>
+            <th>Puntos mínimos grupales</th>
+            <th>Puntos máximos grupales</th>
             <th>Porcentaje de descuento</th>
             </thead>
             <tbody>
@@ -31,9 +32,10 @@
                         </button>
                     </td>
                     <td>${politica.descPolitica}</td>
-                    <td>${politica.minPuntos}</td>
-                    <td>${politica.maxPuntos}</td>
-                    <td>${politica.porcentajeDescuento}</td>
+                    <td>${politica.minPuntosIndividual}</td>
+                    <td>${politica.minPuntosGrupal}</td>
+                    <td>${politica.maxPuntosGrupal}</td>
+                    <td>${politica.porcentajeDescuento}</td>  
                 </tr>
                 </c:forEach>
             </tbody>
@@ -59,12 +61,20 @@
                                     <input type="text" class="form-control" name="politica" id="txtPolitica" disabled >
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtPuntosMin">Mínimo de puntos</label>
-                                    <input type="text" class="form-control" name="minPuntos" id="txtPuntosMin">
+                                    <label for="txtPuntosMinInd">Mínimo de puntos individuales</label>
+                                    <input type="text" class="form-control" name="minPuntos" id="txtPuntosMinInd">
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtPuntosMax">Máximo de puntos</label>
-                                    <input type="text" class="form-control" name="maxPuntos" id="txtPuntosMax">
+                                    <label for="txtPuntosMaxInd">Máximo de puntos individuales</label>
+                                    <input type="text" class="form-control" name="maxPuntos" id="txtPuntosMaxInd">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtPuntosMinGru">Mínimo de puntos grupales</label>
+                                    <input type="text" class="form-control" name="minPuntos" id="txtPuntosMinGru">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtPuntosMaxGru">Mínimo de puntos grupales</label>
+                                    <input type="text" class="form-control" name="minPuntos" id="txtPuntosMaxGru">
                                 </div>
                                 <div class="form-group">
                                     <label for="txtPorcentaje">Porcentaje de descuento</label>

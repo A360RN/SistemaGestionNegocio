@@ -36,8 +36,10 @@ DROP TABLE IF EXISTS `sunshine_andina_db`.`TSA_POLITICAS` ;
 CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_POLITICAS` (
   `id_politica` INT NOT NULL AUTO_INCREMENT,
   `desc_politica` VARCHAR(100) NULL,
-  `min_puntos` INT NULL,
-  `max_puntos` INT NULL,
+  `min_puntos_ind` INT NULL,
+  `max_puntos_ind` INT NULL,
+  `min_puntos_grupal` INT NULL,
+  `max_puntos_grupal` INT NULL,
   `porcentaje_descuento` DECIMAL(4,2) NULL,
   PRIMARY KEY (`id_politica`))
 ENGINE = InnoDB;
@@ -340,10 +342,13 @@ DROP TABLE IF EXISTS `sunshine_andina_db`.`TSA_HISTORICO_DISTRIBUIDOR` ;
 CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_HISTORICO_DISTRIBUIDOR` (
   `id_historico_distribuidor` INT NOT NULL AUTO_INCREMENT,
   `id_distribuidor` INT NOT NULL,
-  `puntos_historico` INT NULL,
-  `ventas_soles_historico` DECIMAL(10,2) NULL,
+  `puntos_individual` INT NULL,
+  `puntos_grupal` INT NULL,
+  `ventas_soles_ind` DECIMAL(10,2) NULL,
+  `ventas_soles_grupal` DECIMAL(10,2) NULL,
   `mes_historico` INT NULL,
   `anio_historico` INT NULL,
+  
   PRIMARY KEY (`id_historico_distribuidor`),
   INDEX `fk_TSA_HISTORICO_DISTRIBUIDOR_TSA_DISTRIBUIDOR1_idx` (`id_distribuidor` ASC),
   CONSTRAINT `fk_TSA_HISTORICO_DISTRIBUIDOR_TSA_DISTRIBUIDOR1`
