@@ -127,6 +127,14 @@ public class DistribuidorTO implements Serializable {
         this.padre = padre;
     }
 
+    public int getEstadoDistribuidor() {
+        return estadoDistribuidor;
+    }
+
+    public void setEstadoDistribuidor(int estadoDistribuidor) {
+        this.estadoDistribuidor= estadoDistribuidor;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

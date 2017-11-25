@@ -101,6 +101,7 @@ public class VentasController {
         DistribuidorTO distribuidorJson = new DistribuidorTO();
         if(cliente.getDistribuidor()!= null){
             distribuidorJson.setIdDistribuidor(cliente.getDistribuidor().getIdDistribuidor());
+            distribuidorJson.setEstadoDistribuidor(cliente.getDistribuidor().getEstadoDistribuidor());
         }
         clienteJson.setDistribuidor(distribuidorJson);
         return clienteJson;

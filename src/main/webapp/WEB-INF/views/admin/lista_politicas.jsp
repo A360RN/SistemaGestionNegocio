@@ -86,7 +86,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="centrar-texto-modal">
-                        <button type="button" class="btn btn-danger" id="modalEditarPolitica-btn-si">Guardar cambios</button>
+                        <button type="button" class="btn btn-warning" id="modalEditarPolitica-btn-si">Guardar cambios</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalEditarPolitica-btn-no">Cancelar</button>
                     </div>
                 </div>

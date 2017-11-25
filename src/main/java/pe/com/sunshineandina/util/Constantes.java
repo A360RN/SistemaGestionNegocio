@@ -20,6 +20,7 @@ public class Constantes {
     public static final String PERFIL_ENCARGADO_INV = "INV";
     public static final String PERFIL_CLIENTE = "CLI";
     public static final String PERFIL_DISTRIBUIDOR = "DIS";
+    public static final int TIPO_LIDER_DEFECTO=1;
     
     //**************************** MENSAJES ERROR *************************
     public static final String ERROR_AUTENTICACION_USERNAME = "Este usuario no existe";
