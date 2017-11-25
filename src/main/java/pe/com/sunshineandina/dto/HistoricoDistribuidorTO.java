@@ -37,10 +37,10 @@ public class HistoricoDistribuidorTO implements Serializable {
     @Column(name = "puntos_grupal")
     private int puntosGrupal;
 
-    @Column(name = "venta_soles_ind")
+    @Column(name = "ventas_soles_ind")
     private BigDecimal ventaSolesIndividual;
 
-    @Column(name = "venta_soles_grupal")
+    @Column(name = "ventas_soles_grupal")
     private BigDecimal ventaSolesGrupal;
 
     @Column(name = "mes_historico")

@@ -5,7 +5,10 @@
  */
 package pe.com.sunshineandina.service;
 
+import java.util.List;
+import pe.com.sunshineandina.dto.ComisionTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
+import pe.com.sunshineandina.dto.HistoricoDistribuidorTO;
 
 /**
  *
@@ -14,4 +17,10 @@ import pe.com.sunshineandina.dto.DistribuidorTO;
 public interface DistribuidorService {
     
     public DistribuidorTO findByUsuario(int idUsuario);
+    
+    public DistribuidorTO findById(int idDitribuidor);
+    
+    public List<ComisionTO> findComisionesByParameters(int idDistribuidor, int mes, int anio);
+    
+    public List<HistoricoDistribuidorTO> findVentasByPadreAndParameters(int idPadre, int mes, int anio);
 }
