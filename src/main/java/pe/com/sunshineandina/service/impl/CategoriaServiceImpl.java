@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.com.sunshineandina.dao.CategoriaDAO;
+import pe.com.sunshineandina.dao.ProductoDAO;
 import pe.com.sunshineandina.dto.CategoriaTO;
+import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.CategoriaService;
+import pe.com.sunshineandina.util.Constantes;
 
 /**
  *
@@ -20,12 +23,16 @@ import pe.com.sunshineandina.service.CategoriaService;
 @Service("categoriaService")
 @Transactional
 public class CategoriaServiceImpl implements CategoriaService {
+
     @Autowired
     CategoriaDAO categoriaDao;
-    
+
+    @Autowired
+    ProductoDAO productoDao;
+
     @Override
     public List<CategoriaTO> findAllCategorias() {
-        List<CategoriaTO> listaCategorias= categoriaDao.findAll();
+        List<CategoriaTO> listaCategorias = categoriaDao.findAll();
         return listaCategorias;
     }
 
@@ -38,20 +45,39 @@ public class CategoriaServiceImpl implements CategoriaService {
     public void addCategoria(CategoriaTO categoria) {
         categoriaDao.save(categoria);
     }
-    
+
     @Override
     public void updateCategoria(CategoriaTO categoria) {
-        if(categoria != null){
+        if (categoria != null) {
             CategoriaTO categoriaUpd = categoriaDao.findById(categoria.getIdCategoria());
             categoriaUpd.setNombreCategoria(categoria.getNombreCategoria());
             categoriaUpd.setDescCategoria(categoria.getDescCategoria());
             categoriaDao.save(categoriaUpd);
         }
     }
-    
+
     @Override
     public CategoriaTO findCategoriaByNombre(String nombre) {
         return categoriaDao.findByNombreCategoria(nombre);
     }
-    
+
+    @Override
+    public void changeCategoriasState(CategoriaTO categoria) {
+        if (categoria != null) {
+            CategoriaTO categoriaUpd = categoriaDao.findById(categoria.getIdCategoria());
+            List<ProductoTO> listaProductos = productoDao.findByCategoria(categoria.getIdCategoria());
+            System.out.println(listaProductos.size());
+            if (categoria.getEstadoCategoria() == Constantes.ESTADO_ACTIVO) {
+                for (ProductoTO producto : listaProductos) {
+                    producto.setEstadoProducto(Constantes.ESTADO_INACTIVO);
+                    productoDao.save(producto);
+                }
+                categoriaUpd.setEstadoCategoria(Constantes.ESTADO_INACTIVO);
+            } else if (categoria.getEstadoCategoria() == Constantes.ESTADO_INACTIVO) {
+                categoriaUpd.setEstadoCategoria(Constantes.ESTADO_ACTIVO);
+            }
+            categoriaDao.save(categoriaUpd);
+        }
+    }
+
 }

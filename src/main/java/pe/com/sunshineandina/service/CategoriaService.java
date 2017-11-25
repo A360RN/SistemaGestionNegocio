@@ -22,4 +22,6 @@ public interface CategoriaService {
     void addCategoria(CategoriaTO categoria);
     
     void updateCategoria(CategoriaTO categoria);
+    
+    void changeCategoriasState(CategoriaTO categoria);
 }

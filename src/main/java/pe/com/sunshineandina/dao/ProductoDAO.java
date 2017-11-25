@@ -20,6 +20,8 @@ public interface ProductoDAO {
     
     List<ProductoTO> findByCategoria(int idCategoria);
     
+    List<ProductoTO> findAllByCategoria(int idCategoria);
+    
     List<ProductoTO> findPaginado(int inicio, int cantidadPagina);
     
     List<ProductoTO> findInventario();

@@ -41,6 +41,13 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
         return (List<ProductoTO>) criteria.list();
     }
     
+    @Override
+    public List<ProductoTO> findAllByCategoria(int idCategoria) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
+        return (List<ProductoTO>) criteria.list();
+    }
+    
     //Mostrar productos en inventario, estén o no disponibles
     @Override
     public List<ProductoTO> findInventario() {

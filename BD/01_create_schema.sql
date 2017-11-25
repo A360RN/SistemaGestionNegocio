@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_CATEGORIA` (
   `id_categoria` INT NOT NULL AUTO_INCREMENT,
   `nombre_categoria` VARCHAR(100) NULL,
   `desc_categoria` VARCHAR(500) NULL,
-  `estado_categoria` TINYINT, 
+  `estado_categoria` TINYINT NULL, 
   PRIMARY KEY (`id_categoria`))
 ENGINE = InnoDB;
 

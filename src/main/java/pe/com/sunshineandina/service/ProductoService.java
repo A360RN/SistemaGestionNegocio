@@ -16,7 +16,7 @@ public interface ProductoService {
      List<ProductoTO> findAllProductosInventario();
      
      ProductoTO findProductoById(int id);
-     
+          
      void addProducto(ProductoTO producto);
      
      void editProducto(ProductoTO producto);
