@@ -44,5 +44,14 @@ public class PedidoServiceImpl implements PedidoService {
         PedidoTO pedido=pedidoDao.findById(id);
         return pedido;
     }
+
+    @Override
+    public void actualizarPedido(PedidoTO pedido) {
+        if(pedido != null){
+            PedidoTO pedidoUpd = pedidoDao.findById(pedido.getIdPedido());
+            pedidoUpd.setEstadoPedido(pedido.getEstadoPedido());
+            pedidoDao.save(pedidoUpd);
+        }
+    }
     
 }

@@ -18,4 +18,6 @@ public interface PedidoService {
     List<PedidoTO> findAllPedidos();
     
     PedidoTO findPedidoById(int id);
+    
+    void actualizarPedido(PedidoTO pedido);
 }

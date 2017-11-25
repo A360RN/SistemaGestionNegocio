@@ -35,7 +35,7 @@ public class PedidoDaoImpl extends AbstractDAO<Integer, PedidoTO> implements Ped
     @Override
     public List<PedidoTO> findAllPedidos() {
         Criteria criteria = createEntityCriteria();
-        criteria.addOrder(Order.asc("fechaCreacion"));
+        criteria.addOrder(Order.asc("idPedido"));
         /*criteria.setFirstResult(inicio);
         criteria.setMaxResults(cantidadPagina);*/
         return (List<PedidoTO>) criteria.list();

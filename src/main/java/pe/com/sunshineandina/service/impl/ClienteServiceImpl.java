@@ -11,7 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.com.sunshineandina.dao.ClienteDAO;
+import pe.com.sunshineandina.dao.DistribuidorDAO;
+import pe.com.sunshineandina.dao.TipoLiderDAO;
 import pe.com.sunshineandina.dto.ClienteTO;
+import pe.com.sunshineandina.dto.DistribuidorTO;
+import pe.com.sunshineandina.dto.TipoLiderTO;
 import pe.com.sunshineandina.service.ClienteService;
 
 /**
@@ -25,6 +29,12 @@ public class ClienteServiceImpl implements ClienteService {
     @Autowired
     ClienteDAO clienteDao;
     
+    @Autowired
+    DistribuidorDAO distribuidorDao;
+    
+    @Autowired
+    TipoLiderDAO liderDao;
+    
     @Override
     public List<ClienteTO> findAllClientes() {
         List<ClienteTO> listaClientes=clienteDao.findAllClientes();
@@ -35,6 +45,31 @@ public class ClienteServiceImpl implements ClienteService {
     public ClienteTO findById(int idCliente){
         ClienteTO cliente=clienteDao.findById(idCliente);
         return cliente;
+    }
+
+    @Override
+    public void cambiarTipoCliente(ClienteTO cliente, String tipoCliente) {
+        ClienteTO clientes=new ClienteTO();
+        if(cliente != null){
+            DistribuidorTO distribuidor=distribuidorDao.findByCliente(cliente);
+            if(tipoCliente.equals("Normal")&&distribuidor!=null)
+            {
+                distribuidorDao.destroy(distribuidor);               
+            }   
+            if(tipoCliente.equals("Distribuidor")&&distribuidor==null)
+            {
+                //NO OLVIDAR EL FORMATO PARA EL CODIGO DE DISTRIBUIDOR
+                DistribuidorTO distribuidorUpd=new DistribuidorTO();
+                ClienteTO clienteUpd=clienteDao.findById(cliente.getIdCliente());
+                TipoLiderTO lider=liderDao.findById(1);
+                System.out.println("c");
+                distribuidorUpd.setTipoLider(lider);
+                System.out.println("b");
+                distribuidorUpd.setCliente(clienteUpd);
+                System.out.println("a");
+                distribuidorDao.save(distribuidorUpd);
+            }
+        }
     }
 
 }
