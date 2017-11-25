@@ -72,8 +72,8 @@
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" value="${email}">
                 </div>
-                <button class="btn btn-primary">Guardar cambios</button>
-                <a href="${pageContext.request.contextPath}/perfil" class="btn btn-danger">Cancelar</a>
+                <button class="btn btn-warning">Guardar cambios</button>
+                <a href="${pageContext.request.contextPath}/perfil" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
     </div>

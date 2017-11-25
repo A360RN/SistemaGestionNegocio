@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pe.com.sunshineandina.dao.ProductoDAO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.ProductoService;
+import pe.com.sunshineandina.util.Constantes;
 
 /**
  *
@@ -65,11 +66,11 @@ public class ProductoServiceImpl implements ProductoService{
     public void changeProductState(ProductoTO producto){
         if(producto!=null){
             ProductoTO productoUpd=productoDao.findById(producto.getIdProducto());
-            if(productoUpd.getEstadoProducto()==1){
-                productoUpd.setEstadoProducto(0);
+            if(productoUpd.getEstadoProducto()==Constantes.ESTADO_ACTIVO){
+                productoUpd.setEstadoProducto(Constantes.ESTADO_INACTIVO);
             }
-            else if(productoUpd.getEstadoProducto()==0){
-                productoUpd.setEstadoProducto(1);
+            else if(productoUpd.getEstadoProducto()==Constantes.ESTADO_INACTIVO){
+                productoUpd.setEstadoProducto(Constantes.ESTADO_ACTIVO);
             }
             productoDao.save(productoUpd);
         }

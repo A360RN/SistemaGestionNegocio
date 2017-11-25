@@ -17,6 +17,7 @@ import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.TipoLiderTO;
 import pe.com.sunshineandina.service.ClienteService;
+import pe.com.sunshineandina.util.Constantes;
 
 /**
  *
@@ -54,19 +55,18 @@ public class ClienteServiceImpl implements ClienteService {
             DistribuidorTO distribuidor=distribuidorDao.findByCliente(cliente);
             if(tipoCliente.equals("Normal")&&distribuidor!=null)
             {
-                distribuidorDao.destroy(distribuidor);               
+                distribuidor.setEstadoDistribuidor(Constantes.ESTADO_INACTIVO);
+                distribuidorDao.save(distribuidor);               
             }   
             if(tipoCliente.equals("Distribuidor")&&distribuidor==null)
             {
                 //NO OLVIDAR EL FORMATO PARA EL CODIGO DE DISTRIBUIDOR
                 DistribuidorTO distribuidorUpd=new DistribuidorTO();
                 ClienteTO clienteUpd=clienteDao.findById(cliente.getIdCliente());
-                TipoLiderTO lider=liderDao.findById(1);
-                System.out.println("c");
+                TipoLiderTO lider=liderDao.findById(Constantes.TIPO_LIDER_DEFECTO);
                 distribuidorUpd.setTipoLider(lider);
-                System.out.println("b");
                 distribuidorUpd.setCliente(clienteUpd);
-                System.out.println("a");
+                distribuidorUpd.setEstadoDistribuidor(Constantes.ESTADO_ACTIVO);
                 distribuidorDao.save(distribuidorUpd);
             }
         }

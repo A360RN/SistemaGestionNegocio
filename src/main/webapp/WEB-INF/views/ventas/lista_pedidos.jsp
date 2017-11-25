@@ -11,7 +11,7 @@
 <div class="container">
     <div class="titulo">
         <h1 class="text-center">Pedidos</h1>
-        <a href="pedido.jsp" class="btn btn-warning pull-right" id="add-pedido-btn">Registrar un pedido</a>
+        <a href="" class="btn btn-warning pull-right" id="add-pedido-btn">Registrar un pedido</a>
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">

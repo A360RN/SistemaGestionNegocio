@@ -12,7 +12,7 @@
 <div class="container">
     <div class="titulo">
         <h1 class="text-center">Ofertas</h1>
-        <a href="oferta.jsp" class="btn btn-warning pull-right" id="add-oferta-btn">Registrar una oferta</a>
+        <a href="" class="btn btn-warning pull-right" id="add-oferta-btn">Registrar una oferta</a>
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">

@@ -23,8 +23,8 @@
                     <label for="passwordConfirmacion">Ingrese su nueva contraseña otra vez: </label>
                     <input type="password" class="form-control" name="passwordConfirmacion" id="passwordConfirmacion">
                 </div>
-                <button class="btn btn-success" id="submitPassword" type="submit">Guardar contraseña</button>
-                <button class="btn btn-danger" id="btnCancelarPassword">Cancelar</button>
+                <button class="btn btn-warning" id="submitPassword" type="submit">Guardar contraseña</button>
+                <button class="btn btn-secondary" id="btnCancelarPassword">Cancelar</button>
             </form>
         </div>
     </div>

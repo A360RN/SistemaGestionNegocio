@@ -4,19 +4,34 @@
  * and open the template in the editor.
  */
 var botonEstadoProducto =$(".btn-cambiar-estado-producto");
+var botonEstadoCategoria =$(".btn-cambiar-estado-categoria");
 
 botonEstadoProducto.on('click', function(e){
     let idProducto=$(this).data("idproducto");
     let data={idProducto:idProducto};
     $.ajax({
         method: 'POST',
-        url: 'cambiarEstado',
+        url: 'cambiarEstadoProducto',
         data: data
     }).done(function (e) {
         window.location.href='listaProductos';
     });
     
 });
+
+botonEstadoCategoria.on('click', function(e){
+    let idCategoria=$(this).data("idcategoria");
+    let data={idCategoria:idCategoria};
+    $.ajax({
+        method: 'POST',
+        url: 'cambiarEstadoCategoria',
+        data: data
+    }).done(function (e) {
+        window.location.href='listaCategorias';
+    });
+    
+});
+
 function modalConfirm(callbackP, callbackC){
   var id;
   var modalProducto = $("#modalProducto");

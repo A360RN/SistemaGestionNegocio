@@ -89,7 +89,7 @@ public class ProductoController {
         return "inventario/producto";
     }
     
-    @RequestMapping(value = "/cambiarEstado", method = RequestMethod.POST)
+    @RequestMapping(value = "/cambiarEstadoProducto", method = RequestMethod.POST)
     @ResponseBody
     public void cambiarEstado(@RequestParam("idProducto") int idProducto)
     {

@@ -36,6 +36,9 @@ public class DistribuidorTO implements Serializable {
     @Column(name = "codigo_distribuidor")
     private String codigoDistribuidor;
 
+    @Column(name = "estado_distribuidor")
+    private int estadoDistribuidor;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_lider")
     private TipoLiderTO tipoLider;
@@ -124,6 +127,14 @@ public class DistribuidorTO implements Serializable {
         this.padre = padre;
     }
 
+    public int getEstadoDistribuidor() {
+        return estadoDistribuidor;
+    }
+
+    public void setEstadoDistribuidor(int estadoDistribuidor) {
+        this.estadoDistribuidor= estadoDistribuidor;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

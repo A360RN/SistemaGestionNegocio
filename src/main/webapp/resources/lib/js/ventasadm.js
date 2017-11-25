@@ -15,7 +15,6 @@ var modalEditarPedido = $('#modalEditarPedido');
 modalEditarCliente.on('show.bs.modal', function (e) {
     let button = $(e.relatedTarget);
     let idCliente = button.data('idcliente');
-    let nombre=$("#nombreCliente").html();
     let modal = $(this);
     let data = {
         idCliente: idCliente
@@ -31,7 +30,7 @@ modalEditarCliente.on('show.bs.modal', function (e) {
         data: JSON.stringify(data)
     }).done(function(response) {
         let tipoCliente=existe(response.distribuidor.idDistribuidor);
-        modal.find('.modal-title').text(nombre);
+        modal.find('.modal-title').text(response.primerNombre+" "+response.primerApellido);
         modal.find('.modal-body input[type="hidden"]').val(idCliente);
         modal.find('.modal-body select#txtCliente').html(mostrarTipos(tipoCliente,tipos));
     });

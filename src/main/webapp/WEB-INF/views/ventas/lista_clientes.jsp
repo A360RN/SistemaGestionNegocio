@@ -34,7 +34,7 @@
                                 <span class="fa fa-pencil fa-2x"></span>
                             </button>
                             <c:choose>
-                                <c:when test="${cliente.distribuidor eq null}">
+                                <c:when test="${cliente.distribuidor.estadoDistribuidor == 0}">
                                     Normal
                                 </c:when>
                                 <c:otherwise>

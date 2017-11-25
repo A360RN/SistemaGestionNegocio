@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_CATEGORIA` (
   `id_categoria` INT NOT NULL AUTO_INCREMENT,
   `nombre_categoria` VARCHAR(100) NULL,
   `desc_categoria` VARCHAR(500) NULL,
+  `estado_categoria` TINYINT NULL, 
   PRIMARY KEY (`id_categoria`))
 ENGINE = InnoDB;
 
@@ -311,6 +312,7 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_DISTRIBUIDOR` (
   `id_tipo_lider` INT NOT NULL,
   `id_distribuidor_padre` INT NULL,
   `codigo_distribuidor` VARCHAR(10) NULL,
+  `estado_distribuidor` TINYINT NULL,
   UNIQUE INDEX `codigo_distribuidor_UNIQUE` (`codigo_distribuidor` ASC),
   INDEX `fk_TSA_DISTRIBUIDOR_TSA_CLIENTE1_idx` (`id_cliente` ASC),
   PRIMARY KEY (`id_distribuidor`),

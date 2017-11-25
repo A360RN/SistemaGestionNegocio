@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.util.Constantes;
@@ -53,6 +54,7 @@ public class CategoriaController {
         CategoriaTO categoriaNew= new CategoriaTO();
         categoriaNew.setNombreCategoria(nombre);
         categoriaNew.setDescCategoria(descripcion);
+        categoriaNew.setEstadoCategoria(1);
         //Hidden agregar
         if(id==0)
         {
@@ -65,5 +67,13 @@ public class CategoriaController {
         }
         
         return "redirect:listaCategorias";
+    }
+    
+    @RequestMapping(value = "/cambiarEstadoCategoria", method = RequestMethod.POST)
+    @ResponseBody
+    public void cambiarEstado(@RequestParam("idCategoria") int idCategoria)
+    {
+        CategoriaTO categoria=categoriaService.findCategoriaById(idCategoria);
+        categoriaService.changeCategoriasState(categoria);
     }
 }
