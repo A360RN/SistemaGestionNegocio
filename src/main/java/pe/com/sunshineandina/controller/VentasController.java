@@ -78,7 +78,7 @@ public class VentasController {
     @RequestMapping(value = "/editarPedido", method = RequestMethod.POST)
     @ResponseBody
     public PedidoTO editarPedido(@RequestBody ObjectNode nodoJson){
-        int idPedido = nodoJson.get("idPolitica").asInt();
+        int idPedido = nodoJson.get("idPedido").asInt();
         PedidoTO pedido = pedidoService.findPedidoById(idPedido);
         return pedido;
     } 
