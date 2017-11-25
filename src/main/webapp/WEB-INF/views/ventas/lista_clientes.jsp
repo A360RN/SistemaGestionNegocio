@@ -15,9 +15,9 @@
     </div>
     <div class="row">
         <table class="table table-sm table-hover table-bordered">
-            <thead class="thead-inverse">        
-            <th>Cliente</th>
+            <thead class="thead-inverse">      
             <th>DNI</th>
+            <th>Cliente</th>
             <th>Teléfono</th>
             <th>Correo electrónico</th>
             <th>Tipo de cliente</th>
@@ -26,7 +26,7 @@
                 <c:forEach items="${listaClientes}" var="cliente">
                     <tr>
                         <td>${cliente.dni}</td>
-                        <td><c:out value="${cliente.primerNombre}"></c:out> <c:out value="${cliente.primerApellido}"></c:out></td>
+                        <td id="nombreCliente"><c:out value="${cliente.primerNombre}"></c:out> <c:out value="${cliente.primerApellido}"></c:out></td>
                         <td>${cliente.telefonoCelular}</td>
                         <td>${cliente.email}</td>
                         <td>
@@ -53,12 +53,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="centrar-texto-modal">
-                        <h4 class="modal-title" id="myModalLabel">Fernando Zuñe</h4>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <form>
+                        <input type="hidden" name="idcliente">
                         <select type="text" class="form-control" name="cliente" id="txtCliente">
                             <option value="">Distribuidor</option>
                             <option value="">Normal</option>

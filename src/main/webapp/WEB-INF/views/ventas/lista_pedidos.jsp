@@ -47,16 +47,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="centrar-texto-modal">
-                        <h4 class="modal-title" id="myModalLabel">Pedido: </h4>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <select type="text" class="form-control" name="cliente" id="txtCliente">
-                            <option value="">Pedido</option>
-                            <option value="">Pagado</option>
-                            <option value="">Cancelado</option>
+                        <input type="hidden" name="idpedido">
+                        <select type="text" class="form-control" name="cliente" id="txtPedido">
+                            
                         </select>
                         <p><small><b>Nota:</b> Un pedido solo será cancelado si el cliente lo solicita o si supera el límite de tiempo de compra.</small></p>
                     </form>

@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
 import pe.com.sunshineandina.dao.DistribuidorDAO;
+import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
 
 /**
@@ -34,6 +35,18 @@ public class DistribuidorDaoImpl extends AbstractDAO<Integer, DistribuidorTO> im
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("codigoDistribuidor", codigoDistribuidor));
         return (DistribuidorTO) criteria.uniqueResult();
+    }
+   
+    @Override
+    public DistribuidorTO findByCliente(ClienteTO cliente) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("cliente", cliente));
+        return (DistribuidorTO) criteria.uniqueResult();
+    }
+    
+    @Override
+    public void destroy(DistribuidorTO distribuidor) {
+        delete(distribuidor);
     }
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pe.com.sunshineandina.dto.ClienteTO;
+import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 import pe.com.sunshineandina.service.ClienteService;
@@ -66,23 +67,52 @@ public class VentasController {
         model.addAttribute("listaOfertas", listaOfertas);
         return "ventas/lista_ofertas";
     }
-    
-    @RequestMapping(value = "/editarCliente", method = RequestMethod.POST)
-    @ResponseBody
-    public ClienteTO editarCliente(@RequestParam("idCliente") int idCliente){
-  
-        ClienteTO cliente = clienteService.findById(idCliente);
-        return cliente;
-    }     
 
     @RequestMapping(value = "/editarPedido", method = RequestMethod.POST)
     @ResponseBody
     public PedidoTO editarPedido(@RequestBody ObjectNode nodoJson){
         int idPedido = nodoJson.get("idPedido").asInt();
-        PedidoTO pedido = pedidoService.findPedidoById(idPedido);
-        
+        PedidoTO pedido = pedidoService.findPedidoById(idPedido);    
         PedidoTO pedidoJson = new PedidoTO();
-        pedido.setEstadoPedido(pedido.getEstadoPedido());
+        pedidoJson.setEstadoPedido(pedido.getEstadoPedido());
         return pedidoJson;
     } 
+    
+    @RequestMapping(value = "/actualizarPedido", method = RequestMethod.POST)
+    @ResponseBody
+    public void actualizarPedido(
+            @RequestParam("idPedido") int idPedido,
+            @RequestParam("estadoPedido") String estadoPedido){
+        PedidoTO pedido = new PedidoTO();
+        pedido.setIdPedido(idPedido);
+        pedido.setEstadoPedido(estadoPedido);
+        pedidoService.actualizarPedido(pedido);
+    }
+    
+    @RequestMapping(value = "/editarCliente", method = RequestMethod.POST)
+    @ResponseBody
+    public ClienteTO editarCliente(@RequestBody ObjectNode nodoJson){
+        int idCliente = nodoJson.get("idCliente").asInt();
+        ClienteTO cliente = clienteService.findById(idCliente);
+        ClienteTO clienteJson = new ClienteTO();
+        clienteJson.setIdCliente(cliente.getIdCliente());
+        clienteJson.setPrimerNombre(cliente.getPrimerNombre());
+        clienteJson.setPrimerApellido(cliente.getPrimerApellido());
+        DistribuidorTO distribuidorJson = new DistribuidorTO();
+        if(cliente.getDistribuidor()!= null){
+            distribuidorJson.setIdDistribuidor(cliente.getDistribuidor().getIdDistribuidor());
+        }
+        clienteJson.setDistribuidor(distribuidorJson);
+        return clienteJson;
+    } 
+    
+    @RequestMapping(value = "/actualizarCliente", method = RequestMethod.POST)
+    @ResponseBody
+    public void actualizarCliente(
+            @RequestParam("idCliente") int idCliente,
+            @RequestParam("tipoCliente") String tipoCliente){
+        ClienteTO cliente = new ClienteTO();
+        cliente.setIdCliente(idCliente);
+        clienteService.cambiarTipoCliente(cliente,tipoCliente);
+    }
 }

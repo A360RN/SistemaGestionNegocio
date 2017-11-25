@@ -28,6 +28,7 @@
             <th>Categoría</th>
             <th>Cantidad</th>
             <th>Precio</th>
+            <th>Puntos</th>
             <th>Disponible</th>
             </thead>
             <tbody>
@@ -51,6 +52,7 @@
                         <td>${producto.categoria.nombreCategoria}</td>
                         <td>${producto.stockProducto}</td>
                         <td>${producto.precioProducto}</td>
+                        <td>${producto.puntosProducto}</td>
                         <td>
                             <c:if test="${producto.estadoProducto == 1}">Sí</c:if>
                             <c:if test="${producto.estadoProducto == 0}">No</c:if>  
