@@ -26,4 +26,6 @@ public interface DatosPersonalesService {
     String validarPassword(String passwordActual, String passwordNueva, String passwordConfirmacion, UsuarioTO usuario);
     
     UsuarioTO actualizarPassword(UsuarioTO usuario);
+    
+    String nombrePerfil(int idUsuario, int swCliente);
 }

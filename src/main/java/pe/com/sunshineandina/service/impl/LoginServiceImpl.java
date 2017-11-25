@@ -12,6 +12,8 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pe.com.sunshineandina.dao.ClienteDAO;
+import pe.com.sunshineandina.dao.EmpleadoDAO;
 import pe.com.sunshineandina.dao.PerfilDAO;
 import pe.com.sunshineandina.dao.UsuarioDAO;
 import pe.com.sunshineandina.dto.PerfilTO;
@@ -30,6 +32,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private UsuarioDAO usuarioDao;
+    
+    @Autowired
+    private ClienteDAO clienteDao;
 
     @Override
     public Map<String, Object> autenticacion(UsuarioTO usuarioPosible) {
@@ -80,6 +85,14 @@ public class LoginServiceImpl implements LoginService {
         usuario = usuarioDao.findById(usuario.getIdUsuario());
         Hibernate.initialize(usuario.getPerfiles());
         return usuario.getPerfiles();
+    }
+
+    @Override
+    public int esCliente(int idUsuario) {
+        if(clienteDao.findByUsuario(idUsuario) != null){
+            return 1;
+        }
+        return 0;
     }
 
 }

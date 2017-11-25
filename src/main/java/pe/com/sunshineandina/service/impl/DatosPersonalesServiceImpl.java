@@ -100,5 +100,17 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService{
         }
         return null;
     }
+
+    @Override
+    public String nombrePerfil(int idUsuario, int swCliente) {
+        if(swCliente == 1){
+            ClienteTO cliente = clienteDao.findByUsuario(idUsuario);
+            return cliente.getPrimerNombre().substring(0,1) + cliente.getPrimerNombre().substring(1).toLowerCase()
+                    + " " + cliente.getPrimerApellido().substring(0,1) + cliente.getPrimerApellido().substring(1).toLowerCase();
+        }
+        EmpleadoTO empleado = empleadoDao.findByUsuario(idUsuario);
+        return empleado.getPrimerNombre().substring(0,1) + empleado.getPrimerNombre().substring(1).toLowerCase()
+                + " " + empleado.getPrimerApellido().substring(0,1) + empleado.getPrimerApellido().substring(1).toLowerCase();
+    } 
     
 }

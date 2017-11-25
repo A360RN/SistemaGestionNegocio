@@ -8,7 +8,7 @@
     <input type="hidden" id="idDistribuidor" value="${distribuidor.idDistribuidor}">
     <div class="row">
         <div class="col-12">
-            <h1>Comisión de: Nombre Apellido</h1>
+            <h1>Comisión de: <c:out value="${sessionScope.nombrePerfil}"></c:out></h1>
         </div>
     </div>
     <div class="row">

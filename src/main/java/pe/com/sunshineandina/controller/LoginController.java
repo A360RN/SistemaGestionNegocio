@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.com.sunshineandina.dto.PerfilTO;
 import pe.com.sunshineandina.dto.UsuarioTO;
+import pe.com.sunshineandina.service.DatosPersonalesService;
 import pe.com.sunshineandina.service.LoginService;
 import pe.com.sunshineandina.util.Constantes;
 
@@ -26,6 +27,9 @@ public class LoginController {
 
     @Autowired
     private LoginService loginService;
+    
+    @Autowired
+    private DatosPersonalesService datosPersonalesService;
 
     @RequestMapping("/")
     public String index() {
@@ -56,6 +60,12 @@ public class LoginController {
 
         usuarioReal.setPerfiles(loginService.perfilesUsuario(usuarioReal));
         session.setAttribute("usuario", usuarioReal);
+        
+        /* Determinamos si es cliente o empleado */
+        int swCliente = loginService.esCliente(usuarioReal.getIdUsuario());
+        session.setAttribute("swCliente", loginService.esCliente(usuarioReal.getIdUsuario()));
+        /* Hallamos el nombre para mostrar */
+        session.setAttribute("nombrePerfil", datosPersonalesService.nombrePerfil(usuarioReal.getIdUsuario(), swCliente));
 
         /* Obtenemos el perfil*/
         PerfilTO perfil = usuarioReal.getPerfiles().get(0);

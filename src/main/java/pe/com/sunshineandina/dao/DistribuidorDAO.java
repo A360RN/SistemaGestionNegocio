@@ -5,8 +5,6 @@
  */
 package pe.com.sunshineandina.dao;
 
-
-import java.util.List;
 import pe.com.sunshineandina.dto.ClienteTO;
 
 import pe.com.sunshineandina.dto.DistribuidorTO;
@@ -16,18 +14,16 @@ import pe.com.sunshineandina.dto.DistribuidorTO;
  * @author alonsorn
  */
 public interface DistribuidorDAO {
-    
+
     DistribuidorTO findById(int id);
-    
 
     DistribuidorTO findByCliente(ClienteTO cliente);
 
     DistribuidorTO findByUsuario(int idUsuario);
 
-    
     void save(DistribuidorTO distribuidor);
-    
+
     DistribuidorTO findByCodigoDistribuidor(String codigoDistribuidor);
-    
+
     void destroy(DistribuidorTO distribuidor);
 }

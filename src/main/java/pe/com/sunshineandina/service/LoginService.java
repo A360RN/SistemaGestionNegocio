@@ -19,4 +19,6 @@ public interface LoginService {
     Map<String, Object> autenticacion(UsuarioTO usuarioPosible);
     
     List<PerfilTO> perfilesUsuario(UsuarioTO usuario); 
+    
+    int esCliente(int idUsuario);
 }

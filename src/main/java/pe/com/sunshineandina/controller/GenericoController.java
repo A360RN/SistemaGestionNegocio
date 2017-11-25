@@ -47,7 +47,6 @@ public class GenericoController {
         switch (codPerfil) {
             case Constantes.PERFIL_CLIENTE:
             case Constantes.PERFIL_DISTRIBUIDOR:
-                session.setAttribute("swCliente", 1);
                 ClienteTO cliente = datosPersonalesService.findClienteByUsuario(usuario.getIdUsuario());
                 model.addAttribute("primerNombre", cliente.getPrimerNombre());
                 model.addAttribute("segundoNombre", cliente.getSegundoNombre());
@@ -63,7 +62,6 @@ public class GenericoController {
             case Constantes.PERFIL_ENCARGADO_INV:
             case Constantes.PERFIL_ENCARGADO_ADM:
             case Constantes.PERFIL_ENCARGADO_VENTAS:
-                session.setAttribute("swCliente", 0);
                 EmpleadoTO empleado = datosPersonalesService.findEmpleadoByUsuario(usuario.getIdUsuario());
                 model.addAttribute("primerNombre", empleado.getPrimerNombre());
                 model.addAttribute("segundoNombre", empleado.getSegundoNombre());
@@ -92,7 +90,6 @@ public class GenericoController {
         switch (codPerfil) {
             case Constantes.PERFIL_CLIENTE:
             case Constantes.PERFIL_DISTRIBUIDOR:
-                session.setAttribute("swCliente", 1);
                 ClienteTO cliente = datosPersonalesService.findClienteByUsuario(usuario.getIdUsuario());
                 model.addAttribute("primerNombre", cliente.getPrimerNombre());
                 model.addAttribute("segundoNombre", cliente.getSegundoNombre());
@@ -108,7 +105,6 @@ public class GenericoController {
             case Constantes.PERFIL_ENCARGADO_INV:
             case Constantes.PERFIL_ENCARGADO_ADM:
             case Constantes.PERFIL_ENCARGADO_VENTAS:
-                session.setAttribute("swCliente", 0);
                 EmpleadoTO empleado = datosPersonalesService.findEmpleadoByUsuario(usuario.getIdUsuario());
                 model.addAttribute("primerNombre", empleado.getPrimerNombre());
                 model.addAttribute("segundoNombre", empleado.getSegundoNombre());
@@ -192,10 +188,5 @@ public class GenericoController {
         ((ObjectNode) jsonNode).put("rpta", rpta);
         return jsonNode;
     }
-    
-    @RequestMapping(value = "/cambiarContraseña", method = RequestMethod.PUT)
-    public String actualizarContraseña(){
-        
-        return "redirect:/perfil";
-    }
+
 }
