@@ -24,4 +24,6 @@ public interface ProductoService {
      void changeProductState(ProductoTO producto);
      
      List<ProductoTO> findPaginado(int inicio);
+     
+     
 }

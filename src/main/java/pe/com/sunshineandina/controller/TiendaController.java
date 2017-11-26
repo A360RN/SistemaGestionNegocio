@@ -9,8 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.CategoriaService;
@@ -23,7 +25,7 @@ import pe.com.sunshineandina.util.Constantes;
  */
 @Controller
 @RequestMapping("/tienda")
-public class ClienteController {
+public class TiendaController {
     
     @Autowired
     private ProductoService productoService;
@@ -40,6 +42,23 @@ public class ClienteController {
         /* Hallamos la lista de productos paginados */
         List<ProductoTO> lstProductos = productoService.findPaginado(Constantes.INICIO_PRODUCTOS_POR_PAGINA_POR_DEFECTO);
         model.addAttribute("lstProductos", lstProductos);
+        
+        /* Nro de paginas y cantidad de productos*/
+
         return "cliente/listaProductos";
+    }
+    
+    @RequestMapping(value = "/productos/{idProducto}", method = RequestMethod.GET)
+    @ResponseBody
+    public ProductoTO detalleProducto(@PathVariable(name = "idProducto") int idProducto){
+        ProductoTO producto = productoService.findProductoById(idProducto);
+        
+        ProductoTO productoJson = new ProductoTO();
+        productoJson.setCategoria(new CategoriaTO());
+        productoJson.getCategoria().setNombreCategoria(producto.getCategoria().getNombreCategoria());
+        productoJson.setNombreProducto(producto.getNombreProducto());
+        productoJson.setDescripcionProducto(producto.getDescripcionProducto());
+        
+        return productoJson;
     }
 }

@@ -5,6 +5,7 @@
   <script src="${pageContext.request.contextPath}/resources/lib/js/inventarioadm.js"></script>
   <script src="${pageContext.request.contextPath}/resources/lib/js/usuarioadm.js"></script>
   <script src="${pageContext.request.contextPath}/resources/lib/js/ventasadm.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/lib/js/cliente/tienda.js"></script>
 </body>
 </html>
 <!-- Fin Footer -->

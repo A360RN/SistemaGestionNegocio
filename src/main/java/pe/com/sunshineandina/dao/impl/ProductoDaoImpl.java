@@ -40,14 +40,14 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
         criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
         return (List<ProductoTO>) criteria.list();
     }
-    
+
     @Override
     public List<ProductoTO> findAllByCategoria(int idCategoria) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
         return (List<ProductoTO>) criteria.list();
     }
-    
+
     //Mostrar productos en inventario, estén o no disponibles
     @Override
     public List<ProductoTO> findInventario() {
@@ -57,7 +57,7 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
         criteria.setMaxResults(cantidadPagina);*/
         return (List<ProductoTO>) criteria.list();
     }
-    
+
     //Mostrar productos en tienda, SOLO disponibles, con paginación
     @Override
     public List<ProductoTO> findPaginado(int inicio, int cantidadPagina) {
@@ -78,6 +78,22 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
         criteria.setFirstResult(inicio);
         criteria.setMaxResults(cantidadPagina);
         return (List<ProductoTO>) criteria.list();
+    }
+
+    @Override
+    public int cantidadProductos() {
+        int count = ((Long) getSession().createQuery("select count(*) from Producto").uniqueResult()).intValue();
+        return count;
+    }
+
+    @Override
+    public int cantidadProductosByCategoria(int idCategoria) {
+        int count = ((Long) getSession().createQuery("select count(*) from Producto p "
+                + "where p.categoria.idCategora = :idCategoria")
+                .setParameter("idCategoria", idCategoria)
+                .uniqueResult())
+                .intValue();
+        return count;
     }
 
 }
