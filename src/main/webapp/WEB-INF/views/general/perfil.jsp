@@ -4,9 +4,9 @@
 
 <%@include file="../includes/headerGenerico.jsp" %>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-6 offset-3">
+        <div class="col-md-6 offset-md-3 col-sm-12">
             <a href="${pageContext.request.contextPath}/actualizarDatos" class="btn btn-warning">Actualizar datos personales</a>
             <a href="${pageContext.request.contextPath}/cambiarContraseña" class="btn btn-secondary">Cambiar contraseña</a>
             <form>
@@ -23,13 +23,13 @@
                 </div>
                 </c:if>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="primerNombre">Primer nombre: </label>
                             <input type="text" class="form-control" id="primerNombre" disabled value="${primerNombre}">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="segundoNombre">Segundo nombre: </label>
                             <input type="text" class="form-control" id="segundoNombre" disabled value="${segundoNombre}">
@@ -37,13 +37,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                              <label for="primerApellido">Primer apellido: </label>
                              <input type="text" class="form-control" id="primerApellido" disabled value="${primerApellido}">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="segundoApellido">Segundo Apellido:</label>
                             <input type="text" class="form-control" id="segundoApellido" disabled value="${segundoApellido}">
@@ -51,13 +51,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="telCelular">Teléfono Celular</label>
                             <input type="text" class="form-control" id="telCelular" disabled value="${telCelular}">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="telFijo">Teléfono Fijo:</label>
                             <input type="text" class="form-control" id="telFijo" disabled value="${telFijo}">

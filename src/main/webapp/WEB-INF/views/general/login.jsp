@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6 offset-3 login">
+        <div class="col-sm-12 col-md-6 offset-md-3 login">
             <h3>Ingresar a la plataforma</h3>
             <br>
             <form action="login" method="POST">

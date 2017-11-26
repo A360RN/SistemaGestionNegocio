@@ -28,7 +28,7 @@ input[type=submit], button{
     cursor:pointer;
 }
 header{
-    margin-bottom:130px;
+    margin-bottom:85px;
 }
 .color-sunshine{
     background-color: #AFDDB0;
@@ -42,7 +42,7 @@ header{
 #footer{
     padding:15px;
     font-size:20px;
-    margin-top:50px;
+    margin-top:100px;
 }
 .centrar-texto-modal{
     margin:0 auto;

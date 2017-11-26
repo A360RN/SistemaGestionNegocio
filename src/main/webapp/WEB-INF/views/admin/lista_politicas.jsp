@@ -14,7 +14,7 @@
         <hr>
     </div>
     <div class="row">
-        <table class="table table-sm table-hover table-bordered">
+        <table class="table-responsive table-sm table-hover table-bordered">
             <thead class="thead-inverse">
             <th></th>
             <th>Política</th>
