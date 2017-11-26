@@ -20,7 +20,7 @@ import pe.com.sunshineandina.dto.CarritoTO;
  * @author alonsorn
  */
 @Repository("carritoDao")
-public class CarritoDaoImpl extends AbstractDAO<Integer, CarritoTO> implements CarritoDAO{
+public class CarritoDaoImpl extends AbstractDAO<Integer, CarritoTO> implements CarritoDAO {
 
     @Override
     public CarritoTO findById(int id) {
@@ -33,36 +33,15 @@ public class CarritoDaoImpl extends AbstractDAO<Integer, CarritoTO> implements C
     }
 
     @Override
-    public List<CarritoTO> findByCliente(int idCliente) {
-        Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("cliente.idCliente", idCliente));
-        return (List<CarritoTO>) criteria.list();
-    }
-
-    @Override
-    public List<CarritoTO> findByClienteFecha(int idCliente, Date fechaInicio, Date fechaFin) {
-        Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("cliente.idCliente", idCliente));
-        criteria.add(Restrictions.between("fechaModificacion", fechaInicio, fechaFin));
-        criteria.addOrder(Order.desc("fechaModificacion"));
-        return (List<CarritoTO>) criteria.list();
-    }
-
-    @Override
-    public List<CarritoTO> findByClienteFechaPaginado(int idCliente, Date fechaInicio, Date fechaFin, int inicio, int cantidadPagina) {
-        Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("cliente.idCliente", idCliente));
-        criteria.add(Restrictions.between("fechaModificacion", fechaInicio, fechaFin));
-        criteria.addOrder(Order.desc("fechaModificacion"));
-        criteria.setFirstResult(inicio);
-        criteria.setMaxResults(cantidadPagina);
-        return (List<CarritoTO>) criteria.list();
-    }
-
-    @Override
     public void destroy(CarritoTO carrito) {
         delete(carrito);
     }
-    
-    
+
+    @Override
+    public CarritoTO findByCliente(int idCliente) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("cliente.idCliente", idCliente));
+        return (CarritoTO) criteria.uniqueResult();
+    }
+
 }

@@ -19,4 +19,6 @@ public interface DetalleCarritoDAO {
     void save(DetalleCarritoTO detalleCarrito);
     
     List<DetalleCarritoTO> findByCarrito(int idCarrito);
+    
+    DetalleCarritoTO findByProducto(int idProducto);
 }

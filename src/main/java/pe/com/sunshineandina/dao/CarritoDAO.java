@@ -5,8 +5,6 @@
  */
 package pe.com.sunshineandina.dao;
 
-import java.util.Date;
-import java.util.List;
 import pe.com.sunshineandina.dto.CarritoTO;
 
 /**
@@ -21,9 +19,5 @@ public interface CarritoDAO {
     
     void destroy(CarritoTO carrito);
     
-    List<CarritoTO> findByCliente(int idCliente);
-    
-    List<CarritoTO> findByClienteFecha(int idCliente, Date fechaInicio, Date fechaFin);
-    
-    List<CarritoTO> findByClienteFechaPaginado(int idCliente, Date fechaInicio, Date fechaFin, int inicio, int cantidadPagina);
+    CarritoTO findByCliente(int idCliente);
 }

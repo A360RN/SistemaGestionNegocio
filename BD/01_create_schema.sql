@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_CARRITO` (
   `id_carrito` INT NOT NULL AUTO_INCREMENT,
   `id_cliente` INT NOT NULL,
   `precio_acumulado_carrito` DECIMAL(10,2) NULL,
-  `puntos_acumulado_pedido` INT NULL,
+  `puntos_acumulado_carrito` INT NULL,
   `fecha_creacion` DATE NULL,
   `fecha_modificacion` DATE NULL,
   PRIMARY KEY (`id_carrito`),

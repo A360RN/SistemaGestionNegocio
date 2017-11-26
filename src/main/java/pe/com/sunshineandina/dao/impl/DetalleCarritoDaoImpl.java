@@ -8,6 +8,7 @@ package pe.com.sunshineandina.dao.impl;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
 import pe.com.sunshineandina.dao.DetalleCarritoDAO;
 import pe.com.sunshineandina.dto.DetalleCarritoTO;
@@ -16,6 +17,7 @@ import pe.com.sunshineandina.dto.DetalleCarritoTO;
  *
  * @author alonsorn
  */
+@Repository("detalleCarritoDao")
 public class DetalleCarritoDaoImpl extends AbstractDAO<Integer, DetalleCarritoTO> implements DetalleCarritoDAO {
 
     @Override
@@ -33,6 +35,13 @@ public class DetalleCarritoDaoImpl extends AbstractDAO<Integer, DetalleCarritoTO
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("carrito.idPedido", idCarrito));
         return (List<DetalleCarritoTO>) criteria.list();
+    }
+
+    @Override
+    public DetalleCarritoTO findByProducto(int idProducto) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("producto.idProducto", idProducto));
+        return (DetalleCarritoTO) criteria.uniqueResult();
     }
 
 }

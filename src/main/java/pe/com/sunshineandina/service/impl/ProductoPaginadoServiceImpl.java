@@ -6,6 +6,8 @@
 package pe.com.sunshineandina.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.sunshineandina.dao.ParametroDAO;
 import pe.com.sunshineandina.dao.ProductoDAO;
 import pe.com.sunshineandina.dto.ParametroTO;
@@ -16,6 +18,8 @@ import pe.com.sunshineandina.util.Constantes;
  *
  * @author alonsorn
  */
+@Service("productoPaginadoService")
+@Transactional
 public class ProductoPaginadoServiceImpl implements ProductoPaginadoService{
 
     @Autowired

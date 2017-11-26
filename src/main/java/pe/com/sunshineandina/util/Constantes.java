@@ -33,4 +33,11 @@ public class Constantes {
     public static final String ERROR_CONTRASEÑAS_NO_COINCIDEN = "Las contraseñas no coinciden"; 
     
     public static final String ERROR_CATEGORIA_REPETIDA="La categoria ingresada ya existe";
+    
+    public static final String ERROR_NO_SE_ENCONTRO_CLIENTE = "No se encontro al cliente";
+    public static final String ERROR_STOCK_INSUFICIENTE = "La cantidad excede al stock del producto";
+    public static final String ERROR_STOCK_AGOTADO = "Lo sentimos, el stock del producto se ha agotado";
+    
+    /**************************** MENSAJES DE EXITO ****************************/
+    public static final String PRODUCTO_CARRITO_EXITO = "Se agregó el producto al carrito";
 }

@@ -29,7 +29,7 @@ public class DetalleCarritoTO implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_detalle_carrito")
-    private int id_detalle_carrito;
+    private int idDetalleCarrito;
 
     @Column(name = "cantidad")
     private int cantidad;
@@ -51,13 +51,15 @@ public class DetalleCarritoTO implements Serializable {
     public DetalleCarritoTO() {
     }
 
-    public int getId_detalle_carrito() {
-        return id_detalle_carrito;
+    public int getIdDetalleCarrito() {
+        return idDetalleCarrito;
     }
 
-    public void setId_detalle_carrito(int id_detalle_carrito) {
-        this.id_detalle_carrito = id_detalle_carrito;
+    public void setIdDetalleCarrito(int idDetalleCarrito) {
+        this.idDetalleCarrito = idDetalleCarrito;
     }
+
+    
 
     public int getCantidad() {
         return cantidad;
@@ -102,7 +104,7 @@ public class DetalleCarritoTO implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.id_detalle_carrito;
+        hash = 97 * hash + this.idDetalleCarrito;
         hash = 97 * hash + this.cantidad;
         hash = 97 * hash + Objects.hashCode(this.precioDetalleCarrito);
         hash = 97 * hash + this.puntosDetalleCarrito;
@@ -121,7 +123,7 @@ public class DetalleCarritoTO implements Serializable {
             return false;
         }
         final DetalleCarritoTO other = (DetalleCarritoTO) obj;
-        if (this.id_detalle_carrito != other.id_detalle_carrito) {
+        if (this.idDetalleCarrito != other.idDetalleCarrito) {
             return false;
         }
         if (this.cantidad != other.cantidad) {
@@ -138,7 +140,7 @@ public class DetalleCarritoTO implements Serializable {
 
     @Override
     public String toString() {
-        return "DetalleCarritoTO{" + "id_detalle_carrito=" + id_detalle_carrito + ", cantidad=" + cantidad + ", precioDetalleCarrito=" + precioDetalleCarrito + ", puntosDetalleCarrito=" + puntosDetalleCarrito + '}';
+        return "DetalleCarritoTO{" + "id_detalle_carrito=" + idDetalleCarrito + ", cantidad=" + cantidad + ", precioDetalleCarrito=" + precioDetalleCarrito + ", puntosDetalleCarrito=" + puntosDetalleCarrito + '}';
     }
 
 }
