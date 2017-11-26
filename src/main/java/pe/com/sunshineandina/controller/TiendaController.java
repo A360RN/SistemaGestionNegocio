@@ -85,7 +85,6 @@ public class TiendaController {
         int idUsuario = usuario.getIdUsuario();
         
         String rpta = carritoService.insertarDetalle(idUsuario, idProducto, cantidad);
-        System.out.println("CARRITO EXE: " + rpta);
         
         return null;
     }

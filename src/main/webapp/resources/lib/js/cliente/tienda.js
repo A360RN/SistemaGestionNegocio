@@ -28,8 +28,6 @@ modalAgregarACarrito.on('show.bs.modal', function(event) {
     let idProducto = button.data('idproducto');
     let modal = $(this);
 
-    modal.find('.modal-body input#txtCantidad').val('');
-
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -66,6 +64,7 @@ btnModalAgregarACarritoSi.on('click', function(e){
         method: 'POST',
         data: JSON.stringify(data) 
     }).done(function (response){
-        
+        modalAgregarACarrito.find('.modal-body input#txtCantidad').val("");
+        modalAgregarACarrito.modal('hide');
     });
 });
