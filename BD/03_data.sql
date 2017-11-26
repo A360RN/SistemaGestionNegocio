@@ -107,3 +107,28 @@ INSERT INTO `sunshine_andina_db`.`tsa_comision` (`id_distribuidor`, `monto_comis
 INSERT INTO `sunshine_andina_db`.`tsa_comision` (`id_distribuidor`, `monto_comision`, `mes_comision`, `anio_comision`) VALUES ('2', '1050', '11', '2017');
 INSERT INTO `sunshine_andina_db`.`tsa_comision` (`id_distribuidor`, `monto_comision`, `mes_comision`, `anio_comision`) VALUES ('3', '930', '11', '2017');
 
+
+/* TSA_CATEGORIA */
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (1,'SISTEMAS DEL CUERPO','ESPECIAL PARA LOS SISTEMAS DEL CUERPO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (2,'TEMAS DE SALUD','PARA EL CUIDADO DE LA SALUD',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (3,'ACEITES ESENCIALES Y VEGETALES','TODO TIPO DE ACEITES',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (4,'ANTIOXIDANTES','PARA PREVENIR ENFERMEDADES',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (5,'APOYO ESTADO ANIMICO','PARA MEJORAR LA SALUD',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (6,'CIRCULATORIO','PARA MEJORAR EL SISTEMA CIRCULATORIO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (7,'CONTROL DE PESO','ESPECIAL PARA MANTENER EL PESO ADECUADO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (8,'COLESTEROL','PARA CONTROLAR LAS GRASAS',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (9,'COSMETICA NATURAL','PARA LA ESTETICA PERSONAL',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (10,'DEPORTE','ESPECIAL PARA ATLETAS',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (11,'DESINTOXICACION','PARA LIMPIAR EL CUERPO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (12,'DIGESTION','PARA MEJORAR EL SISTEMA DIGESTIVO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (13,'ENERGIA Y CONDICION FISICA','PARA OBTENER UN RENDIMIENTO OPTIMO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (14,'HEPATICO','PARA EL CUIDADO DEL HIGADO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (15,'HUESOS','PARA MEJORAR EL ESTADO DE LAS ARTICULACIONES',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (16,'INMUNOLOGICO','PARA AUMENTAR LAS DEFENSAS',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (17,'NERVIOSO','ESPECIAL PARA EL SISTEMA NERVIOSO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (18,'RESPIRATORIO','ESPECIAL PARA EL SISTEMA RESPIRATORIO',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (19,'SALUD DEL CEREBRO Y MEMORIA','PARA MANTENER LA CAPACIDAD COGNITIVA',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (20,'SUPLEMENTOS ALIMENTICIOS','PARA REFORZAR LA ALIMENTACION',1);
+INSERT INTO sunshine_andina_db.tsa_categoria(id_categoria,nombre_categoria,desc_categoria,estado_categoria) VALUES (21,'URINARIO','PARA MEJORAR EL SISTEMA URINARIO',1);
+
+
