@@ -10,7 +10,9 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pe.com.sunshineandina.dao.ParametroDAO;
 import pe.com.sunshineandina.dao.ProductoDAO;
+import pe.com.sunshineandina.dto.ParametroTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.ProductoService;
 import pe.com.sunshineandina.util.Constantes;
@@ -25,6 +27,9 @@ public class ProductoServiceImpl implements ProductoService{
     
     @Autowired
     private ProductoDAO productoDao;
+    
+    @Autowired
+    private ParametroDAO parametroDAO;
     
     //Lista productos en inventario
     @Override
@@ -74,5 +79,17 @@ public class ProductoServiceImpl implements ProductoService{
             }
             productoDao.save(productoUpd);
         }
+    }
+
+    @Override
+    public List<ProductoTO> findPaginado(int inicio) {
+        /* Obtenemos el nro de productos por pagina */
+        ParametroTO parametro = parametroDAO.findByDescParametro(Constantes.PARAMETRIA_PRODUCTOS_POR_PAGINA);
+        if(parametro != null){
+            int cantidadPagina = Integer.parseInt(parametro.getValorParametro());
+            List<ProductoTO> lstProductos = productoDao.findPaginado(inicio, cantidadPagina);
+            return lstProductos;
+        }
+        return null;
     }
 }

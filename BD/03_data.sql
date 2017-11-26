@@ -5,6 +5,9 @@ INSERT INTO `sunshine_andina_db`.`tsa_politicas` (`desc_politica`, `min_puntos_i
 INSERT INTO `sunshine_andina_db`.`tsa_politicas` (`desc_politica`, `min_puntos_ind`, `max_puntos_ind`, `min_puntos_grupal`, `max_puntos_grupal`, `porcentaje_descuento`) VALUES ('COMISION_3', '240', '320', '1200', '1600', '0.15');
 INSERT INTO `sunshine_andina_db`.`tsa_politicas` (`desc_politica`, `min_puntos_ind`, `max_puntos_ind`, `min_puntos_grupal`, `max_puntos_grupal`, `porcentaje_descuento`) VALUES ('COMISION_4', '320', '10000000', '1600', '1000000000', '0.20');
 
+/* TSA_PARAMETROS */
+INSERT INTO `sunshine_andina_db`.`tsa_parametros` (`desc_parametro`, `valor_parametro`, `estado_parametro`) VALUES ('PRODUCTOS_POR_PAGINA', '4', '1');
+
 /* TSA_PERFIL */
 
 INSERT INTO sunshine_andina_db.TSA_PERFIL(CODIGO_PERFIL, DESC_PERFIL) VALUES ("CLI", "CLIENTE");

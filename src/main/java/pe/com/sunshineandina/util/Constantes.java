@@ -22,6 +22,10 @@ public class Constantes {
     public static final String PERFIL_DISTRIBUIDOR = "DIS";
     public static final int TIPO_LIDER_DEFECTO=1;
     
+    public static final int INICIO_PRODUCTOS_POR_PAGINA_POR_DEFECTO = 0;
+    
+    public static final String PARAMETRIA_PRODUCTOS_POR_PAGINA = "PRODUCTOS_POR_PAGINA";
+    
     //**************************** MENSAJES ERROR *************************
     public static final String ERROR_AUTENTICACION_USERNAME = "Este usuario no existe";
     public static final String ERROR_AUTENTICACION_PASSWORD = "Contraseña errada";

@@ -74,6 +74,7 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("estadoProducto", Constantes.ESTADO_ACTIVO));
         criteria.add(Restrictions.eq("categoria.idCategoria", idCategoria));
+        criteria.addOrder(Order.asc("nombreProducto"));
         criteria.setFirstResult(inicio);
         criteria.setMaxResults(cantidadPagina);
         return (List<ProductoTO>) criteria.list();
