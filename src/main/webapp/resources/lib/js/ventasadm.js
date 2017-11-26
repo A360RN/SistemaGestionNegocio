@@ -29,16 +29,16 @@ modalEditarCliente.on('show.bs.modal', function (e) {
         url: 'editarCliente',
         data: JSON.stringify(data)
     }).done(function(response) {
-        let tipoCliente=existe(response.distribuidor.idDistribuidor);
+        let tipoCliente=existe(response.distribuidor.estadoDistribuidor);
         modal.find('.modal-title').text(response.primerNombre+" "+response.primerApellido);
         modal.find('.modal-body input[type="hidden"]').val(idCliente);
         modal.find('.modal-body select#txtCliente').html(mostrarTipos(tipoCliente,tipos));
     });
 });
 
-function existe(distribuidor)
+function existe(estado)
 {
-    if(distribuidor)
+    if(estado&&estado===1)
         cadena="Distribuidor";
     else
         cadena="Normal";

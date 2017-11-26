@@ -34,11 +34,11 @@
                                 <span class="fa fa-pencil fa-2x"></span>
                             </button>
                             <c:choose>
-                                <c:when test="${cliente.distribuidor.estadoDistribuidor == 0}">
-                                    Normal
+                                <c:when test="${cliente.distribuidor.estadoDistribuidor == 1}">
+                                    Distribuidor
                                 </c:when>
                                 <c:otherwise>
-                                    Distribuidor
+                                    Normal
                                 </c:otherwise>
                             </c:choose>
                          </td>

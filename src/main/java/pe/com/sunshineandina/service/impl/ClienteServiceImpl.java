@@ -69,6 +69,11 @@ public class ClienteServiceImpl implements ClienteService {
                 distribuidorUpd.setEstadoDistribuidor(Constantes.ESTADO_ACTIVO);
                 distribuidorDao.save(distribuidorUpd);
             }
+            else if(tipoCliente.equals("Distribuidor")&&distribuidor!=null)
+            {
+                distribuidor.setEstadoDistribuidor(Constantes.ESTADO_ACTIVO);
+                distribuidorDao.save(distribuidor);
+            }
         }
     }
 
