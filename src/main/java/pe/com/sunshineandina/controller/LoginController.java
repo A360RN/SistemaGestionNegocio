@@ -70,6 +70,7 @@ public class LoginController {
         /* Obtenemos el perfil*/
         PerfilTO perfil = usuarioReal.getPerfiles().get(0);
         session.setAttribute("perfil", perfil);
+        System.out.println("perfil: " + perfil.getCodigoPerfil());
         /* DEPENDIENDO DEL PERFIL, LLEVAMOS A LA PAGINA DE INICIO*/
         switch (perfil.getCodigoPerfil()) {
             case Constantes.PERFIL_ENCARGADO_INV:
@@ -80,6 +81,8 @@ public class LoginController {
                 return "redirect:/ventas/listaPedidos";
             case Constantes.PERFIL_DISTRIBUIDOR:
                 return "redirect:/distribuidor/listaComisiones";
+            case Constantes.PERFIL_CLIENTE:
+                return "redirect:/tienda/productos";
             default:
                 return "redirect:/perfil";
         }
