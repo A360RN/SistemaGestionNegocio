@@ -34,6 +34,21 @@ public class ProductoDaoImpl extends AbstractDAO<Integer, ProductoTO> implements
     }
 
     @Override
+    public ProductoTO findByNombre(String nombreProducto) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("nombreProducto", nombreProducto));
+        return (ProductoTO) criteria.uniqueResult();
+    }
+    
+    @Override
+    public ProductoTO findByIdAndNombre(int idProducto,String nombreProducto) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("idProducto", idProducto));
+        criteria.add(Restrictions.eq("nombreProducto", nombreProducto));
+        return (ProductoTO) criteria.uniqueResult();
+    }
+    
+    @Override
     public List<ProductoTO> findByCategoria(int idCategoria) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("estadoProducto", Constantes.ESTADO_ACTIVO));

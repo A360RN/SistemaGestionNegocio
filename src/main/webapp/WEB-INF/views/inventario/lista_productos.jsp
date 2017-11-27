@@ -32,10 +32,13 @@
             <th>Disponible</th>
             </thead>
             <tbody>
+
                 <c:forEach items="${listaProductos}" var="producto">
                     <tr>
                         <td class="text-center icon">
-                            <a href="${pageContext.request.contextPath}/inventario/nuevoProducto?edit=${producto.idProducto}" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
+                            <button type="submit" class="btn btn-sm btn-editar-producto" data-toggle="tooltip" data-placement="top" title="Editar el producto" data-idproducto="${producto.idProducto}">
+                                <span class="fa fa-pencil fa-2x"></span>
+                            </button>
                             <c:if test="${producto.estadoProducto == 1}">
                                 <button class="btn btn-sm btn-cambiar-estado-producto" data-toggle="tooltip" data-placement="top" title="Archivar el producto" data-idproducto="${producto.idProducto}">
                                     <span class="fa fa-times-circle fa-2x"></span>
@@ -46,7 +49,7 @@
                                     <span class="fa fa-refresh fa-2x"></span>
                                 </button>
                             </c:if>  
-                                
+
                         </td>
                         <td>${producto.nombreProducto}</td>
                         <td>${producto.categoria.nombreCategoria}</td>
@@ -56,11 +59,14 @@
                         <td>
                             <c:if test="${producto.estadoProducto == 1}">Sí</c:if>
                             <c:if test="${producto.estadoProducto == 0}">No</c:if>  
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                 </c:forEach>
             </tbody>
         </table>
+        <form id="EditForm" action="editarProducto" method="POST">
+            <input type="hidden" id="hiddenEditarProducto" name="idProducto" value="">
+        </form>
     </div>
 
 </div>

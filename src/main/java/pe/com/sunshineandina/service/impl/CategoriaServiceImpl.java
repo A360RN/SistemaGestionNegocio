@@ -42,6 +42,26 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
+    public boolean nombreRepetido(String nombre) {
+        CategoriaTO categoria=categoriaDao.findByNombre(nombre);
+        if(categoria==null)
+        {
+            return false;
+        }          
+        return true;
+    }
+    
+    @Override
+    public boolean idRepetido(int id,String nombre) {
+        CategoriaTO categoria=categoriaDao.findByIdAndNombre(id,nombre);
+        if(categoria==null)
+        {
+            return false;
+        }          
+        return true;
+    }
+    
+    @Override
     public void addCategoria(CategoriaTO categoria) {
         categoriaDao.save(categoria);
     }

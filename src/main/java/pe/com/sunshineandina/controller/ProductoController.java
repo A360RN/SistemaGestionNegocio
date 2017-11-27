@@ -5,6 +5,9 @@
  */
 package pe.com.sunshineandina.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +43,27 @@ public class ProductoController {
         return "inventario/lista_productos";
     }
     
-    @RequestMapping(value="/listaProductos", method=RequestMethod.POST)
-    public String addOrEditProducto(
-            @RequestParam("id") int id,
+    @RequestMapping(value = "/nuevoProducto", method = RequestMethod.GET)
+    public String listarCategoriasAgregar(Model model){
+        List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
+        model.addAttribute("listaCategorias", listaCategorias);
+        return "inventario/producto";
+    }
+    @RequestMapping(value = "/editarProducto", method = RequestMethod.POST)
+    public String listarCategoriasEditar(@RequestParam("idProducto") int id, Model model){
+        List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
+        model.addAttribute("listaCategorias", listaCategorias);
+            int idProducto=id;
+            ProductoTO producto=productoService.findProductoById(idProducto);
+            model.addAttribute("producto",producto);
+            model.addAttribute("swEditar",1);
+        return "inventario/producto";
+    }
+    
+    @RequestMapping(value="/saveProducto", method=RequestMethod.POST)
+    @ResponseBody
+    public JsonNode addOrEditProducto(
+            @RequestParam("idProducto") int idProducto,
             @RequestParam("categoria") int categoria,
             @RequestParam("nombre") String nombre,
             @RequestParam("descripcion") String descripcion,
@@ -50,6 +71,22 @@ public class ProductoController {
             @RequestParam("cantidad") int cantidad,
             @RequestParam("puntos") int puntos,
             Model model){
+        /* Se arma el json de respuesta */
+        ObjectMapper mapper = new ObjectMapper();       
+        JsonNode jsonNode = mapper.createObjectNode();
+        if(productoService.nombreRepetido(nombre))
+        {
+            if(idProducto==0)
+            {
+                ((ObjectNode) jsonNode).put("respuesta", "repetido");
+                return jsonNode;
+            }else if(!productoService.idRepetido(idProducto,nombre))
+            {
+                ((ObjectNode) jsonNode).put("respuesta", "repetido");
+                return jsonNode;              
+            }
+            
+        }
         CategoriaTO categoriaFind;
         categoriaFind=categoriaService.findCategoriaById(categoria);
         ProductoTO productoNew=new ProductoTO();
@@ -60,34 +97,18 @@ public class ProductoController {
         productoNew.setPuntosProducto(puntos);
         productoNew.setEstadoProducto(1);
         productoNew.setDescripcionProducto(descripcion);
-        //Hidden agregar
-        if(id==0)
+        if(idProducto==0)
         {
             productoService.addProducto(productoNew);
         }
         //Hidden editar con id
         else{
-            productoNew.setIdProducto(id);
+            productoNew.setIdProducto(idProducto);
             productoService.editProducto(productoNew);
         }
-        
-        return "redirect:/inventario/listaProductos";
-    }
-    
-    @RequestMapping(value = "/nuevoProducto", method = RequestMethod.GET)
-    public String listarCategorias(@RequestParam(value="edit", required=false) Object id, Model model){
-        List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
-        model.addAttribute("listaCategorias", listaCategorias);
-        //Cuando dé click en editar
-        if(id!=null)
-        {
-            int idProducto=Integer.parseInt((String) id) ;
-            ProductoTO producto=productoService.findProductoById(idProducto);
-            model.addAttribute("producto",producto);
-            model.addAttribute("swEditar",1);
-        }
-        return "inventario/producto";
-    }
+        ((ObjectNode) jsonNode).put("respuesta", "");
+            return jsonNode;
+    }  
     
     @RequestMapping(value = "/cambiarEstadoProducto", method = RequestMethod.POST)
     @ResponseBody

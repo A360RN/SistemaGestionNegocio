@@ -16,6 +16,10 @@ public interface ProductoService {
      List<ProductoTO> findAllProductosInventario();
      
      ProductoTO findProductoById(int id);
+     
+     boolean nombreRepetido(String nombre);
+     
+     boolean idRepetido(int id,String nombre);
           
      void addProducto(ProductoTO producto);
      

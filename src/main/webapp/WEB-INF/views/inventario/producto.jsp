@@ -13,17 +13,18 @@
         <c:choose><c:when test="${swEditar eq 1}">Editar </c:when><c:otherwise>Agregar </c:otherwise></c:choose>un producto
             </h3>
             <hr>
-            <form action="listaProductos" method="POST">
+            <form action="saveProducto" id="form-producto" method="POST">
+                <div id="errores-producto"></div>
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label for="nombre">Nombre*:</label>
                 <c:choose>
                     <c:when test="${swEditar eq 1}">
-                        <input type="hidden" name="id" value="${producto.idProducto}">
+                        <input type="hidden" id="idProducto" value="${producto.idProducto}">
                         <input value="${producto.nombreProducto}" class="form-control" type="text" id="nombre" name="nombre">
                     </c:when>
                     <c:otherwise>
-                        <input type="hidden" name="id" value="0">
+                        <input type="hidden" id="idProducto" value="0">
                         <input class="form-control" type="text" id="nombre" name="nombre">
                     </c:otherwise>
                 </c:choose>
@@ -32,7 +33,7 @@
             <div class="form-group col-md-3">
                 <label for="categoria">Categoría*:</label>
                 <select class="form-control" id="categoria" name="categoria">
-                    <option value="" selected="" disabled="">Seleccione una opción</option>
+                    <option value=" " selected="">Seleccione una opción</option>
                     <c:choose>
                         <c:when test="${swEditar eq 1}">
                             <c:forEach items="${listaCategorias}" var="cat">
@@ -102,14 +103,14 @@
 
             </div>
         </div>
-        <div class="form-group pull-right">
-            <input type="submit" class="form-control btn btn-warning pull-right" value="Registrar">
-        </div><div class="clearfix"></div>
-        <div class="form-group pull-right">
-            <a href="${pageContext.request.contextPath}/inventario/listaProductos" class="form-control btn btn-secondary">Cancelar</a>
-        </div><div class="clearfix"></div>
     </form>
+    <div class="form-group pull-right">
+        <input type="submit" class="form-control btn btn-warning pull-right" id="btn-registrar-producto" value="Registrar">
+    </div><div class="clearfix"></div>
+    <div class="form-group pull-right">
+        <a href="${pageContext.request.contextPath}/inventario/listaProductos" class="form-control btn btn-secondary">Cancelar</a>
+    </div><div class="clearfix"></div>
 
-</div>
+</div>s
 
 <%@ include file="../includes/footer.jsp"%>
