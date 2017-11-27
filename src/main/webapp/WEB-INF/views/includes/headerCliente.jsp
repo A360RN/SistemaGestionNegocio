@@ -7,6 +7,7 @@
 <%@ include file="../includes/head.jsp"%>
 
 <%@ include file="../includes/navhead.jsp"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Cuerpo nav -->
 <ul class="navbar-nav mr-auto">
@@ -20,7 +21,7 @@
 
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="${pageContext.request.contextPath}/carrito/detalle">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             Carrito de compras
         </a>
@@ -35,7 +36,17 @@
         </a>
     </li>
 </ul>
-
+         
+<c:if test="${sessionScope.perfil.codigoPerfil eq 'DIS'}">
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item nav-item-section">
+        <a class="nav-link" href="${pageContext.request.contextPath}/distribuidor/listaComisiones">
+            <i class="fa fa-money" aria-hidden="true"></i>
+            Comisiones
+        </a>
+    </li>
+</ul>
+</c:if>
 <!-- Fin cuerpo nav -->
 
 <%@ include file="../includes/navfooter.jsp"%>

@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<%@include file="../includes/headerDistribuidor.jsp" %>
+<%@include file="../includes/headerCliente.jsp" %>
 
 <div class="container">
     <input type="hidden" id="idDistribuidor" value="${distribuidor.idDistribuidor}">

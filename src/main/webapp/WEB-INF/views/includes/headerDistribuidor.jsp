@@ -11,21 +11,32 @@
 <!-- Cuerpo nav -->
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="#">Tienda</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/tienda/productos">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            Tienda
+        </a>
     </li>
 </ul>
 
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="#">Mis pedidos</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/carrito/detalle">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Carrito de compras
+        </a>
     </li>
 </ul>
 
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
-        <a class="nav-link" href="${pageContext.request.contextPath}/distribuidor/listaComisiones">Comisiones</a>
+        <a class="nav-link" href="#">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            Mis Pedidos
+        </a>
     </li>
 </ul>
+
+
 
 <!-- Fin cuerpo nav -->
 

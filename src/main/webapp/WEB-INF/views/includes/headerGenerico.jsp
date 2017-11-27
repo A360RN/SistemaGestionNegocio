@@ -12,7 +12,7 @@
         <%@include file="../includes/headerVentas.jsp" %>
     </c:when>
     <c:when test="${sessionScope.perfil.codigoPerfil eq 'DIS'}">
-        <%@include file="../includes/headerDistribuidor.jsp" %>
+        <%@include file="../includes/headerCliente.jsp" %>
     </c:when>
     <c:when test="${sessionScope.perfil.codigoPerfil eq 'CLI'}">
         <%@include file="../includes/headerCliente.jsp" %>

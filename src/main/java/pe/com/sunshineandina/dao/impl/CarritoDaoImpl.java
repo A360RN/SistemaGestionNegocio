@@ -5,10 +5,7 @@
  */
 package pe.com.sunshineandina.dao.impl;
 
-import java.util.Date;
-import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import pe.com.sunshineandina.dao.AbstractDAO;
