@@ -57,7 +57,7 @@ public class TiendaController {
         } else {
             /* Hallamos la lista de productos paginados */
             lstProductos = productoService.findPaginado(Constantes.INICIO_PRODUCTOS_POR_PAGINA_POR_DEFECTO);
-            
+
         }
         model.addAttribute("lstProductos", lstProductos);
         /* Nro de paginas y cantidad de productos*/

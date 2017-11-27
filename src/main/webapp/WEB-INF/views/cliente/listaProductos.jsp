@@ -22,6 +22,9 @@
                          class="img-fluid">
                     <h4><c:out value="${producto.nombreProducto}"></c:out></h4>
                     <div class="text-muted">Precio: S/.<c:out value="${producto.precioProducto}"></c:out></div>
+                    <c:if test="${sessionScope.perfil.codigoPerfil eq 'DIS'}"> 
+                        <div class="text-muted">Puntos: <c:out value="${producto.puntosProducto}"></c:out></div>
+                    </c:if>
                     <button class="btn btn-warning" data-idproducto="${producto.idProducto}" data-toggle="modal" data-target="#modalAgregarACarrito">Agregar al carrito</button>
                     <button class="btn btn-secondary" data-idproducto="${producto.idProducto}" data-toggle="modal" data-target="#modalDetalleProducto">Más Info...</button>
                 </div>
