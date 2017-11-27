@@ -6,9 +6,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <form action="POST" class="form-inline">
+            <form action="productos" method="GET" class="form-inline">
                 <label class="mr-sm-2" for="selectCategoria">Categoría</label>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="selectCategoria">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="selectCategoria" id="selectCategoria">
                     <c:forEach items="${lstCategorias}" var="categoria">
                         <option value="${categoria.idCategoria}"><c:out value="${categoria.nombreCategoria}"></c:out></option>
                     </c:forEach>

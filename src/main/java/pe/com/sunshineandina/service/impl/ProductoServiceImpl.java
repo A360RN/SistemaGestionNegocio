@@ -93,4 +93,15 @@ public class ProductoServiceImpl implements ProductoService{
         return null;
     }
 
+    @Override
+    public List<ProductoTO> findByCategoriaPaginado(int idCategoria, int inicio) {
+        ParametroTO parametro = parametroDAO.findByDescParametro(Constantes.PARAMETRIA_PRODUCTOS_POR_PAGINA);
+        if(parametro != null){
+            int cantidadPagina = Integer.parseInt(parametro.getValorParametro());
+            List<ProductoTO> lstProductos = productoDao.findByCategoriaPaginado(idCategoria, inicio, cantidadPagina);
+            return lstProductos;
+        }
+        return null;
+    }
+
 }
