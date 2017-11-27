@@ -41,6 +41,10 @@ modalAgregarACarrito.on('show.bs.modal', function(event) {
     });
 });
 
+modalAgregarACarrito.on('hide.bs.modal', function(event){
+    modalAgregarACarrito.find('.modal-body input#txtCantidad').val("");
+});
+
 btnModalAgregarACarritoNo.on('click', function(e){
     modalAgregarACarrito.modal('hide');
 });
@@ -64,7 +68,6 @@ btnModalAgregarACarritoSi.on('click', function(e){
         method: 'POST',
         data: JSON.stringify(data) 
     }).done(function (response){
-        modalAgregarACarrito.find('.modal-body input#txtCantidad').val("");
         modalAgregarACarrito.modal('hide');
     });
 });

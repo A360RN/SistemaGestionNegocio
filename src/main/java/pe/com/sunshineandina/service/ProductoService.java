@@ -29,5 +29,7 @@ public interface ProductoService {
      
      List<ProductoTO> findPaginado(int inicio);
      
+     List<ProductoTO> findByCategoriaPaginado(int idCategoria, int inicio);
+     
      
 }

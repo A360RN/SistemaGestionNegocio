@@ -6,9 +6,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <form action="POST" class="form-inline">
+            <form action="productos" method="GET" class="form-inline">
                 <label class="mr-sm-2" for="selectCategoria">Categoría</label>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="selectCategoria">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="selectCategoria" id="selectCategoria">
                     <c:forEach items="${lstCategorias}" var="categoria">
                         <option value="${categoria.idCategoria}"><c:out value="${categoria.nombreCategoria}"></c:out></option>
                     </c:forEach>
@@ -22,6 +22,9 @@
                          class="img-fluid">
                     <h4><c:out value="${producto.nombreProducto}"></c:out></h4>
                     <div class="text-muted">Precio: S/.<c:out value="${producto.precioProducto}"></c:out></div>
+                    <c:if test="${sessionScope.perfil.codigoPerfil eq 'DIS'}"> 
+                        <div class="text-muted">Puntos: <c:out value="${producto.puntosProducto}"></c:out></div>
+                    </c:if>
                     <button class="btn btn-warning" data-idproducto="${producto.idProducto}" data-toggle="modal" data-target="#modalAgregarACarrito">Agregar al carrito</button>
                     <button class="btn btn-secondary" data-idproducto="${producto.idProducto}" data-toggle="modal" data-target="#modalDetalleProducto">Más Info...</button>
                 </div>
