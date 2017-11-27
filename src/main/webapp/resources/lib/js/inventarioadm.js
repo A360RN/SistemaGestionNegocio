@@ -81,7 +81,7 @@ botonRegistrarCategoria.on('click', function (e) {
         }).done(function (e) {
             if(e.respuesta==="repetido")
             {
-                error += '<p class="mb-0">Producto repetido</p>';
+                error += '<p class="mb-0">Categoria repetido</p>';
                 $("#errores-producto").html("<div class='alert alert-danger' role='alert'>"+error+"</div>");
             }else if(e.respuesta==="")
                 window.location.href = 'listaCategorias';
