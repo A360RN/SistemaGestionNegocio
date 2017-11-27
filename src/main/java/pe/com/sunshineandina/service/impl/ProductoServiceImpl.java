@@ -47,6 +47,26 @@ public class ProductoServiceImpl implements ProductoService{
         Hibernate.initialize(producto.getCategoria());
         return producto;
     }
+    
+    @Override
+    public boolean nombreRepetido(String nombre) {
+        ProductoTO producto=productoDao.findByNombre(nombre);
+        if(producto==null)
+        {
+            return false;
+        }          
+        return true;
+    }
+    
+    @Override
+    public boolean idRepetido(int id,String nombre) {
+        ProductoTO producto=productoDao.findByIdAndNombre(id,nombre);
+        if(producto==null)
+        {
+            return false;
+        }          
+        return true;
+    }
 
     @Override
     public void addProducto(ProductoTO producto) {

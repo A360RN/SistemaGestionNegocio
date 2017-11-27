@@ -18,6 +18,10 @@ public interface ProductoDAO {
     
     void save(ProductoTO producto);
     
+    ProductoTO findByNombre(String nombreProducto);
+    
+    ProductoTO findByIdAndNombre(int idProducto,String nombreProducto);
+    
     List<ProductoTO> findByCategoria(int idCategoria);
     
     List<ProductoTO> findAllByCategoria(int idCategoria);

@@ -18,6 +18,10 @@ public interface CategoriaDAO {
     
     CategoriaTO findById(int id);
     
+    CategoriaTO findByNombre(String nombreCategoria);
+    
+    CategoriaTO findByIdAndNombre(int idCategoria,String nombreCategoria);
+    
     List<CategoriaTO> findAll();
     
     CategoriaTO findByNombreCategoria(String nombreCategoria);

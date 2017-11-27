@@ -17,6 +17,10 @@ public interface CategoriaService {
     
     CategoriaTO findCategoriaById(int id);
     
+    boolean nombreRepetido(String nombre);
+     
+    boolean idRepetido(int id,String nombre);
+    
     CategoriaTO findCategoriaByNombre(String nombre);
     
     void addCategoria(CategoriaTO categoria);
