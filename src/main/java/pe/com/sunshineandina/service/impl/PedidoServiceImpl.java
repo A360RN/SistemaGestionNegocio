@@ -5,6 +5,8 @@
  */
 package pe.com.sunshineandina.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import pe.com.sunshineandina.dao.ProductoDAO;
 import pe.com.sunshineandina.dto.CarritoTO;
 import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.DetalleCarritoTO;
+import pe.com.sunshineandina.dto.DetallePedidoTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.PedidoService;
@@ -87,6 +90,42 @@ public class PedidoServiceImpl implements PedidoService {
                 ProductoTO producto = detalle.getProducto();
                 rpta.append(validarStock(producto, detalle.getCantidad()));
             }
+            
+            if(!rpta.toString().equals("")){
+                return rpta.toString();
+            }
+            
+            /* Creamos el pedido */
+            PedidoTO pedido = new PedidoTO();
+            pedido.setCliente(cliente);
+            pedido.setEstadoPedido(Constantes.ESTADO_PEDIDO_PENDIENTE);
+            pedido.setFechaCreacion(new Date());
+            pedido.setFechaModificacion(new Date());
+            pedido.setPrecioAcumuladoPedido(carrito.getPrecioAcumuladoCarrito());
+            pedido.setPuntosAcumuladoPedido(carrito.getPuntosAcumuladoCarrito());
+            
+            List<DetallePedidoTO> lstDetallePedido = new ArrayList<>();
+            
+            for(DetalleCarritoTO detalleCarrito : carrito.getDetalleCarritos()){
+                /* Agregamos los detalles del pedido */
+                DetallePedidoTO detallePedido = new DetallePedidoTO();
+                detallePedido.setPedido(pedido);
+                detallePedido.setCantidad(detalleCarrito.getCantidad());
+                detallePedido.setPrecioDetallePedido(detalleCarrito.getPrecioDetalleCarrito());
+                detallePedido.setProducto(detalleCarrito.getProducto());
+                detallePedido.setPuntosDetallePedido(detalleCarrito.getPuntosDetalleCarrito());
+                lstDetallePedido.add(detallePedido);
+                
+                /* Actualizamos el stock */
+                ProductoTO producto = productoDao.findById(detalleCarrito.getProducto().getIdProducto());
+                producto.setStockProducto(producto.getStockProducto() - detalleCarrito.getCantidad());
+                productoDao.save(producto);
+            }
+            /* Guardamos el pedido */
+            pedido.setDetallePedidos(lstDetallePedido);
+            pedidoDao.save(pedido);
+            rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);
+            
             
         } catch (Exception e) {
             rpta = new StringBuilder();

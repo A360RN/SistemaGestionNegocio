@@ -77,7 +77,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="centrar-texto-modal">
-                    <h4 class="modal-title" id="modalLabel">Error en confirmación</h4>
+                    <h4 class="modal-title" id="modalLabel">Estado del Pedido</h4>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>

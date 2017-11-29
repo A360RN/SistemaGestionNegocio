@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `sunshine_andina_db`.`TSA_PEDIDO` (
   `id_cliente` INT NOT NULL,
   `estado_pedido` VARCHAR(45) NULL,
   `precio_acumulado_pedido` DECIMAL(10,2) NULL,
-  `puntos_acumulado_pedido` DECIMAL(10,2) NULL,
+  `puntos_acumulado_pedido` INT NULL,
   `fecha_creacion` DATE NULL,
   `fecha_modificacion` DATE NULL,
   PRIMARY KEY (`id_pedido`),

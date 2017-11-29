@@ -22,6 +22,10 @@ public class Constantes {
     public static final String PERFIL_DISTRIBUIDOR = "DIS";
     public static final int TIPO_LIDER_DEFECTO=1;
     
+    public static final String ESTADO_PEDIDO_PAGADO = "PAGADO";
+    public static final String ESTADO_PEDIDO_PENDIENTE = "PENDIENTE";
+    public static final String ESTADO_PEDIDO_CANCELADO = "CANCELADO";
+    
     public static final int INICIO_PRODUCTOS_POR_PAGINA_POR_DEFECTO = 0;
     
     public static final String PARAMETRIA_PRODUCTOS_POR_PAGINA = "PRODUCTOS_POR_PAGINA";
@@ -42,4 +46,6 @@ public class Constantes {
     
     /**************************** MENSAJES DE EXITO ****************************/
     public static final String PRODUCTO_CARRITO_EXITO = "Se agregó el producto al carrito";
+    
+    public static final String PEDIDO_REGISTRADO_EXITO = "Se registró el pedido con éxito";
 }
