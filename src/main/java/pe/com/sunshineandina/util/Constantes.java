@@ -35,8 +35,10 @@ public class Constantes {
     public static final String ERROR_CATEGORIA_REPETIDA="La categoria ingresada ya existe";
     
     public static final String ERROR_NO_SE_ENCONTRO_CLIENTE = "No se encontro al cliente";
-    public static final String ERROR_STOCK_INSUFICIENTE = "La cantidad excede al stock del producto";
-    public static final String ERROR_STOCK_AGOTADO = "Lo sentimos, el stock del producto se ha agotado";
+    public static final String ERROR_STOCK_AGOTADO = "Lo sentimos, se han agotado las unidades de %s $";
+    public static final String ERROR_STOCK_INSUFICIENTE = "Lo sentimos, solo quedan %d unidades de %s $";
+    
+    public static final String ERROR_GENERICO_PEDIDO = "Ocurrió un error al intentar procesar el pedido";
     
     /**************************** MENSAJES DE EXITO ****************************/
     public static final String PRODUCTO_CARRITO_EXITO = "Se agregó el producto al carrito";

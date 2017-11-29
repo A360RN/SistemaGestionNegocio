@@ -24,6 +24,14 @@ import pe.com.sunshineandina.response.VentasDistribuidorResponse;
  */
 public class ResponseMapper {
     
+    public static JsonNode nuevoPedidoMapper(String rpta){
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonRespuesta = mapper.createObjectNode();
+        
+        ((ObjectNode)jsonRespuesta).put("nuevoPedidoResponse", rpta);
+        return jsonRespuesta;
+    }
+    
     public static JsonNode ventasDistribuidorMapper(List<HistoricoDistribuidorTO> lstVentas){
         
         ObjectMapper mapper = new ObjectMapper();

@@ -40,11 +40,52 @@
                 <div class="card-block">
                   <h4 class="card-title">Carrito de Compras</h4>
                   <p class="card-text">El total a pagar es: S/.<c:out value="${carrito.precioAcumuladoCarrito}"></c:out></p>
-                  <button class="btn btn-warning" id="btnRegistrarPedido">Registrar el pedido</button>
+                  <button class="btn btn-warning" id="btnRegistrarPedido" data-toggle="modal" data-target="#modalPedidoConfirmar">Registrar el pedido</button>
                 </div>
             </div>
         </div>
         </c:if>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modalPedidoConfirmar">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="centrar-texto-modal">
+                    <h4 class="modal-title" id="mySmallModalLabel">Confirmar pedido</h4>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">¿Está seguro de realizar este pedido?</p>
+                <input type="hidden" name="idUsuario">
+            </div>
+            <div class="modal-footer">
+                <div class="centrar-texto-modal">
+                    <button type="button" class="btn btn-warning" id="modalPedidoConfirmar-btn-si">Si</button>
+                    <button type="button" class="btn btn-secondary" id="modalPedidoConfirmar-btn-no">No</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" id="modalPedidoEstadoConfirmacion">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="centrar-texto-modal">
+                    <h4 class="modal-title" id="modalLabel">Error en confirmación</h4>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center"></p>
+                <input type="hidden" name="idUsuario">
+            </div>
+        </div>
     </div>
 </div>
 

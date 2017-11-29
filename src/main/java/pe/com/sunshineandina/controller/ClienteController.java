@@ -5,28 +5,34 @@
  */
 package pe.com.sunshineandina.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pe.com.sunshineandina.dto.CarritoTO;
 import pe.com.sunshineandina.dto.UsuarioTO;
+import pe.com.sunshineandina.mapper.ResponseMapper;
 import pe.com.sunshineandina.service.CarritoService;
+import pe.com.sunshineandina.service.PedidoService;
 
 /**
  *
  * @author alonsorn
  */
 @Controller
-@RequestMapping("/carrito")
 public class ClienteController {
     
     @Autowired
     private CarritoService carritoService;
     
-    @RequestMapping(value = "/detalle", method = RequestMethod.GET)
+    @Autowired
+    private PedidoService pedidoService;
+    
+    @RequestMapping(value = "/carrito/detalle", method = RequestMethod.GET)
     public String obtenerCarrito(HttpSession session, Model model){
         
         /* Hallamos el usuario logeado */
@@ -40,5 +46,19 @@ public class ClienteController {
         
         return "cliente/carrito";
         
+    }
+    
+    @RequestMapping(value = "/pedido", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonNode nuevoPedido(HttpSession session){
+        /* Hallamos el usuario logeado */
+        UsuarioTO usuario = (UsuarioTO) session.getAttribute("usuario");
+        int idUsuario = usuario.getIdUsuario();
+        
+        /* Creamos el pedido */
+        String rpta = pedidoService.nuevoPedido(idUsuario);
+        JsonNode jsonRespuesta = ResponseMapper.nuevoPedidoMapper(rpta);
+        
+        return jsonRespuesta;
     }
 }
