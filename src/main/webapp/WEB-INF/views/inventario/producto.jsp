@@ -20,11 +20,11 @@
                         <label for="nombre">Nombre*:</label>
                 <c:choose>
                     <c:when test="${swEditar eq 1}">
-                        <input type="hidden" id="idProducto" value="${producto.idProducto}">
+                        <input type="hidden" name="idProducto" id="idProducto" value="${producto.idProducto}">
                         <input value="${producto.nombreProducto}" class="form-control" type="text" id="nombre" name="nombre">
                     </c:when>
                     <c:otherwise>
-                        <input type="hidden" id="idProducto" value="0">
+                        <input type="hidden" name="idProducto" id="idProducto" value="0">
                         <input class="form-control" type="text" id="nombre" name="nombre">
                     </c:otherwise>
                 </c:choose>

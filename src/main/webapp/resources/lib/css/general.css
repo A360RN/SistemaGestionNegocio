@@ -28,7 +28,7 @@ input[type=submit], button{
     cursor:pointer;
 }
 header{
-    margin-bottom:85px;
+    margin-bottom:105px;
 }
 .color-sunshine{
     background-color: #AFDDB0;
@@ -51,4 +51,7 @@ header{
     padding:30px;
     background-color:white;
     border-radius:40px;
+}
+#inicio,#fin{
+    background-color: white;
 }

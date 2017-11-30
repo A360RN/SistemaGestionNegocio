@@ -16,6 +16,8 @@ public interface OfertaDAO {
     
     OfertaTO findById(int id);
     
+    void save(OfertaTO oferta);
+    
     List<OfertaTO> findAllOfertas();
     
     List<OfertaTO> findByCategoria(int idCategoria);

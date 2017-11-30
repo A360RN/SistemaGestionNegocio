@@ -12,7 +12,7 @@
 <div class="container">
     <div class="titulo">
         <h1 class="text-center">Ofertas</h1>
-        <a href="" class="btn btn-warning pull-right" id="add-oferta-btn">Registrar una oferta</a>
+        <a href="${pageContext.request.contextPath}/ventas/nuevaOferta" class="btn btn-warning pull-right" id="add-oferta-btn">Registrar una oferta</a>
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@
                 <c:forEach items="${listaOfertas}" var="oferta">
                     <tr>
                         <td class="text-center icon">
-                            <button class="btn btn-sm btn-editar-oferta" data-toggle="modal" data-target="#modalEditarOferta" data-idoferta="${oferta.idOferta}">
+                            <button type="submit" class="btn btn-sm btn-editar-oferta" data-toggle="tooltip" data-placement="top" title="Editar la oferta" data-idoferta="${oferta.idOferta}">
                                 <span class="fa fa-pencil fa-2x"></span>
                             </button>
                         </td>
@@ -42,6 +42,9 @@
                 </c:forEach>
             </tbody>
         </table>
+        <form id="EditFormOferta" action="editarOferta" method="POST">
+            <input type="hidden" id="hiddenEditarOferta" name="idOferta" value="">
+        </form>
     </div>
 </div>
 

@@ -64,7 +64,7 @@
                 </c:forEach>
             </tbody>
         </table>
-        <form id="EditForm" action="editarProducto" method="POST">
+        <form id="EditFormProducto" action="editarProducto" method="POST">
             <input type="hidden" id="hiddenEditarProducto" name="idProducto" value="">
         </form>
     </div>
