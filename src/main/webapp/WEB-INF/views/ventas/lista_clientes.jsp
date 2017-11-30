@@ -35,10 +35,10 @@
                             </button>
                             <c:choose>
                                 <c:when test="${cliente.distribuidor.estadoDistribuidor == 1}">
-                                    Distribuidor
+                                    DISTRIBUIDOR
                                 </c:when>
                                 <c:otherwise>
-                                    Normal
+                                    NORMAL
                                 </c:otherwise>
                             </c:choose>
                          </td>

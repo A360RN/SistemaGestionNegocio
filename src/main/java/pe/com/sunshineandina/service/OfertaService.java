@@ -17,4 +17,8 @@ public interface OfertaService {
     List<OfertaTO> findAllOfertas();
     
     OfertaTO findById(int oferta);
+    
+    void addOferta(OfertaTO oferta);
+     
+    void editOferta(OfertaTO oferta);
 }

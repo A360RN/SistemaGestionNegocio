@@ -49,6 +49,12 @@ public class ProductoController {
         model.addAttribute("listaCategorias", listaCategorias);
         return "inventario/producto";
     }
+    
+    @RequestMapping(value = "/editarProducto", method = RequestMethod.GET)
+        public String redireccionarEditar(){
+            return "redirect:/inventario/listaProductos";
+        }
+        
     @RequestMapping(value = "/editarProducto", method = RequestMethod.POST)
     public String listarCategoriasEditar(@RequestParam("idProducto") int id, Model model){
         List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();

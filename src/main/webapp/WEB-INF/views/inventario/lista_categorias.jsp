@@ -50,7 +50,7 @@
                     </c:forEach>
                 </tbody>
             </table>
-            <form id="EditForm" action="editarCategoria" method="POST">
+            <form id="EditFormCategoria" action="editarCategoria" method="POST">
                 <input type="hidden" id="hiddenEditarCategoria" name="idCategoria" value="">
             </form>
         </div>

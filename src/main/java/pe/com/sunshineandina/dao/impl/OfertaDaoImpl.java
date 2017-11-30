@@ -38,4 +38,9 @@ public class OfertaDaoImpl extends AbstractDAO<Integer, OfertaTO> implements Ofe
         return (List<OfertaTO>) criteria.list();
     }
 
+    @Override
+    public void save(OfertaTO oferta) {
+        persist(oferta);
+    }
+
 }

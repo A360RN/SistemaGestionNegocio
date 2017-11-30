@@ -38,6 +38,11 @@ public class CategoriaController {
         return "inventario/lista_categorias";
     }
     
+    @RequestMapping(value = "/editarCategoria", method = RequestMethod.GET)
+        public String redireccionarEditar(){
+            return "redirect:/inventario/listaCategorias";
+        }
+    
     @RequestMapping(value = "/editarCategoria",  method = RequestMethod.POST)
     public String listaCategorias(@RequestParam("idCategoria") int id ,Model model) {
         List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();

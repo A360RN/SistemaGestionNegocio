@@ -53,12 +53,12 @@ public class ClienteServiceImpl implements ClienteService {
         ClienteTO clientes=new ClienteTO();
         if(cliente != null){
             DistribuidorTO distribuidor=distribuidorDao.findByCliente(cliente);
-            if(tipoCliente.equals("Normal")&&distribuidor!=null)
+            if(tipoCliente.equals("NORMAL")&&distribuidor!=null)
             {
                 distribuidor.setEstadoDistribuidor(Constantes.ESTADO_INACTIVO);
                 distribuidorDao.save(distribuidor);               
             }   
-            if(tipoCliente.equals("Distribuidor")&&distribuidor==null)
+            if(tipoCliente.equals("DISTRIBUIDOR")&&distribuidor==null)
             {
                 //NO OLVIDAR EL FORMATO PARA EL CODIGO DE DISTRIBUIDOR
                 DistribuidorTO distribuidorUpd=new DistribuidorTO();
@@ -69,7 +69,7 @@ public class ClienteServiceImpl implements ClienteService {
                 distribuidorUpd.setEstadoDistribuidor(Constantes.ESTADO_ACTIVO);
                 distribuidorDao.save(distribuidorUpd);
             }
-            else if(tipoCliente.equals("Distribuidor")&&distribuidor!=null)
+            else if(tipoCliente.equals("DISTRIBUIDOR")&&distribuidor!=null)
             {
                 distribuidor.setEstadoDistribuidor(Constantes.ESTADO_ACTIVO);
                 distribuidorDao.save(distribuidor);

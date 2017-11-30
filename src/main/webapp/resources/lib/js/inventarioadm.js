@@ -12,13 +12,13 @@ var botonEditarCategoria=$(".btn-editar-categoria");
 botonEditarProducto.on('click', function (e) {
     let idProducto = $(this).data("idproducto");
     $("#hiddenEditarProducto").val(idProducto);
-    $("#EditForm").submit();
+    $("#EditFormProducto").submit();
 });
 
 botonEditarCategoria.on('click', function (e) {
     let idCategoria = $(this).data("idcategoria");
     $("#hiddenEditarCategoria").val(idCategoria);
-    $("#EditForm").submit();
+    $("#EditFormCategoria").submit();
 });
 
 botonEstadoProducto.on('click', function (e) {

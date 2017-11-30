@@ -5,7 +5,13 @@
  */
 package pe.com.sunshineandina.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +21,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
+import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.service.ClienteService;
 import pe.com.sunshineandina.service.OfertaService;
 import pe.com.sunshineandina.service.PedidoService;
-
 
 /**
  *
@@ -31,67 +38,70 @@ import pe.com.sunshineandina.service.PedidoService;
 @Controller
 @RequestMapping("/ventas")
 public class VentasController {
-    
+
     @Autowired
     private PedidoService pedidoService;
-    
+
     @Autowired
     private OfertaService ofertaService;
-    
+
     @Autowired
     private ClienteService clienteService;
-    
+
+    @Autowired
+    private CategoriaService categoriaService;
+
     @RequestMapping(value = "/listaPedidos", method = RequestMethod.GET)
-    public String listaPedidos(Model model){
-        List<PedidoTO> listaPedidos=pedidoService.findAllPedidos();
+    public String listaPedidos(Model model) {
+        List<PedidoTO> listaPedidos = pedidoService.findAllPedidos();
         model.addAttribute("listaPedidos", listaPedidos);
         return "ventas/lista_pedidos";
     }
-    
+
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String dashboard(Model model){
-        
+    public String dashboard(Model model) {
+
         return "ventas/dashboard";
     }
-    
+
     @RequestMapping(value = "/listaClientes", method = RequestMethod.GET)
-    public String listaClientes(Model model){
-        List<ClienteTO> listaClientes=clienteService.findAllClientes();
-        model.addAttribute("listaClientes", listaClientes);        
+    public String listaClientes(Model model) {
+        List<ClienteTO> listaClientes = clienteService.findAllClientes();
+        model.addAttribute("listaClientes", listaClientes);
         return "ventas/lista_clientes";
     }
-    
+
     @RequestMapping(value = "/listaOfertas", method = RequestMethod.GET)
-    public String listaOfertas(Model model){
-        List<OfertaTO> listaOfertas=ofertaService.findAllOfertas();
+    public String listaOfertas(Model model) {
+        List<OfertaTO> listaOfertas = ofertaService.findAllOfertas();
         model.addAttribute("listaOfertas", listaOfertas);
         return "ventas/lista_ofertas";
     }
 
     @RequestMapping(value = "/editarPedido", method = RequestMethod.POST)
     @ResponseBody
-    public PedidoTO editarPedido(@RequestBody ObjectNode nodoJson){
+    public PedidoTO editarPedido(@RequestBody ObjectNode nodoJson) {
         int idPedido = nodoJson.get("idPedido").asInt();
-        PedidoTO pedido = pedidoService.findPedidoById(idPedido);    
+        PedidoTO pedido = pedidoService.findPedidoById(idPedido);
         PedidoTO pedidoJson = new PedidoTO();
         pedidoJson.setEstadoPedido(pedido.getEstadoPedido());
         return pedidoJson;
-    } 
-    
+    }
+
     @RequestMapping(value = "/actualizarPedido", method = RequestMethod.POST)
     @ResponseBody
     public void actualizarPedido(
             @RequestParam("idPedido") int idPedido,
-            @RequestParam("estadoPedido") String estadoPedido){
+            @RequestParam("estadoPedido") String estadoPedido) {
         PedidoTO pedido = new PedidoTO();
         pedido.setIdPedido(idPedido);
         pedido.setEstadoPedido(estadoPedido);
         pedidoService.actualizarPedido(pedido);
     }
-    
+
     @RequestMapping(value = "/editarCliente", method = RequestMethod.POST)
     @ResponseBody
-    public ClienteTO editarCliente(@RequestBody ObjectNode nodoJson){
+    public ClienteTO editarCliente(@RequestBody ObjectNode nodoJson) {
         int idCliente = nodoJson.get("idCliente").asInt();
         ClienteTO cliente = clienteService.findById(idCliente);
         ClienteTO clienteJson = new ClienteTO();
@@ -99,21 +109,84 @@ public class VentasController {
         clienteJson.setPrimerNombre(cliente.getPrimerNombre());
         clienteJson.setPrimerApellido(cliente.getPrimerApellido());
         DistribuidorTO distribuidorJson = new DistribuidorTO();
-        if(cliente.getDistribuidor()!= null){
+        if (cliente.getDistribuidor() != null) {
             distribuidorJson.setIdDistribuidor(cliente.getDistribuidor().getIdDistribuidor());
             distribuidorJson.setEstadoDistribuidor(cliente.getDistribuidor().getEstadoDistribuidor());
         }
         clienteJson.setDistribuidor(distribuidorJson);
         return clienteJson;
-    } 
-    
+    }
+
     @RequestMapping(value = "/actualizarCliente", method = RequestMethod.POST)
     @ResponseBody
     public void actualizarCliente(
             @RequestParam("idCliente") int idCliente,
-            @RequestParam("tipoCliente") String tipoCliente){
+            @RequestParam("tipoCliente") String tipoCliente) {
         ClienteTO cliente = new ClienteTO();
         cliente.setIdCliente(idCliente);
-        clienteService.cambiarTipoCliente(cliente,tipoCliente);
+        clienteService.cambiarTipoCliente(cliente, tipoCliente);
     }
-}
+
+    @RequestMapping(value = "/nuevaOferta", method = RequestMethod.GET)
+    public String listarCategoriasAgregarOferta(Model model) {
+        List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
+        model.addAttribute("listaCategorias", listaCategorias);
+        return "ventas/oferta";
+    }
+
+    @RequestMapping(value = "/saveOferta", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonNode addOrEditOferta(
+            @RequestParam("idOferta") int idOferta,
+            @RequestParam("porcentaje") BigDecimal porcentaje,
+            @RequestParam("categoria") int categoria,
+            @RequestParam("inicio") String inicioF,
+            @RequestParam("fin") String finF,
+            Model model) {
+        /* Se arma el json de respuesta */
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.createObjectNode();
+        CategoriaTO categoriaFind;
+        categoriaFind = categoriaService.findCategoriaById(categoria);
+        OfertaTO ofertaNew = new OfertaTO();
+        ofertaNew.setCategoria(categoriaFind);
+        ofertaNew.setPorcentajeOferta(porcentaje);
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+        Date inicio=null;
+        Date fin=null;
+        try {
+            inicio = formatoDelTexto.parse(inicioF);
+            fin = formatoDelTexto.parse(finF);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }    
+            ofertaNew.setFechaInicio(inicio);
+            ofertaNew.setFechaFin(fin);
+            if (idOferta == 0) {
+                ofertaService.addOferta(ofertaNew);
+            } //Hidden editar con id
+            else {
+                ofertaNew.setIdOferta(idOferta);
+                ofertaService.editOferta(ofertaNew);
+            }
+            ((ObjectNode) jsonNode).put("respuesta", "");
+            return jsonNode;
+        }
+
+        @RequestMapping(value = "/editarOferta", method = RequestMethod.GET)
+        public String redireccionarEditar(){
+            return "redirect:/ventas/listaOfertas";
+        }
+    
+        @RequestMapping(value = "/editarOferta", method = RequestMethod.POST)
+        public String listarCategoriasEditar(@RequestParam("idOferta") int id, Model model){
+        List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
+            model.addAttribute("listaCategorias", listaCategorias);
+            int idOferta = id;
+            OfertaTO oferta = ofertaService.findById(idOferta);
+            model.addAttribute("oferta", oferta);
+            model.addAttribute("swEditar", 1);
+            return "ventas/oferta";
+        }
+
+    }

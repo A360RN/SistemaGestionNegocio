@@ -37,6 +37,24 @@ public class OfertaServiceImpl implements OfertaService{
     @Override
     public OfertaTO findById(int idOferta) {
         OfertaTO oferta=ofertaDao.findById(idOferta);
+        Hibernate.initialize(oferta.getCategoria());
         return oferta;
+    }
+
+    @Override
+    public void addOferta(OfertaTO oferta) {
+        ofertaDao.save(oferta);
+    }
+
+    @Override
+    public void editOferta(OfertaTO oferta) {
+        if(oferta != null){
+            OfertaTO ofertaUpd = ofertaDao.findById(oferta.getIdOferta());
+            ofertaUpd.setPorcentajeOferta(oferta.getPorcentajeOferta());
+            ofertaUpd.setFechaInicio(oferta.getFechaInicio());
+            ofertaUpd.setFechaFin(oferta.getFechaFin());
+            ofertaUpd.setCategoria(oferta.getCategoria());
+            ofertaDao.save(ofertaUpd);
+        }
     }
 }
