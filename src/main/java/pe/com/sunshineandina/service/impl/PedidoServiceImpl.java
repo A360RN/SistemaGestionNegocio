@@ -124,6 +124,11 @@ public class PedidoServiceImpl implements PedidoService {
             /* Guardamos el pedido */
             pedido.setDetallePedidos(lstDetallePedido);
             pedidoDao.save(pedido);
+            
+            /* Borramos el pedido */
+            CarritoTO carritoBorrar = carritoDao.findByCliente(idCliente);
+            carritoDao.destroy(carrito);
+            
             rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);
             
             
