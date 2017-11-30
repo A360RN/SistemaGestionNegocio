@@ -71,27 +71,29 @@
 
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modalProducto">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="centrar-texto-modal">
-                    <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="modalCategoriaApagada">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-center">¿Está seguro de eliminar el producto?</p>
-            </div>
-            <div class="modal-footer">
-                <div class="centrar-texto-modal">
-                    <button type="button" class="btn btn-danger" id="modalProducto-btn-si">Si</button>
-                    <button type="button" class="btn btn-secondary" id="modalProducto-btn-no">No</button>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" name="hiddenIdCategoria" id="hiddenIdCategoria">
+                        <input type="hidden" name="hiddenIdProducto" id="hiddenIdProducto">
+                        <h5 class="text-center">Para activar el producto, su categoria tambien debe estar activa</h5>
+                        <h5 class="text-center">¿Desea activarla?</h5>
+                    </form>
                 </div>
+                <div class="modal-footer">
+                    <div class="centrar-texto-modal">
+                        <button type="button" class="btn btn-warning" id="modalCategoriaApagada-btn-si">Sí</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCategoriaApagada-btn-no">Cancelar</button>
+                    </div>
+                </div>
+    
             </div>
-
         </div>
     </div>
-</div>
 
 <%@ include file="../includes/footer.jsp"%>

@@ -21,6 +21,7 @@ import pe.com.sunshineandina.dto.CategoriaTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.service.ProductoService;
+import pe.com.sunshineandina.util.Constantes;
 
 /**
  *
@@ -118,9 +119,33 @@ public class ProductoController {
     
     @RequestMapping(value = "/cambiarEstadoProducto", method = RequestMethod.POST)
     @ResponseBody
-    public void cambiarEstado(@RequestParam("idProducto") int idProducto)
+    public JsonNode cambiarEstado(@RequestParam("idProducto") int idProducto)
     {
         ProductoTO producto=productoService.findProductoById(idProducto);
+        CategoriaTO categoria=categoriaService.findCategoriaById(producto.getCategoria().getIdCategoria());
+        ObjectMapper mapper = new ObjectMapper();       
+        JsonNode jsonNode = mapper.createObjectNode();
+        if(producto.getEstadoProducto()==Constantes.ESTADO_INACTIVO&&categoria.getEstadoCategoria()==Constantes.ESTADO_INACTIVO)
+        {
+            ((ObjectNode) jsonNode).put("respuesta", "apagada");
+            ((ObjectNode) jsonNode).put("idCategoria", categoria.getIdCategoria());
+            return jsonNode;
+        }else{
+            productoService.changeProductState(producto);
+            ((ObjectNode) jsonNode).put("respuesta", "");
+            return jsonNode;
+        }
+    }
+    
+    @RequestMapping(value = "/cambiarEstadoProductoCategoria", method = RequestMethod.POST)
+    @ResponseBody
+    public void cambiarEstadoProductoCategoria(
+            @RequestParam("idProducto") int idProducto,
+            @RequestParam("idCategoria") int idCategoria)
+    {
+        ProductoTO producto=productoService.findProductoById(idProducto);
+        CategoriaTO categoria=categoriaService.findCategoriaById(idCategoria);
+        categoriaService.changeCategoriasState(categoria);
         productoService.changeProductState(producto);
     }
 }

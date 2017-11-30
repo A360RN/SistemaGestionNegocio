@@ -9,6 +9,8 @@ var botonRegistrarProducto = $("#btn-registrar-producto");
 var botonRegistrarCategoria=$("#btn-registrar-categoria");
 var botonEditarProducto=$(".btn-editar-producto");
 var botonEditarCategoria=$(".btn-editar-categoria");
+var modalCategoriaApagada = $("#modalCategoriaApagada");
+var btnCategoriaApagadaSi=$("#modalCategoriaApagada-btn-si");
 botonEditarProducto.on('click', function (e) {
     let idProducto = $(this).data("idproducto");
     $("#hiddenEditarProducto").val(idProducto);
@@ -29,9 +31,31 @@ botonEstadoProducto.on('click', function (e) {
         url: 'cambiarEstadoProducto',
         data: data
     }).done(function (e) {
-        window.location.href = 'listaProductos';
+        if(e.respuesta==="apagada")
+        {
+            modalCategoriaApagada.find('.modal-body #hiddenIdCategoria').val(e.idCategoria);
+            modalCategoriaApagada.find('.modal-body #hiddenIdProducto').val(idProducto);
+            modalCategoriaApagada.modal('show');
+        }else{
+            window.location.href = 'listaProductos';
+        }
+        
     });
 
+});
+
+btnCategoriaApagadaSi.on('click', function (e) {
+    e.preventDefault();
+    let idCategoria = modalCategoriaApagada.find('.modal-body #hiddenIdCategoria').val();
+    let idProducto= modalCategoriaApagada.find('.modal-body #hiddenIdProducto').val();
+    let data = {idCategoria: idCategoria, idProducto:idProducto};
+    $.ajax({
+        method: 'POST',
+        url: 'cambiarEstadoProductoCategoria',
+        data: data
+    }).done(function (e) {
+        window.location.href = 'listaProductos';
+    });
 });
 
 botonEstadoCategoria.on('click', function (e) {
@@ -163,53 +187,3 @@ botonRegistrarProducto.on('click', function (e) {
     } else
         $("#errores-producto").html("<div class='alert alert-danger' role='alert'>"+error+"</div>");
 });
-/*
- function modalConfirm(callbackP, callbackC){
- var id;
- var modalProducto = $("#modalProducto");
- var modalCategoria = $("#modalCategoria");
- 
- $(".btn-producto").on("click", function () {
- id = $(this).data("value");
- if (id !== undefined)
- modalProducto.modal('show');
- });
- $(".btn-categoria").on("click", function () {
- id = $(this).data("value");
- if (id !== undefined)
- modalCategoria.modal('show');
- });
- $("#modalProducto-btn-si").on("click", function () {
- callbackP(true, id);
- modalProducto.modal('hide');
- });
- 
- $("#modalProducto-btn-no").on("click", function () {
- modalProducto.modal('hide');
- });
- 
- $("#modalCategoria-btn-si").on("click", function () {
- callbackC(true, id);
- modalCategoria.modal('hide');
- });
- 
- $("#modalCategoria-btn-no").on("click", function () {
- modalCategoria.modal('hide');
- });
- };
- 
- modalConfirm(
- function (confirm, id) {
- if (confirm) {
- window.location.href = "lista_productos.jsp?delete=" + id;
- }
- },
- function (confirm, id) {
- if (confirm) {
- window.location.href = "lista_categorias.jsp?delete=" + id;
- }
- }
- );*/
-
-
-
