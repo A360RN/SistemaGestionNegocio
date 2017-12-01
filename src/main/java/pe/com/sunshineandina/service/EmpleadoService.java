@@ -21,6 +21,8 @@ public interface EmpleadoService {
     
     EmpleadoTO findEmpleadoById(int id);
     
+    void editEmpleado(EmpleadoTO empleado, String[] perfiles);
+    
     EmpleadoTO findEmpleadoByUsuario(int idUsuario);
     
     void addEmpleado(EmpleadoTO empleado, String[] perfiles);

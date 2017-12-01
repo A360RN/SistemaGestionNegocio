@@ -7,11 +7,18 @@ let btnEditarPoliticanSi = $('#modalEditarPolitica-btn-si');
 let btnEditarPoliticaNo = $('#modalEditarPolitica-btn-no');
 let btnModalEmpleadoInactivarSi = $('#modalEmpleadoInactivar-btn-si');
 let btnModalEmpleadoInactivarNo = $('#modalEmpleadoInactivar-btn-no');
-
+let botonEditarEmpleado=$(".btn-editar-empleado");
+let botonRegistrarEmpleado=("#btn-registrar-empleado");
 let modalPassword = $('#modalPassword');
 let modalEditarPolitica = $('#modalEditarPolitica');
 let modalEmpleadoInactivar = $('#modalEmpleadoInactivar');
 
+
+botonEditarEmpleado.on('click', function (e) {
+    let idEmpleado = $(this).data("idempleado");
+    $("#hiddenEditarEmpleado").val(idEmpleado);
+    $("#EditFormEmpleado").submit();
+});
 /* 
     Para regresar a la pantalla anterior cuando se cambia
     contraseÃ±a
@@ -142,7 +149,7 @@ btnEditarPoliticanSi.on('click', function (e) {
         modalEditarPolitica.modal('hide');
         window.location.href='listaPoliticas';
     });
-})
+});
 
 /* Modal para inactivar al empleado */
 modalEmpleadoInactivar.on('show.bs.modal', function(e){
@@ -177,4 +184,86 @@ btnModalEmpleadoInactivarSi.on('click', function(e){
     }).done(function(response){
         window.location.href = 'listaEmpleados';
     });
+});
+
+botonRegistrarEmpleado.on('click', function (e) {
+    let idEmpleado=$("#idEmpleado").val();
+    let usuario = $("#usuario").val().trim();
+    let password=$("#password").val().trim();
+    let primerNombre = $("#primerNombre").val().trim();
+    let segundoNombre = $("#segundoNombre").val().trim();
+    let primerApellido = $("#primerApellido").val().trim();
+    let segundoApellido = $("#segundoApellido").val().trim();
+    let perfiles = $("#perfiles").val().trim();
+    let telefonoCelular = $("#telCelular").val().trim();
+    let telefonoFijo = $("#telFijo").val().trim();
+    let ruc = $("#ruc").val().trim();
+    let email = $("#email").val().trim();
+    let error='';
+    /*
+    let patron = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-Z0-9À-ÿ\u00f1\u00d1]*)*[a-zA-Z0-9À-ÿ\u00f1\u00d1]+$/;
+    let error = '';
+    //Serializa los campos del formulario en notación URL para Ajax
+
+    if (nombre === '' || categoria === '' || descripcion === '' || precio === '' || puntos === '' || cantidad === '')
+    {
+        error += '<p class="mb-0">Debe rellenar todos los campos</p>';
+
+    } else {
+       
+        // En caso de querer validar cadenas con espacios usar: /^[a-zA-Z\s]*$/
+        if (nombre.search(patron))
+            error += '<p class="mb-0">El nombre del producto debe ser una cadena de texto</p>';
+        if (isNaN(precio))
+        {
+            error += '<p class="mb-0">El precio del producto debe ser un numero Ej: 19.80</p>';
+
+        }
+        if (isNaN(puntos))
+        {
+            error += '<p class="mb-0">Los puntos del producto deben ser un numero Ej: 25</p>';
+        } else if (puntos % 1 !== 0) {
+            error += '<p class="mb-0">Los puntos del producto deben ser un numero entero</p>';
+        }
+        if (isNaN(cantidad))
+        {
+            error += '<p class="mb-0">La cantidad del producto debe ser un numero Ej: 50</p>';
+        } else if (cantidad % 1 !== 0) {
+            error += '<p class="mb-0">La cantidad del producto debe ser un numero entero</p>';
+        }
+
+    }*/
+    if (error === '')
+    {
+        /*nombre=nombre.toUpperCase();
+        descripcion=descripcion.toUpperCase();*/
+        let data={
+            idEmpleado:idEmpleado,
+            usuario:usuario,
+            password:password,
+            primerNombre:primerNombre,
+            segundoNombre:segundoNombre,
+            primerApellido:primerApellido,
+            segundoApellido:segundoApellido,
+            perfiles:perfiles,
+            telefonoCelular:telefonoCelular,
+            telefonoFijo:telefonoFijo,
+            ruc:ruc,
+            email:email
+        };
+        $.ajax({
+            method: 'POST',
+            url: 'saveEmpleado',
+            data: data
+        }).done(function (e) {
+            /*if(e.respuesta==="repetido")
+            {
+                error += '<p class="mb-0">Producto repetido</p>';
+                $("#errores-producto").html("<div class='alert alert-danger' role='alert'>"+error+"</div>");
+            }else if(e.respuesta==="")*/
+                window.location.href = 'listaEmpleados';
+        });
+    } else
+        alert("AAAAAAAA");
+        //$("#errores-producto").html("<div class='alert alert-danger' role='alert'>"+error+"</div>");
 });

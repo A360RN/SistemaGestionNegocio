@@ -48,7 +48,9 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 
     @Override
     public EmpleadoTO findEmpleadoById(int id) {
-        return empleadoDao.findById(id);
+        EmpleadoTO empleado=empleadoDao.findById(id);
+        Hibernate.initialize(empleado.getUsuario().getPerfiles());
+        return empleado;
     }
 
     @Override
@@ -73,6 +75,35 @@ public class EmpleadoServiceImpl implements EmpleadoService{
         
         empleadoDao.save(empleado);
     }
+    
+    @Override
+    public void editEmpleado(EmpleadoTO empleado, String[] perfiles) {
+        EmpleadoTO empleadoUpd=empleadoDao.findById(empleado.getIdEmpleado());
+        empleadoUpd.setUsuario(empleado.getUsuario());
+        empleadoUpd.setPrimerNombre(empleado.getPrimerNombre());
+        empleadoUpd.setSegundoNombre(empleado.getSegundoNombre());
+        empleadoUpd.setPrimerApellido(empleado.getPrimerApellido());
+        empleadoUpd.setSegundoApellido(empleado.getSegundoApellido());
+        empleadoUpd.setRuc(empleado.getRuc());
+        empleadoUpd.setEmail(empleado.getEmail());
+        empleadoUpd.setTelefonoFijo(empleado.getTelefonoFijo());
+        empleadoUpd.setTelefonoCelular(empleado.getTelefonoCelular());
+        /* Hash password */
+        empleadoUpd.getUsuario().setPassUsuario(HashPassword.hashPassword(empleado.getUsuario().getPassUsuario()));
+        
+        /* Obtenemos los Perfiles */
+        List<PerfilTO> lstPerfiles = new ArrayList<>();
+        for(int i = 0; i < perfiles.length; i++){
+            PerfilTO perfil = perfilDao.findByCodigoPerfil(perfiles[i]);
+            if(perfil != null){
+                lstPerfiles.add(perfil);
+            }
+        }
+        empleadoUpd.getUsuario().setPerfiles(lstPerfiles);
+        
+        empleadoDao.save(empleadoUpd);
+    }
+    
 
     @Override
     public List<EmpleadoTO> findAllEmpleados() {
