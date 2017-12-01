@@ -11,17 +11,20 @@
 <div class="container">
     <div class="titulo">
         <h1 class="text-center">Pedidos</h1>
-        <a href="" class="btn btn-warning pull-right" id="add-pedido-btn">Registrar un pedido</a>
+        <a href="${pageContext.request.contextPath}/ventas/pedido" class="btn btn-warning pull-right" id="add-pedido-btn">Registrar un pedido</a>
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">
-        <table class="table table-sm table-hover table-bordered">
+        <table class="table table-responsive table-hover table-bordered">
             <thead class="thead-inverse">
-            <th>Nº de pedido</th>
-            <th>Cliente</th>
-            <th>Importe total</th>
-            <th>Fecha de registro</th>
-            <th>Estado</th>
+                <tr>
+                    <th>Nº de pedido</th>
+                    <th>Cliente</th>
+                    <th>Importe total</th>
+                    <th>Fecha de registro</th>
+                    <th>Fecha de modificación</th>
+                    <th>Estado</th>
+                </tr>
             </thead>
             <tbody>
                 <c:forEach items="${listaPedidos}" var="pedido">
@@ -30,6 +33,7 @@
                     <td><c:out value="${pedido.cliente.primerNombre}"></c:out> <c:out value="${pedido.cliente.primerApellido}"></c:out></td>
                     <td>${pedido.precioAcumuladoPedido}</td>
                     <td>${pedido.fechaCreacion}</td>
+                    <td>${pedido.fechaModificacion}</td>
                     <td>
                         <button class="btn btn-sm btn-editar-pedido" data-toggle="modal" data-target="#modalEditarPedido" data-idpedido="${pedido.idPedido}">
                             <span class="fa fa-pencil fa-2x"></span>
@@ -54,7 +58,7 @@
                 <div class="modal-body">
                     <form>
                         <input type="hidden" name="idpedido">
-                        <select type="text" class="form-control" name="cliente" id="txtPedido">
+                        <select  class="form-control" name="cliente" id="txtPedido">
                             
                         </select>
                         <p><small><b>Nota:</b> Un pedido solo será cancelado si el cliente lo solicita o si supera el límite de tiempo de compra.</small></p>

@@ -45,9 +45,6 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
     private ClienteDAO clienteDao;
-    
-    @Autowired
-    private DetalleCarritoDAO detalleCarritoDAO;
 
     @Override
     public List<PedidoTO> findAllPedidos() {
@@ -98,7 +95,7 @@ public class PedidoServiceImpl implements PedidoService {
             /* Creamos el pedido */
             PedidoTO pedido = new PedidoTO();
             pedido.setCliente(cliente);
-            pedido.setEstadoPedido(Constantes.ESTADO_PEDIDO_PENDIENTE);
+            pedido.setEstadoPedido(Constantes.ESTADO_PEDIDO_ORDENADO);
             pedido.setFechaCreacion(new Date());
             pedido.setFechaModificacion(new Date());
             pedido.setPrecioAcumuladoPedido(carrito.getPrecioAcumuladoCarrito());
@@ -125,8 +122,7 @@ public class PedidoServiceImpl implements PedidoService {
             pedido.setDetallePedidos(lstDetallePedido);
             pedidoDao.save(pedido);
             
-            /* Borramos el pedido */
-            CarritoTO carritoBorrar = carritoDao.findByCliente(idCliente);
+            /* Borramos el carrito */
             carritoDao.destroy(carrito);
             
             rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);

@@ -14,13 +14,15 @@
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">
-        <table class="table table-sm table-hover table-bordered">
+        <table class="table table-responsive table-hover table-bordered">
             <thead class="thead-inverse">      
-            <th>DNI</th>
-            <th>Cliente</th>
-            <th>Teléfono</th>
-            <th>Correo electrónico</th>
-            <th>Tipo de cliente</th>
+                <tr>
+                    <th>DNI</th>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Correo electrónico</th>
+                    <th>Tipo de cliente</th>
+                </tr>
             </thead>
             <tbody>
                 <c:forEach items="${listaClientes}" var="cliente">
@@ -60,7 +62,7 @@
                 <div class="modal-body">
                     <form>
                         <input type="hidden" name="idcliente">
-                        <select type="text" class="form-control" name="cliente" id="txtCliente">
+                        <select  class="form-control" name="cliente" id="txtCliente">
                             <option value="">Distribuidor</option>
                             <option value="">Normal</option>
                         </select>

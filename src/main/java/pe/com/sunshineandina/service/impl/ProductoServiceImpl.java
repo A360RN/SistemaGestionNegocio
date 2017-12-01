@@ -124,4 +124,9 @@ public class ProductoServiceImpl implements ProductoService{
         return null;
     }
 
+    @Override
+    public List<ProductoTO> findByCategoria(int idCategoria) {
+        return productoDao.findAllByCategoria(idCategoria);
+    }
+
 }

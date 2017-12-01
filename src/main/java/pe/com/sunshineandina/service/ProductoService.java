@@ -31,5 +31,6 @@ public interface ProductoService {
      
      List<ProductoTO> findByCategoriaPaginado(int idCategoria, int inicio);
      
+     List<ProductoTO> findByCategoria(int idCategoria);
      
 }

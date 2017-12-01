@@ -16,6 +16,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,10 +27,12 @@ import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
+import pe.com.sunshineandina.dto.ProductoTO;
 import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.service.ClienteService;
 import pe.com.sunshineandina.service.OfertaService;
 import pe.com.sunshineandina.service.PedidoService;
+import pe.com.sunshineandina.service.ProductoService;
 
 /**
  *
@@ -50,6 +53,9 @@ public class VentasController {
 
     @Autowired
     private CategoriaService categoriaService;
+    
+    @Autowired
+    private ProductoService productoService;
 
     @RequestMapping(value = "/listaPedidos", method = RequestMethod.GET)
     public String listaPedidos(Model model) {
@@ -152,41 +158,62 @@ public class VentasController {
         ofertaNew.setCategoria(categoriaFind);
         ofertaNew.setPorcentajeOferta(porcentaje);
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-        Date inicio=null;
-        Date fin=null;
+        Date inicio = null;
+        Date fin = null;
         try {
             inicio = formatoDelTexto.parse(inicioF);
             fin = formatoDelTexto.parse(finF);
         } catch (ParseException ex) {
             ex.printStackTrace();
-        }    
-            ofertaNew.setFechaInicio(inicio);
-            ofertaNew.setFechaFin(fin);
-            if (idOferta == 0) {
-                ofertaService.addOferta(ofertaNew);
-            } //Hidden editar con id
-            else {
-                ofertaNew.setIdOferta(idOferta);
-                ofertaService.editOferta(ofertaNew);
-            }
-            ((ObjectNode) jsonNode).put("respuesta", "");
-            return jsonNode;
         }
-
-        @RequestMapping(value = "/editarOferta", method = RequestMethod.GET)
-        public String redireccionarEditar(){
-            return "redirect:/ventas/listaOfertas";
+        ofertaNew.setFechaInicio(inicio);
+        ofertaNew.setFechaFin(fin);
+        if (idOferta == 0) {
+            ofertaService.addOferta(ofertaNew);
+        } //Hidden editar con id
+        else {
+            ofertaNew.setIdOferta(idOferta);
+            ofertaService.editOferta(ofertaNew);
         }
-    
-        @RequestMapping(value = "/editarOferta", method = RequestMethod.POST)
-        public String listarCategoriasEditar(@RequestParam("idOferta") int id, Model model){
-        List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
-            model.addAttribute("listaCategorias", listaCategorias);
-            int idOferta = id;
-            OfertaTO oferta = ofertaService.findById(idOferta);
-            model.addAttribute("oferta", oferta);
-            model.addAttribute("swEditar", 1);
-            return "ventas/oferta";
-        }
-
+        ((ObjectNode) jsonNode).put("respuesta", "");
+        return jsonNode;
     }
+
+    @RequestMapping(value = "/editarOferta", method = RequestMethod.GET)
+    public String redireccionarEditar() {
+        return "redirect:/ventas/listaOfertas";
+    }
+
+    @RequestMapping(value = "/editarOferta", method = RequestMethod.POST)
+    public String listarCategoriasEditar(@RequestParam("idOferta") int id, Model model) {
+        List<CategoriaTO> listaCategorias = categoriaService.findAllCategorias();
+        model.addAttribute("listaCategorias", listaCategorias);
+        int idOferta = id;
+        OfertaTO oferta = ofertaService.findById(idOferta);
+        model.addAttribute("oferta", oferta);
+        model.addAttribute("swEditar", 1);
+        return "ventas/oferta";
+    }
+    
+    @RequestMapping(value = "/pedido", method = RequestMethod.GET)
+    public String nuevoPedido(){
+        return "ventas/registrarPedido";
+    }
+    
+    @RequestMapping(value = "/categoria", method = RequestMethod.GET)
+    @ResponseBody
+    public List<CategoriaTO> findCategorias(){
+        List<CategoriaTO> lstCategorias = categoriaService.findAllCategorias();
+        
+        return lstCategorias;
+    }
+    
+    @RequestMapping(value = "/categoria/{idCategoria}/producto", method = RequestMethod.GET)
+    @ResponseBody
+    public List<ProductoTO> findProductoByCategoria(@PathVariable(name = "idCategoria") int idCategoria){
+        List<ProductoTO> lstProductos = productoService.findByCategoria(idCategoria);
+        
+        return lstProductos;
+    }
+
+}

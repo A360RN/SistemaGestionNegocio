@@ -23,7 +23,7 @@ public class Constantes {
     public static final int TIPO_LIDER_DEFECTO=1;
     
     public static final String ESTADO_PEDIDO_PAGADO = "PAGADO";
-    public static final String ESTADO_PEDIDO_PENDIENTE = "PENDIENTE";
+    public static final String ESTADO_PEDIDO_ORDENADO = "ORDENADO";
     public static final String ESTADO_PEDIDO_CANCELADO = "CANCELADO";
     
     public static final int INICIO_PRODUCTOS_POR_PAGINA_POR_DEFECTO = 0;
