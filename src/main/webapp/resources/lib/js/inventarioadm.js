@@ -127,7 +127,7 @@ botonRegistrarProducto.on('click', function (e) {
     let puntos = $("#puntos").val().trim();
     let cantidad = $("#cantidad").val().trim();
     let descripcion = $("#descripcion").val().trim();
-    let patron = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
+    let patron = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-Z0-9À-ÿ\u00f1\u00d1]*)*[a-zA-Z0-9À-ÿ\u00f1\u00d1]+$/;
     let error = '';
     //Serializa los campos del formulario en notación URL para Ajax
 

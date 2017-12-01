@@ -16,7 +16,7 @@
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">
-        <table class="table-responsive table-sm table-hover table-bordered">
+        <table class="table table-responsive table-sm table-hover table-bordered">
             <thead class="thead-inverse">
             <th></th>
             <th>Nombre</th>
@@ -29,15 +29,19 @@
                 <c:forEach items="${lstEmpleados}" var="empleado">
                 <tr>
                     <td class="text-center icon">
-                        <a href="#" class="btn btn-sm"><span class="fa fa-pencil fa-2x"></span></a>
-                        <button class="btn btn-sm btn-usuario" data-toggle="modal" data-target="#modalEmpleadoInactivar" data-value="${empleado.usuario.idUsuario}"><span class="fa fa-times-circle fa-2x"></span></button>
-                    </td>
+                            <button type="submit" class="btn btn-sm btn-editar-empleado" data-toggle="tooltip" data-placement="top" title="Editar el empleado" data-idempleado="${empleado.idEmpleado}">
+                                <span class="fa fa-pencil fa-2x"></span>
+                            </button>
+                                <button class="btn btn-sm btn-usuario" data-toggle="modal" data-target="#modalEmpleadoInactivar" data-value="${empleado.usuario.idUsuario}"><span class="fa fa-times-circle fa-2x"></span></button>
+
+                        </td>
                     <td><c:out value="${empleado.primerNombre}"></c:out>  <c:out value="${empleado.primerApellido}"></c:out></td>
                     <td>${empleado.email}</td>
                     <td>${empleado.usuario.fechaRegistro}</td>
                     <td>
                         <c:forEach items="${empleado.usuario.perfiles}" var="perfil">
                             <c:out value="${perfil.codigoPerfil}"></c:out>
+                            <br>
                         </c:forEach>
                     </td>
                     <td>
@@ -54,6 +58,9 @@
                 </c:forEach>
             </tbody>
         </table>
+        <form id="EditFormEmpleado" action="editarEmpleado" method="POST">
+            <input type="hidden" id="hiddenEditarEmpleado" name="idEmpleado" value="">
+        </form>
     </div>
 
 </div>

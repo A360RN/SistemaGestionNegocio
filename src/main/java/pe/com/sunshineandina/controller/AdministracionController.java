@@ -50,8 +50,9 @@ public class AdministracionController {
         return "admin/lista_empleados";
     }
 
-    @RequestMapping(value = "/listaEmpleados", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveEmpleado", method = RequestMethod.POST)
     public String nuevoEmpleado(
+            @RequestParam("idEmpleado") int idEmpleado,
             @RequestParam("ruc") String ruc,
             @RequestParam("primerNombre") String primerNombre,
             @RequestParam(value = "segundoNombre", defaultValue = "") String segundoNombre,
@@ -84,8 +85,15 @@ public class AdministracionController {
 
         empleadoEntity.setUsuario(usuarioEntity);
         /* Guardamos el nuevo empleado */
-        empleadoService.addEmpleado(empleadoEntity, perfiles);
-
+        if(idEmpleado==0)
+        {
+            empleadoService.addEmpleado(empleadoEntity, perfiles);
+        }
+        //Hidden editar con id
+        else{
+            empleadoEntity.setIdEmpleado(idEmpleado);
+            empleadoService.editEmpleado(empleadoEntity, perfiles);
+        }
         return "redirect:/admin/listaEmpleados";
     }
 
@@ -147,5 +155,21 @@ public class AdministracionController {
         ((ObjectNode) jsonRpta).put("rpta", "ok");
         
         return jsonRpta;
+    }
+    
+    @RequestMapping(value = "/editarEmpleado", method = RequestMethod.GET)
+        public String redireccionarEditar(){
+            return "redirect:/admin/listaEmpleados";
+        }
+        
+    @RequestMapping(value = "/editarEmpleado", method = RequestMethod.POST)
+    public String empleadoEditar(@RequestParam("idEmpleado") int id, Model model){
+        List<PerfilTO> lstPerfiles = empleadoService.findAllPerfiles();
+        model.addAttribute("lstPerfiles", lstPerfiles);
+            int idEmpleado=id;
+            EmpleadoTO empleado=empleadoService.findEmpleadoById(idEmpleado);
+            model.addAttribute("empleado",empleado);
+            model.addAttribute("swEditar",1);
+        return "admin/empleado";
     }
 }
