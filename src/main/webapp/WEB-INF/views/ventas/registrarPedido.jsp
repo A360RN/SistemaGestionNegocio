@@ -5,6 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="offset-md-3 col-md-6 col-sm-12">
+                    <div id="registrarPedidoAlert"></div>
                     <div class="row">
                         <div class="form-group col-md-3 col-sm-12">
                             <label for="txtDniCliente">DNI del Cliente:</label>
@@ -12,13 +13,15 @@
                         </div>
                     </div>
                     <br>
-                    <table class="table table-responsive table-hover bordered">
+                    <table class="table table-responsive table-hover table-bordered" id="tablePedido">
                         <thead class="thead-inverse">
                             <tr>
                                 <th>Producto</th>
+                                <th>Precio S/.</th>
+                                <th>Puntos</th>
                                 <th>Cantidad</th>
-                                <th>Subtotal</th>
-                                <th></th>
+                                <th>Subtotal S/.</th>
+                                <th>Subtotal Puntos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +49,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div id="modalAddProductoAlert"></div>
                         <form>
                             <div class="form-group">
                                 <label for="categoria">Seleccione la categoria:</label>
@@ -58,14 +62,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="cantidad">Ingrese la cantidad:</label>
-                                <input type="text" class="form-control">
+                                <input id="cantidad" type="text" class="form-control">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <div class="centrar-texto-modal">
                             <button type="button" class="btn btn-warning" id="modalAddProductoPedido-btn-si">Añadir al Pedido</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalAddProductoPedido-btn-no">Cancelar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
 

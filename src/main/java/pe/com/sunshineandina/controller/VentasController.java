@@ -215,5 +215,20 @@ public class VentasController {
         
         return lstProductos;
     }
+    
+    @RequestMapping(value = "/producto/{idProducto}", method = RequestMethod.GET)
+    @ResponseBody
+    public ProductoTO findProductoById(@PathVariable(name = "idProducto") int idProducto){
+        ProductoTO producto = productoService.findProductoById(idProducto);
+        
+        return producto;
+    }
+    
+    @RequestMapping(value = "/pedido", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonNode registrarPedido(@RequestBody ObjectNode nodoJson){
+        System.out.println(nodoJson);
+        return null;
+    }
 
 }

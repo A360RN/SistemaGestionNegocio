@@ -6,6 +6,7 @@
 package pe.com.sunshineandina.service;
 
 import java.util.List;
+import pe.com.sunshineandina.dto.DetallePedidoTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 import pe.com.sunshineandina.dto.ProductoTO;
 
@@ -23,4 +24,6 @@ public interface PedidoService {
     String nuevoPedido(int idUsuario);
     
     String validarStock(ProductoTO producto, int cantidad) throws Exception;
+    
+    String registroPedido(String dniCliente, List<DetallePedidoTO> detalles, PedidoTO pedido);
 }

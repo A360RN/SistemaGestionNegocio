@@ -72,26 +72,26 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public String nuevoPedido(int idUsuario) {
-        StringBuilder rpta = new StringBuilder(); 
+        StringBuilder rpta = new StringBuilder();
         try {
             /* Hallamos el cliente actual */
             ClienteTO cliente = clienteDao.findByUsuario(idUsuario);
             int idCliente = cliente.getIdCliente();
-            
+
             /* Hallamos el carrito del cliente actual */
             CarritoTO carrito = carritoDao.findByCliente(idCliente);
-            
+
             /* Validamos el stock del producto */
-            for(DetalleCarritoTO detalle: carrito.getDetalleCarritos()){
+            for (DetalleCarritoTO detalle : carrito.getDetalleCarritos()) {
                 Hibernate.initialize(detalle.getProducto());
                 ProductoTO producto = detalle.getProducto();
                 rpta.append(validarStock(producto, detalle.getCantidad()));
             }
-            
-            if(!rpta.toString().equals("")){
+
+            if (!rpta.toString().equals("")) {
                 return rpta.toString();
             }
-            
+
             /* Creamos el pedido */
             PedidoTO pedido = new PedidoTO();
             pedido.setCliente(cliente);
@@ -100,10 +100,10 @@ public class PedidoServiceImpl implements PedidoService {
             pedido.setFechaModificacion(new Date());
             pedido.setPrecioAcumuladoPedido(carrito.getPrecioAcumuladoCarrito());
             pedido.setPuntosAcumuladoPedido(carrito.getPuntosAcumuladoCarrito());
-            
+
             List<DetallePedidoTO> lstDetallePedido = new ArrayList<>();
-            
-            for(DetalleCarritoTO detalleCarrito : carrito.getDetalleCarritos()){
+
+            for (DetalleCarritoTO detalleCarrito : carrito.getDetalleCarritos()) {
                 /* Agregamos los detalles del pedido */
                 DetallePedidoTO detallePedido = new DetallePedidoTO();
                 detallePedido.setPedido(pedido);
@@ -112,7 +112,7 @@ public class PedidoServiceImpl implements PedidoService {
                 detallePedido.setProducto(detalleCarrito.getProducto());
                 detallePedido.setPuntosDetallePedido(detalleCarrito.getPuntosDetalleCarrito());
                 lstDetallePedido.add(detallePedido);
-                
+
                 /* Actualizamos el stock */
                 ProductoTO producto = productoDao.findById(detalleCarrito.getProducto().getIdProducto());
                 producto.setStockProducto(producto.getStockProducto() - detalleCarrito.getCantidad());
@@ -121,35 +121,87 @@ public class PedidoServiceImpl implements PedidoService {
             /* Guardamos el pedido */
             pedido.setDetallePedidos(lstDetallePedido);
             pedidoDao.save(pedido);
-            
+
             /* Borramos el carrito */
             carritoDao.destroy(carrito);
-            
+
             rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);
-            
-            
+
         } catch (Exception e) {
             rpta = new StringBuilder();
             rpta.append(Constantes.ERROR_GENERICO_PEDIDO);
             return rpta.toString();
         }
-        
+
         return rpta.toString();
     }
 
     @Override
-    public String validarStock(ProductoTO producto, int cantidad) throws Exception{
+    public String validarStock(ProductoTO producto, int cantidad) throws Exception {
         try {
             String rpta = "";
-            if(producto.getStockProducto() == 0){
+            if (producto.getStockProducto() == 0) {
                 rpta = String.format(Constantes.ERROR_STOCK_AGOTADO, producto.getNombreProducto());
-            }else if(producto.getStockProducto() < cantidad){
+            } else if (producto.getStockProducto() < cantidad) {
                 rpta = String.format(Constantes.ERROR_STOCK_INSUFICIENTE, producto.getStockProducto(), producto.getNombreProducto());
             }
             return rpta;
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    @Override
+    public String registroPedido(String dniCliente, List<DetallePedidoTO> detalles, PedidoTO pedido) {
+        StringBuilder rpta = new StringBuilder();
+        try {
+            ClienteTO cliente = clienteDao.findByDni(dniCliente);
+
+            if (cliente == null) {
+                rpta.append(Constantes.ERROR_NO_SE_ENCONTRO_CLIENTE);
+                return rpta.toString();
+            }
+
+            for (DetallePedidoTO detalle : detalles) {
+                ProductoTO producto = productoDao.findById(detalle.getProducto().getIdProducto());
+                detalle.setProducto(producto);
+                rpta.append(validarStock(producto, detalle.getCantidad()));
+            }
+
+            if (!rpta.toString().equals("")) {
+                return rpta.toString();
+            }
+
+            /* Creamos el pedido */
+            pedido.setCliente(cliente);
+            pedido.setEstadoPedido(Constantes.ESTADO_PEDIDO_ORDENADO);
+            pedido.setFechaCreacion(new Date());
+            pedido.setFechaModificacion(new Date());
+            
+            /* Hallamos los datos faltantes del detalle */
+            for (DetallePedidoTO detalle : detalles) {
+                detalle.setPedido(pedido);
+                ProductoTO producto = productoDao.findById(detalle.getProducto().getIdProducto());
+                producto.setStockProducto(producto.getStockProducto() - detalle.getCantidad());
+                productoDao.save(producto);
+            }
+
+            pedido.setDetallePedidos(detalles);
+            
+            /* Guardamos */
+            pedidoDao.save(pedido);
+            
+            rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);
+
+        } catch (Exception e) {
+            rpta = new StringBuilder();
+            rpta.append(Constantes.ERROR_GENERICO_PEDIDO);
+            return rpta.toString();
+
+        }
+
+        return rpta.toString();
+
     }
 
 }
