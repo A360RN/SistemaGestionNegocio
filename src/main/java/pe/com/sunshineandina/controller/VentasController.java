@@ -32,6 +32,7 @@ import pe.com.sunshineandina.mapper.RequestMapper;
 import pe.com.sunshineandina.request.RegistroPedidoRequest;
 import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.service.ClienteService;
+import pe.com.sunshineandina.service.HistoricoDistribuidorService;
 import pe.com.sunshineandina.service.OfertaService;
 import pe.com.sunshineandina.service.PedidoService;
 import pe.com.sunshineandina.service.ProductoService;
@@ -58,6 +59,9 @@ public class VentasController {
 
     @Autowired
     private ProductoService productoService;
+    
+    @Autowired
+    private HistoricoDistribuidorService historicoDistribuidorService;
 
     @RequestMapping(value = "/listaPedidos", method = RequestMethod.GET)
     public String listaPedidos(Model model) {
@@ -231,10 +235,16 @@ public class VentasController {
     public JsonNode registrarPedido(@RequestBody ObjectNode nodoJson) {
         RegistroPedidoRequest registroPedidoRequest = RequestMapper.registroPedidoMapper(nodoJson);
 
-        String rpta = pedidoService.registroPedido(registroPedidoRequest.getDniCliente(),
+        String rpta = "ok";
+        
+        /*String rpta = pedidoService.registroPedido(registroPedidoRequest.getDniCliente(),
                 registroPedidoRequest.getPedido().getDetallePedidos(),
-                registroPedidoRequest.getPedido());
+                registroPedidoRequest.getPedido());*/
 
+        historicoDistribuidorService.updateBaseRegistro(registroPedidoRequest.getDniCliente(), 
+                registroPedidoRequest.getPedido().getPrecioAcumuladoPedido(),
+                registroPedidoRequest.getPedido().getPuntosAcumuladoPedido());
+        
         ObjectMapper mapper = new ObjectMapper();
         JsonNode nodoJsonRpta = mapper.createObjectNode();
 

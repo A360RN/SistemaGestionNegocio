@@ -5,8 +5,6 @@
  */
 package pe.com.sunshineandina.dao;
 
-import pe.com.sunshineandina.dto.ClienteTO;
-
 import pe.com.sunshineandina.dto.DistribuidorTO;
 
 /**
@@ -17,7 +15,7 @@ public interface DistribuidorDAO {
 
     DistribuidorTO findById(int id);
 
-    DistribuidorTO findByCliente(ClienteTO cliente);
+    DistribuidorTO findByCliente(int idCliente);
 
     DistribuidorTO findByUsuario(int idUsuario);
 

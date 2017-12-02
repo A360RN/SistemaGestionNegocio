@@ -174,7 +174,7 @@ public class PedidoServiceImpl implements PedidoService {
 
             /* Creamos el pedido */
             pedido.setCliente(cliente);
-            pedido.setEstadoPedido(Constantes.ESTADO_PEDIDO_ORDENADO);
+            pedido.setEstadoPedido(Constantes.ESTADO_PEDIDO_PAGADO);
             pedido.setFechaCreacion(new Date());
             pedido.setFechaModificacion(new Date());
             

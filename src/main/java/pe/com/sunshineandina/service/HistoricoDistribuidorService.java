@@ -5,20 +5,15 @@
  */
 package pe.com.sunshineandina.service;
 
-import java.util.List;
-import pe.com.sunshineandina.dto.ProductoTO;
+import java.math.BigDecimal;
 
 /**
  *
  * @author alonsorn
  */
-public interface PruebaService {
+public interface HistoricoDistribuidorService {
     
-    void prueba();
+    void updateBaseRegistro(String dniCliente, BigDecimal ventas, int puntos);
     
-    void pruebaPerfil();
-    
-    void pruebaPerfilUsuario();
-    
-    List<ProductoTO> productos();
+    void updateAncestrosRegistro(int idDistribuidor, BigDecimal ventas, int puntos, int mes, int anio);
 }

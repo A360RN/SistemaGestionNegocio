@@ -6,7 +6,6 @@
 package pe.com.sunshineandina.service.impl;
 
 import java.util.List;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,9 +49,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void cambiarTipoCliente(ClienteTO cliente, String tipoCliente) {
-        ClienteTO clientes=new ClienteTO();
         if(cliente != null){
-            DistribuidorTO distribuidor=distribuidorDao.findByCliente(cliente);
+            DistribuidorTO distribuidor=distribuidorDao.findByCliente(cliente.getIdCliente());
             if(tipoCliente.equals("NORMAL")&&distribuidor!=null)
             {
                 distribuidor.setEstadoDistribuidor(Constantes.ESTADO_INACTIVO);

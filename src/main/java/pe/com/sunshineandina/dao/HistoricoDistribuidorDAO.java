@@ -5,6 +5,7 @@
  */
 package pe.com.sunshineandina.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 import pe.com.sunshineandina.dto.HistoricoDistribuidorTO;
 
@@ -19,4 +20,14 @@ public interface HistoricoDistribuidorDAO {
     void save(HistoricoDistribuidorTO historicoDistribuidor);
     
     List<HistoricoDistribuidorTO> findByParameters(int idDistribuidor, int mes, int anio);
+    
+    HistoricoDistribuidorTO findUnique(int idDistribuidor, int mes, int anio);
+    
+    int sumPuntosIndividualesDescendientes(int idDistribuidor, int mes, int anio);
+    
+    int sumPuntosGrupalesDescendientes(int idDistribuidor, int mes , int anio);
+    
+    BigDecimal sumVentasIndividualesDescendientes(int idDistribuidor, int mes, int anio);
+    
+    BigDecimal sumVentasGrupalesDescendientes(int idDistribuidor, int mes, int anio);
 }
