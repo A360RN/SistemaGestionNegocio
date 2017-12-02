@@ -175,11 +175,15 @@ btnModalRegistrarPedidoSi.on('click', function (e) {
             let idProducto = $(trArr[i]).attr('data-idProducto'); 
             let tdArr = $(trArr[i]).find('td');
             let cantidad = $(tdArr[3]).text();
+            let subtotal = $(tdArr[4]).text();
+            let subtotalPuntos = $(tdArr[5]).text()
             totalSoles += Number($(tdArr[4]).text());
             totalPuntos += Number($(tdArr[5]).text());
             data.pedido.push({
                 idProducto: idProducto,
-                cantidad: cantidad
+                cantidad: cantidad,
+                subtotal: subtotal,
+                subtotalPuntos: subtotalPuntos
             });
         }
         data.totalSoles = totalSoles;
@@ -194,7 +198,8 @@ btnModalRegistrarPedidoSi.on('click', function (e) {
             url: 'pedido',
             data: JSON.stringify(data)  
         }).done(function(response){
-
+            console.log(response.rpta);
+            modalRegistrarPedido.modal('hide');
         });
     }
 });

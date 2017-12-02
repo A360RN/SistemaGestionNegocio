@@ -28,6 +28,8 @@ import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.OfertaTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 import pe.com.sunshineandina.dto.ProductoTO;
+import pe.com.sunshineandina.mapper.RequestMapper;
+import pe.com.sunshineandina.request.RegistroPedidoRequest;
 import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.service.ClienteService;
 import pe.com.sunshineandina.service.OfertaService;
@@ -53,7 +55,7 @@ public class VentasController {
 
     @Autowired
     private CategoriaService categoriaService;
-    
+
     @Autowired
     private ProductoService productoService;
 
@@ -194,41 +196,52 @@ public class VentasController {
         model.addAttribute("swEditar", 1);
         return "ventas/oferta";
     }
-    
+
     @RequestMapping(value = "/pedido", method = RequestMethod.GET)
-    public String nuevoPedido(){
+    public String nuevoPedido() {
         return "ventas/registrarPedido";
     }
-    
+
     @RequestMapping(value = "/categoria", method = RequestMethod.GET)
     @ResponseBody
-    public List<CategoriaTO> findCategorias(){
+    public List<CategoriaTO> findCategorias() {
         List<CategoriaTO> lstCategorias = categoriaService.findAllCategorias();
-        
+
         return lstCategorias;
     }
-    
+
     @RequestMapping(value = "/categoria/{idCategoria}/producto", method = RequestMethod.GET)
     @ResponseBody
-    public List<ProductoTO> findProductoByCategoria(@PathVariable(name = "idCategoria") int idCategoria){
+    public List<ProductoTO> findProductoByCategoria(@PathVariable(name = "idCategoria") int idCategoria) {
         List<ProductoTO> lstProductos = productoService.findByCategoria(idCategoria);
-        
+
         return lstProductos;
     }
-    
+
     @RequestMapping(value = "/producto/{idProducto}", method = RequestMethod.GET)
     @ResponseBody
-    public ProductoTO findProductoById(@PathVariable(name = "idProducto") int idProducto){
+    public ProductoTO findProductoById(@PathVariable(name = "idProducto") int idProducto) {
         ProductoTO producto = productoService.findProductoById(idProducto);
-        
+
         return producto;
     }
-    
+
     @RequestMapping(value = "/pedido", method = RequestMethod.POST)
     @ResponseBody
-    public JsonNode registrarPedido(@RequestBody ObjectNode nodoJson){
-        System.out.println(nodoJson);
-        return null;
+    public JsonNode registrarPedido(@RequestBody ObjectNode nodoJson) {
+        RegistroPedidoRequest registroPedidoRequest = RequestMapper.registroPedidoMapper(nodoJson);
+
+        String rpta = pedidoService.registroPedido(registroPedidoRequest.getDniCliente(),
+                registroPedidoRequest.getPedido().getDetallePedidos(),
+                registroPedidoRequest.getPedido());
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode nodoJsonRpta = mapper.createObjectNode();
+
+        ((ObjectNode) nodoJsonRpta).put("rpta", rpta);
+
+        return nodoJsonRpta;
+
     }
 
 }
