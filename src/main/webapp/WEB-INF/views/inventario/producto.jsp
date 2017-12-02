@@ -111,6 +111,6 @@
         <a href="${pageContext.request.contextPath}/inventario/listaProductos" class="form-control btn btn-secondary">Cancelar</a>
     </div><div class="clearfix"></div>
 
-</div>s
+</div>
 
 <%@ include file="../includes/footer.jsp"%>

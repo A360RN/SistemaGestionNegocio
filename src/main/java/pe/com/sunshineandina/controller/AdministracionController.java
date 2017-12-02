@@ -46,32 +46,61 @@ public class AdministracionController {
         /* Hallamos todos los empleados OJO HAY QUE CAMBIAR POR PAGINADO*/
         List<EmpleadoTO> lstEmpleados = empleadoService.findAllEmpleados();
         model.addAttribute("lstEmpleados", lstEmpleados);
-
         return "admin/lista_empleados";
     }
 
     @RequestMapping(value = "/saveEmpleado", method = RequestMethod.POST)
-    public String nuevoEmpleado(
+    @ResponseBody
+    public JsonNode nuevoEmpleado(
             @RequestParam("idEmpleado") int idEmpleado,
             @RequestParam("ruc") String ruc,
             @RequestParam("primerNombre") String primerNombre,
             @RequestParam(value = "segundoNombre", defaultValue = "") String segundoNombre,
             @RequestParam("primerApellido") String primerApellido,
             @RequestParam("segundoApellido") String segundoApellido,
-            @RequestParam("telFijo") String telefonoFijo,
-            @RequestParam("telCelular") String telCelular,
+            @RequestParam("telefonoFijo") String telefonoFijo,
+            @RequestParam("telefonoCelular") String telefonoCelular,
             @RequestParam("email") String email,
             @RequestParam("usuario") String usuario,
-            @RequestParam("password") String password,
-            @RequestParam("perfiles") String[] perfiles) {
-
+            @RequestParam(value="password", defaultValue = "") String password,
+            @RequestParam("perfiles[]") String[] perfiles) {
         /* Creamos el usuario */
         UsuarioTO usuarioEntity = new UsuarioTO();
         usuarioEntity.setRegistroUsuario(usuario);
-        usuarioEntity.setPassUsuario(password);
+        if(password!="")
+            usuarioEntity.setPassUsuario(password);     
         usuarioEntity.setEstadoUsuario(Constantes.ESTADO_ACTIVO);
         usuarioEntity.setFechaRegistro(new Date());
-
+        ObjectMapper mapper = new ObjectMapper();       
+        JsonNode jsonNode = mapper.createObjectNode();
+        boolean b=false;
+        if(empleadoService.usuarioRepetido(usuario))
+        {
+            if(idEmpleado==0)
+            {
+                ((ObjectNode) jsonNode).put("respuesta", "repetido");
+                b=true;
+            }else if(!empleadoService.idRepetido(idEmpleado,usuario))
+            {
+                ((ObjectNode) jsonNode).put("respuesta", "repetido");
+                b=true;              
+            }       
+        }
+        if(empleadoService.rucRepetido(ruc))
+        {
+            if(idEmpleado==0)
+            {
+                ((ObjectNode) jsonNode).put("rucrespuesta", "rucrepetido");
+                b=true;
+            }else if(!empleadoService.idRucRepetido(idEmpleado,ruc))
+            {
+                ((ObjectNode) jsonNode).put("rucrespuesta", "rucrepetido");
+                b=true;              
+            }       
+        }
+        if(b){
+            return jsonNode;
+        }
         /* Creamos el empleado */
         EmpleadoTO empleadoEntity = new EmpleadoTO();
         empleadoEntity.setPrimerNombre(primerNombre.toUpperCase());
@@ -79,10 +108,9 @@ public class AdministracionController {
         empleadoEntity.setPrimerApellido(primerApellido.toUpperCase());
         empleadoEntity.setSegundoApellido(segundoApellido.toUpperCase());
         empleadoEntity.setRuc(ruc);
-        empleadoEntity.setTelefonoCelular(telCelular);
+        empleadoEntity.setTelefonoCelular(telefonoCelular);
         empleadoEntity.setTelefonoFijo(telefonoFijo);
         empleadoEntity.setEmail(email.toUpperCase());
-
         empleadoEntity.setUsuario(usuarioEntity);
         /* Guardamos el nuevo empleado */
         if(idEmpleado==0)
@@ -91,10 +119,13 @@ public class AdministracionController {
         }
         //Hidden editar con id
         else{
+            
             empleadoEntity.setIdEmpleado(idEmpleado);
             empleadoService.editEmpleado(empleadoEntity, perfiles);
         }
-        return "redirect:/admin/listaEmpleados";
+        ((ObjectNode) jsonNode).put("respuesta", "");
+        ((ObjectNode) jsonNode).put("rucrespuesta", "");
+            return jsonNode;
     }
 
     @RequestMapping(value = "/nuevoEmpleado", method = RequestMethod.GET)
@@ -169,7 +200,17 @@ public class AdministracionController {
             int idEmpleado=id;
             EmpleadoTO empleado=empleadoService.findEmpleadoById(idEmpleado);
             model.addAttribute("empleado",empleado);
+            String passUsuario=empleado.getUsuario().getPassUsuario();
+            model.addAttribute("passUsuario",passUsuario);
             model.addAttribute("swEditar",1);
         return "admin/empleado";
     }
+    
+    @RequestMapping(value = "/cambiarEstadoUsuario", method = RequestMethod.POST)
+    @ResponseBody
+    public void cambiarEstado(@RequestParam("idUsuario") int idUsuario)
+    {
+        UsuarioTO usuario=empleadoService.findUsuario(idUsuario);
+        empleadoService.changeUsuarioState(usuario);
+    } 
 }

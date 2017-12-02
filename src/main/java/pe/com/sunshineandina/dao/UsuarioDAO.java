@@ -18,5 +18,7 @@ public interface UsuarioDAO {
     void saveUsuario(UsuarioTO usuario);
     
     UsuarioTO findByRegistro(String registro);
+    
+    UsuarioTO findByNombre(String nombreUsuario);
 
 }

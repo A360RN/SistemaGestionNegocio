@@ -25,4 +25,6 @@ public interface EmpleadoDAO {
     List<EmpleadoTO> findAll();
     
     List<EmpleadoTO> findPaginado(int inicio, int cantidadPagina);
+    
+    EmpleadoTO findByIdAndRuc(int id,String ruc);
 }

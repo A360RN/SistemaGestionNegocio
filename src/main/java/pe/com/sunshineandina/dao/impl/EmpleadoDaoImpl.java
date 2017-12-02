@@ -36,6 +36,14 @@ public class EmpleadoDaoImpl extends AbstractDAO<Integer, EmpleadoTO> implements
         criteria.add(Restrictions.eq("ruc", ruc));
         return (EmpleadoTO) criteria.uniqueResult();
     }
+    
+    @Override
+    public EmpleadoTO findByIdAndRuc(int id,String ruc) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("idEmpleado", id));
+        criteria.add(Restrictions.eq("ruc", ruc));
+        return (EmpleadoTO) criteria.uniqueResult();
+    }
 
     @Override
     public List<EmpleadoTO> findAll() {

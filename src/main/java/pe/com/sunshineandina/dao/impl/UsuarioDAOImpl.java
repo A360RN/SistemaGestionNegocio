@@ -38,4 +38,11 @@ public class UsuarioDAOImpl extends AbstractDAO<Integer, UsuarioTO> implements U
         return (UsuarioTO)criteria.uniqueResult();
     }
     
+    @Override
+    public UsuarioTO findByNombre(String nombreUsuario) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("registroUsuario", nombreUsuario));
+        return (UsuarioTO) criteria.uniqueResult();
+    }
+    
 }
