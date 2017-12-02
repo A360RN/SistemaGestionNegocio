@@ -5,6 +5,7 @@
  */
 package pe.com.sunshineandina.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,15 +15,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.com.sunshineandina.dao.CarritoDAO;
 import pe.com.sunshineandina.dao.ClienteDAO;
-import pe.com.sunshineandina.dao.DetalleCarritoDAO;
+import pe.com.sunshineandina.dao.DistribuidorDAO;
 import pe.com.sunshineandina.dao.PedidoDAO;
 import pe.com.sunshineandina.dao.ProductoDAO;
 import pe.com.sunshineandina.dto.CarritoTO;
 import pe.com.sunshineandina.dto.ClienteTO;
 import pe.com.sunshineandina.dto.DetalleCarritoTO;
 import pe.com.sunshineandina.dto.DetallePedidoTO;
+import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 import pe.com.sunshineandina.dto.ProductoTO;
+import pe.com.sunshineandina.service.HistoricoDistribuidorService;
 import pe.com.sunshineandina.service.PedidoService;
 import pe.com.sunshineandina.util.Constantes;
 
@@ -45,6 +48,12 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
     private ClienteDAO clienteDao;
+
+    @Autowired
+    private DistribuidorDAO distribuidorDao;
+
+    @Autowired
+    private HistoricoDistribuidorService historicoDistribuidorService;
 
     @Override
     public List<PedidoTO> findAllPedidos() {
@@ -125,6 +134,13 @@ public class PedidoServiceImpl implements PedidoService {
             /* Borramos el carrito */
             carritoDao.destroy(carrito);
 
+            /* si es distribuidor */
+            DistribuidorTO distribuidor = distribuidorDao.findByCliente(idCliente);
+
+            if (distribuidor != null) {
+                historicoDistribuidorService.updateBaseRegistro(cliente.getDni(), pedido.getPrecioAcumuladoPedido(), pedido.getPuntosAcumuladoPedido());
+            }
+
             rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);
 
         } catch (Exception e) {
@@ -177,7 +193,7 @@ public class PedidoServiceImpl implements PedidoService {
             pedido.setEstadoPedido(Constantes.ESTADO_PEDIDO_PAGADO);
             pedido.setFechaCreacion(new Date());
             pedido.setFechaModificacion(new Date());
-            
+
             /* Hallamos los datos faltantes del detalle */
             for (DetallePedidoTO detalle : detalles) {
                 detalle.setPedido(pedido);
@@ -187,10 +203,10 @@ public class PedidoServiceImpl implements PedidoService {
             }
 
             pedido.setDetallePedidos(detalles);
-            
+
             /* Guardamos */
             pedidoDao.save(pedido);
-            
+
             rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);
 
         } catch (Exception e) {

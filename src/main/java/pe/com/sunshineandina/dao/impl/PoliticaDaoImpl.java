@@ -43,4 +43,14 @@ public class PoliticaDaoImpl extends AbstractDAO<Integer, PoliticaTO> implements
         persist(politica);
     }
 
+    @Override
+    public PoliticaTO findByParameters(int puntosInd, int puntosGru) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.le("minPuntosIndividual", puntosInd));
+        criteria.add(Restrictions.gt("maxPuntosIndividual", puntosInd));
+        criteria.add(Restrictions.le("minPuntosGrupal", puntosGru));
+        criteria.add(Restrictions.gt("maxPuntosGrupal", puntosGru));
+        return (PoliticaTO) criteria.uniqueResult();
+    }
+
 }

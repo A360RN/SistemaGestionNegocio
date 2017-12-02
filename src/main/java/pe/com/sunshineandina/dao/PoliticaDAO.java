@@ -21,4 +21,6 @@ public interface PoliticaDAO {
     PoliticaTO findByDescPolitica(String descPolitica);
     
     void save(PoliticaTO politica);
+    
+    PoliticaTO findByParameters(int puntosInd, int puntosGru);
 }

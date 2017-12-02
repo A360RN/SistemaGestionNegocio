@@ -234,12 +234,10 @@ public class VentasController {
     @ResponseBody
     public JsonNode registrarPedido(@RequestBody ObjectNode nodoJson) {
         RegistroPedidoRequest registroPedidoRequest = RequestMapper.registroPedidoMapper(nodoJson);
-
-        String rpta = "ok";
         
-        /*String rpta = pedidoService.registroPedido(registroPedidoRequest.getDniCliente(),
+        String rpta = pedidoService.registroPedido(registroPedidoRequest.getDniCliente(),
                 registroPedidoRequest.getPedido().getDetallePedidos(),
-                registroPedidoRequest.getPedido());*/
+                registroPedidoRequest.getPedido());
 
         historicoDistribuidorService.updateBaseRegistro(registroPedidoRequest.getDniCliente(), 
                 registroPedidoRequest.getPedido().getPrecioAcumuladoPedido(),
