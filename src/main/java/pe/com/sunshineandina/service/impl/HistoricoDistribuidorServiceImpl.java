@@ -7,8 +7,6 @@ package pe.com.sunshineandina.service.impl;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,7 +43,6 @@ public class HistoricoDistribuidorServiceImpl implements HistoricoDistribuidorSe
         DistribuidorTO distribuidor = distribuidorDao.findByCliente(cliente.getIdCliente());
 
         if (distribuidor != null) {
-            System.out.println("iddis: " + distribuidor.getIdDistribuidor());
             Calendar hoy = Calendar.getInstance();
 
             int mes = hoy.get(Calendar.MONTH) + 1;

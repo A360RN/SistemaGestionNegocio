@@ -19,4 +19,6 @@ public interface ClienteService {
     ClienteTO findById(int idCliente);
     
     void cambiarTipoCliente(ClienteTO cliente,String tipoCliente);
+    
+    ClienteTO findByDni(String dni);
 }

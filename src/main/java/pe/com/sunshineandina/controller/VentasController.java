@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ import pe.com.sunshineandina.mapper.RequestMapper;
 import pe.com.sunshineandina.request.RegistroPedidoRequest;
 import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.service.ClienteService;
+import pe.com.sunshineandina.service.DistribuidorService;
 import pe.com.sunshineandina.service.HistoricoDistribuidorService;
 import pe.com.sunshineandina.service.OfertaService;
 import pe.com.sunshineandina.service.PedidoService;
@@ -59,9 +61,12 @@ public class VentasController {
 
     @Autowired
     private ProductoService productoService;
-    
+
     @Autowired
     private HistoricoDistribuidorService historicoDistribuidorService;
+
+    @Autowired
+    private DistribuidorService distribuidorService;
 
     @RequestMapping(value = "/listaPedidos", method = RequestMethod.GET)
     public String listaPedidos(Model model) {
@@ -234,15 +239,26 @@ public class VentasController {
     @ResponseBody
     public JsonNode registrarPedido(@RequestBody ObjectNode nodoJson) {
         RegistroPedidoRequest registroPedidoRequest = RequestMapper.registroPedidoMapper(nodoJson);
-        
+
         String rpta = pedidoService.registroPedido(registroPedidoRequest.getDniCliente(),
                 registroPedidoRequest.getPedido().getDetallePedidos(),
                 registroPedidoRequest.getPedido());
 
-        historicoDistribuidorService.updateBaseRegistro(registroPedidoRequest.getDniCliente(), 
+        historicoDistribuidorService.updateBaseRegistro(registroPedidoRequest.getDniCliente(),
                 registroPedidoRequest.getPedido().getPrecioAcumuladoPedido(),
                 registroPedidoRequest.getPedido().getPuntosAcumuladoPedido());
-        
+
+        Calendar hoy = Calendar.getInstance();
+        int mes = hoy.get(Calendar.MONTH) + 1;
+        int anio = hoy.get(Calendar.YEAR);
+
+        ClienteTO cliente = clienteService.findByDni(registroPedidoRequest.getDniCliente());
+        DistribuidorTO distribuidor = distribuidorService.findByCliente(cliente.getIdCliente());
+
+        if (distribuidor != null) {
+            distribuidorService.updateComision(distribuidor.getIdDistribuidor(), mes, anio);
+        }
+
         ObjectMapper mapper = new ObjectMapper();
         JsonNode nodoJsonRpta = mapper.createObjectNode();
 

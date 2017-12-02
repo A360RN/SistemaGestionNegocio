@@ -13,10 +13,12 @@ import pe.com.sunshineandina.dto.ComisionTO;
  * @author alonsorn
  */
 public interface ComisionDAO {
-    
+
     ComisionTO findById(int id);
-    
+
     void save(ComisionTO comision);
-    
+
     List<ComisionTO> findByParameters(int idDistribuidor, int mes, int anio);
+
+    ComisionTO findUnique(int idDistribuidor, int mes, int anio);
 }

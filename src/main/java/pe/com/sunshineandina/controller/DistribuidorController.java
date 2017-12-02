@@ -7,6 +7,7 @@ package pe.com.sunshineandina.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.util.Calendar;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pe.com.sunshineandina.dto.ComisionTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.HistoricoDistribuidorTO;
 import pe.com.sunshineandina.dto.UsuarioTO;
@@ -39,6 +41,16 @@ public class DistribuidorController {
         /* Hallamos el distribuidor logeado */
         DistribuidorTO distribuidorActual = distribuidorService.findByUsuario(usuario.getIdUsuario());
 
+        Calendar hoy = Calendar.getInstance();
+        int mes = hoy.get(Calendar.MONTH) + 1;
+        int anio = hoy.get(Calendar.YEAR);
+
+        List<ComisionTO> comisiones = distribuidorService.findComisionesByParameters(distribuidorActual.getIdDistribuidor(), mes, anio);
+
+        if (!comisiones.isEmpty()) {
+            model.addAttribute("comision", comisiones.get(0));
+        }
+
         model.addAttribute("distribuidor", distribuidorActual);
         return "distribuidor/comisiones";
     }
@@ -49,10 +61,13 @@ public class DistribuidorController {
 
         int idDistribuidor = nodoJson.get("idDistribuidor").asInt();
 
+        Calendar calendar = Calendar.getInstance();
+
         List<HistoricoDistribuidorTO> lstVentasDescendientes
-                = distribuidorService.findVentasByPadreAndParameters(idDistribuidor, 11, 2017);
+                = distribuidorService.findVentasByPadreAndParameters(idDistribuidor,
+                        calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.YEAR));
         JsonNode jsonRpta = ResponseMapper.ventasDistribuidorMapper(lstVentasDescendientes);
-        
+
         return jsonRpta;
     }
 

@@ -26,3 +26,7 @@ btnModalConfirmarPedidoSi.on('click', function(e){
 btnModalConfirmarPedidoNo.on('click', function(e){
     modalConfirmarPedido.modal('hide');
 });
+
+modalPedidoEstadoConfirmacion.on('hide.bs.modal', function(e){
+    window.location.href = 'productos';
+});

@@ -5,8 +5,8 @@
  */
 package pe.com.sunshineandina.service.impl;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Hibernate;
@@ -25,6 +25,7 @@ import pe.com.sunshineandina.dto.DetallePedidoTO;
 import pe.com.sunshineandina.dto.DistribuidorTO;
 import pe.com.sunshineandina.dto.PedidoTO;
 import pe.com.sunshineandina.dto.ProductoTO;
+import pe.com.sunshineandina.service.DistribuidorService;
 import pe.com.sunshineandina.service.HistoricoDistribuidorService;
 import pe.com.sunshineandina.service.PedidoService;
 import pe.com.sunshineandina.util.Constantes;
@@ -54,6 +55,9 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
     private HistoricoDistribuidorService historicoDistribuidorService;
+    
+    @Autowired
+    private DistribuidorService distribuidorService;
 
     @Override
     public List<PedidoTO> findAllPedidos() {
@@ -138,7 +142,7 @@ public class PedidoServiceImpl implements PedidoService {
             DistribuidorTO distribuidor = distribuidorDao.findByCliente(idCliente);
 
             if (distribuidor != null) {
-                historicoDistribuidorService.updateBaseRegistro(cliente.getDni(), pedido.getPrecioAcumuladoPedido(), pedido.getPuntosAcumuladoPedido());
+                historicoDistribuidorService.updateBaseRegistro(cliente.getDni(), pedido.getPrecioAcumuladoPedido(), pedido.getPuntosAcumuladoPedido());                
             }
 
             rpta.append(Constantes.PEDIDO_REGISTRADO_EXITO);

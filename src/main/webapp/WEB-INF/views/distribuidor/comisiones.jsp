@@ -9,11 +9,14 @@
     <div class="row">
         <div class="col-12">
             <h1>Comisión de: <c:out value="${sessionScope.nombrePerfil}"></c:out></h1>
+            <c:if test="${comision != null}">
+                <h2>Monto a recibir en este periodo: <c:out value="S/.${comision.montoComision}"></c:out></h2>
+            </c:if>
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <h2>Actividad de mi grupo - Ventas</h2>
+            <h3>Actividad de mi grupo - Ventas</h3>
             <canvas id="cuadroComisiones"></canvas>
         </div>
     </div>

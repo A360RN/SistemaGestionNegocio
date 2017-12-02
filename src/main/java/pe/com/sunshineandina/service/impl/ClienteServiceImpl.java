@@ -75,4 +75,9 @@ public class ClienteServiceImpl implements ClienteService {
         }
     }
 
+    @Override
+    public ClienteTO findByDni(String dni) {
+        return clienteDao.findByDni(dni);
+    }
+
 }

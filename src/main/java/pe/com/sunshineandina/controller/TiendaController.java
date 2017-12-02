@@ -24,7 +24,6 @@ import pe.com.sunshineandina.dto.UsuarioTO;
 import pe.com.sunshineandina.service.CarritoService;
 import pe.com.sunshineandina.service.CategoriaService;
 import pe.com.sunshineandina.service.ProductoService;
-import pe.com.sunshineandina.util.Constantes;
 
 /**
  *
@@ -53,10 +52,10 @@ public class TiendaController {
         int idCategoriaParsed = Integer.parseInt(idCategoria);
         List<ProductoTO> lstProductos;
         if (idCategoriaParsed > 0) {
-            lstProductos = productoService.findByCategoriaPaginado(idCategoriaParsed, Constantes.INICIO_PRODUCTOS_POR_PAGINA_POR_DEFECTO);
+            lstProductos = productoService.findByCategoria(idCategoriaParsed);
         } else {
             /* Hallamos la lista de productos paginados */
-            lstProductos = productoService.findPaginado(Constantes.INICIO_PRODUCTOS_POR_PAGINA_POR_DEFECTO);
+            lstProductos = productoService.findAllProductosInventario();
 
         }
         model.addAttribute("lstProductos", lstProductos);

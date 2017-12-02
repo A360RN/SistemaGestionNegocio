@@ -43,4 +43,13 @@ public class ComisionDaoImpl extends AbstractDAO<Integer, ComisionTO> implements
         persist(comision);
     }
 
+    @Override
+    public ComisionTO findUnique(int idDistribuidor, int mes, int anio) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("distribuidor.idDistribuidor", idDistribuidor));
+        criteria.add(Restrictions.eq("mesComision", mes));
+        criteria.add(Restrictions.eq("anioComision", anio));
+        return (ComisionTO) criteria.uniqueResult();
+    }
+
 }
