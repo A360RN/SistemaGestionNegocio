@@ -8,6 +8,7 @@ package pe.com.sunshineandina.service;
 import java.util.List;
 import pe.com.sunshineandina.dto.EmpleadoTO;
 import pe.com.sunshineandina.dto.PerfilTO;
+import pe.com.sunshineandina.dto.UsuarioTO;
 
 /**
  *
@@ -21,6 +22,8 @@ public interface EmpleadoService {
     
     EmpleadoTO findEmpleadoById(int id);
     
+    UsuarioTO findUsuario(int id);
+    
     void editEmpleado(EmpleadoTO empleado, String[] perfiles);
     
     EmpleadoTO findEmpleadoByUsuario(int idUsuario);
@@ -30,4 +33,15 @@ public interface EmpleadoService {
     void inactivarEmpleado(int idUsuario);
     
     void activarEmpleado(int idUsuario);
+    
+    boolean usuarioRepetido(String nombre);
+    
+    boolean idRepetido(int id,String nombre);
+    
+    boolean rucRepetido(String ruc);
+    
+    boolean idRucRepetido(int id,String ruc);
+    
+    void changeUsuarioState(UsuarioTO usuario);
+    
 }

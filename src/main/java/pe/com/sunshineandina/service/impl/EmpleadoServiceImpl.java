@@ -57,6 +57,47 @@ public class EmpleadoServiceImpl implements EmpleadoService{
     public EmpleadoTO findEmpleadoByUsuario(int idUsuario) {
         return empleadoDao.findByUsuario(idUsuario);
     }
+    
+    @Override
+    public boolean usuarioRepetido(String nombre) {
+        UsuarioTO usuario=usuarioDao.findByNombre(nombre);
+        if(usuario==null)
+        {
+            return false;
+        }          
+        return true;
+    }
+    
+    @Override
+    public boolean rucRepetido(String ruc) {
+        EmpleadoTO empleado=empleadoDao.findByRuc(ruc);
+        if(empleado==null)
+        {
+            return false;
+        }          
+        return true;
+    }
+    
+    @Override
+    public boolean idRucRepetido(int id,String ruc) {
+        EmpleadoTO empleado=empleadoDao.findByIdAndRuc(id,ruc);
+        if(empleado==null)
+        {
+            return false;
+        }          
+        return true;
+    }
+    
+    @Override
+    public boolean idRepetido(int id,String nombre) {
+        UsuarioTO usuario=usuarioDao.findByNombre(nombre);
+        EmpleadoTO empleado=empleadoDao.findByUsuario(usuario.getIdUsuario());
+        if(empleado.getIdEmpleado()==id)
+        {
+            return true;
+        }          
+        return false;
+    }
 
     @Override
     public void addEmpleado(EmpleadoTO empleado, String[] perfiles) {
@@ -79,7 +120,10 @@ public class EmpleadoServiceImpl implements EmpleadoService{
     @Override
     public void editEmpleado(EmpleadoTO empleado, String[] perfiles) {
         EmpleadoTO empleadoUpd=empleadoDao.findById(empleado.getIdEmpleado());
-        empleadoUpd.setUsuario(empleado.getUsuario());
+        UsuarioTO usuarioExistente=usuarioDao.findById(empleadoUpd.getUsuario().getIdUsuario());
+        usuarioExistente.setRegistroUsuario(empleado.getUsuario().getRegistroUsuario());
+        String pass=empleado.getUsuario().getPassUsuario();
+        empleadoUpd.setUsuario(usuarioExistente);
         empleadoUpd.setPrimerNombre(empleado.getPrimerNombre());
         empleadoUpd.setSegundoNombre(empleado.getSegundoNombre());
         empleadoUpd.setPrimerApellido(empleado.getPrimerApellido());
@@ -89,7 +133,12 @@ public class EmpleadoServiceImpl implements EmpleadoService{
         empleadoUpd.setTelefonoFijo(empleado.getTelefonoFijo());
         empleadoUpd.setTelefonoCelular(empleado.getTelefonoCelular());
         /* Hash password */
-        empleadoUpd.getUsuario().setPassUsuario(HashPassword.hashPassword(empleado.getUsuario().getPassUsuario()));
+        if(pass.length()!=0)
+        {
+            System.out.println("ano"+pass+"pene");
+            empleadoUpd.getUsuario().setPassUsuario(HashPassword.hashPassword(empleado.getUsuario().getPassUsuario()));
+        }
+            
         
         /* Obtenemos los Perfiles */
         List<PerfilTO> lstPerfiles = new ArrayList<>();
@@ -128,6 +177,24 @@ public class EmpleadoServiceImpl implements EmpleadoService{
         UsuarioTO usuario = usuarioDao.findById(idUsuario);
         usuario.setEstadoUsuario(Constantes.ESTADO_ACTIVO);
         usuarioDao.saveUsuario(usuario);
+    }
+
+    @Override
+    public UsuarioTO findUsuario(int id) {
+        return usuarioDao.findById(id);
+    }
+    
+    @Override
+    public void changeUsuarioState(UsuarioTO usuario) {
+        if (usuario != null) {
+            UsuarioTO usuarioUpd = usuarioDao.findById(usuario.getIdUsuario());
+            if (usuario.getEstadoUsuario()== Constantes.ESTADO_ACTIVO) {              
+                usuarioUpd.setEstadoUsuario(Constantes.ESTADO_INACTIVO);
+            } else if (usuario.getEstadoUsuario()== Constantes.ESTADO_INACTIVO) {
+                usuarioUpd.setEstadoUsuario(Constantes.ESTADO_ACTIVO);
+            }
+            usuarioDao.saveUsuario(usuarioUpd);
+        }
     }
     
 }

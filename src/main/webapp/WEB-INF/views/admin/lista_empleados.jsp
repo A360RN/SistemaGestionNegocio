@@ -27,34 +27,50 @@
             </thead>
             <tbody>
                 <c:forEach items="${lstEmpleados}" var="empleado">
-                <tr>
-                    <td class="text-center icon">
-                            <button type="submit" class="btn btn-sm btn-editar-empleado" data-toggle="tooltip" data-placement="top" title="Editar el empleado" data-idempleado="${empleado.idEmpleado}">
-                                <span class="fa fa-pencil fa-2x"></span>
-                            </button>
-                                <button class="btn btn-sm btn-usuario" data-toggle="modal" data-target="#modalEmpleadoInactivar" data-value="${empleado.usuario.idUsuario}"><span class="fa fa-times-circle fa-2x"></span></button>
+                    <tr>
+                        <td class="text-center icon">
+                            <c:choose>
+                                <c:when test="${empleado.usuario.idUsuario!=usuario.idUsuario}">
+                                    <button type="submit" class="btn btn-sm btn-editar-empleado" data-toggle="tooltip" data-placement="top" title="Editar el empleado" data-idempleado="${empleado.idEmpleado}">
+                                        <span class="fa fa-pencil fa-2x"></span>
+                                        <c:if test="${empleado.usuario.estadoUsuario == 1}">
+                                            <button class="btn btn-sm btn-cambiar-estado-usuario" data-toggle="tooltip" data-placement="top" title="Archivar el usuario" data-idusuario="${empleado.usuario.idUsuario}">
+                                                <span class="fa fa-times-circle fa-2x"></span>
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${empleado.usuario.estadoUsuario == 0}">
+                                            <button class="btn btn-sm btn-cambiar-estado-usuario" data-toggle="tooltip" data-placement="top" title="Desarchivar el usuario" data-idusuario="${empleado.usuario.idUsuario}">
+                                                <span class="fa fa-refresh fa-2x"></span>
+                                            </button>
+                                        </c:if> 
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="fa fa fa-user-o fa-2x"></span>
+                                    </c:otherwise>
+                                </c:choose>
+
 
                         </td>
-                    <td><c:out value="${empleado.primerNombre}"></c:out>  <c:out value="${empleado.primerApellido}"></c:out></td>
-                    <td>${empleado.email}</td>
-                    <td>${empleado.usuario.fechaRegistro}</td>
-                    <td>
-                        <c:forEach items="${empleado.usuario.perfiles}" var="perfil">
-                            <c:out value="${perfil.codigoPerfil}"></c:out>
-                            <br>
-                        </c:forEach>
-                    </td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${empleado.usuario.estadoUsuario eq 1}">
-                                <c:out value="ACTIVO"></c:out>
-                            </c:when>
-                            <c:when test="${empleado.usuario.estadoUsuario eq 0}">
-                                <c:out value="INACTIVO"></c:out>
-                            </c:when>
-                        </c:choose>
-                    </td>
-                </tr>
+                        <td><c:out value="${empleado.primerNombre}"></c:out>  <c:out value="${empleado.primerApellido}"></c:out></td>
+                        <td>${empleado.email}</td>
+                        <td>${empleado.usuario.fechaRegistro}</td>
+                        <td>
+                            <c:forEach items="${empleado.usuario.perfiles}" var="perfil">
+                                <c:out value="${perfil.codigoPerfil}"></c:out>
+                                    <br>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${empleado.usuario.estadoUsuario eq 1}">
+                                    <c:out value="ACTIVO"></c:out>
+                                </c:when>
+                                <c:when test="${empleado.usuario.estadoUsuario eq 0}">
+                                    <c:out value="INACTIVO"></c:out>
+                                </c:when>
+                            </c:choose>
+                        </td>
+                    </tr>
                 </c:forEach>
             </tbody>
         </table>
