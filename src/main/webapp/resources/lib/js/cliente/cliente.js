@@ -28,5 +28,5 @@ btnModalConfirmarPedidoNo.on('click', function(e){
 });
 
 modalPedidoEstadoConfirmacion.on('hide.bs.modal', function(e){
-    window.location.href = 'productos';
+    window.location.href = '../tienda/productos';
 });
