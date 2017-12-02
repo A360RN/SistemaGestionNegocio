@@ -55,7 +55,7 @@ public class LoginServiceImpl implements LoginService {
             return mapResultado;
         }
 
-        /* POR EL MOMENTO NO SE VA VERIFICAR PASSWORD 
+        
         String hashedPassword = HashPassword.hashPassword(usuarioPosible.getPassUsuario());
 
         // Password equivocada
@@ -69,7 +69,7 @@ public class LoginServiceImpl implements LoginService {
 
             return mapResultado;
         }
-        */
+        
         
         
         // Credenciales correctas

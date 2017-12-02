@@ -10,11 +10,13 @@
 <%@include file="../includes/navhead.jsp" %>
 
 <!-- Cuerpo nav -->
+<!--
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">
         <a class="nav-link" href="${pageContext.request.contextPath}/ventas/dashboard">Dashboard</a>
     </li>
 </ul>
+-->
 
 <ul class="navbar-nav mr-auto">
     <li class="nav-item nav-item-section">

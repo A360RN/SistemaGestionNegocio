@@ -14,7 +14,7 @@
         <div class="clearfix"></div><hr>
     </div>
     <div class="row">
-        <table class="table table-responsive table-hover table-bordered">
+        <table class="table table-hover table-bordered">
             <thead class="thead-inverse">      
                 <tr>
                     <th>DNI</th>

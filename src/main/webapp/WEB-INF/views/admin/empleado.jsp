@@ -34,7 +34,7 @@
                 <label for="password">Contraseña*: </label>
                 <c:choose>
                     <c:when test="${swEditar eq 1}">
-                        <input type="text" class="form-control text-center" name="password" id="password" placeholder="Actualizar contraseña">
+                        <input type="password" class="form-control text-center" name="password" id="password" placeholder="Actualizar contraseña">
                     </c:when>
                     <c:otherwise>
                         <input type="password" class="form-control" name="password" id="password">

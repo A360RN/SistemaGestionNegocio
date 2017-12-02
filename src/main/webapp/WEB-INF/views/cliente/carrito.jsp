@@ -7,7 +7,7 @@
     <div class="row">
         <c:if test="${carrito != null}">
         <div class="offset-md-2 col-md-5 col-sm-6">
-            <table class="table table-responsive table-bordered table-hover">
+            <table class="table table-bordered table-hover">
                 <thead class="thead-inverse">
                     <tr>
                         <th>Producto</th>

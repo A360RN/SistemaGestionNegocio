@@ -18,19 +18,19 @@ INSERT INTO sunshine_andina_db.TSA_PERFIL(CODIGO_PERFIL, DESC_PERFIL) VALUES ("A
 
 /* TSA_USUARIO */
 
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_cli',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_dis',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_ven',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_inv',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_adm',NULL,NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_cli','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_dis','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_ven','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_inv','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_adm','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
 INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('usuario_adm2','80128c3bcdcc153abd3d10487c028b79cbcbb210667f58f1702c428d61056360','2017-11-19',1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('jose.diaz',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('maria.torres',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('melissa.loza',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('diego.torres',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('juan.torres',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('eduardo.loza',NULL,NULL,1);
-INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('miguel.loza',NULL,NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('jose.diaz','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('maria.torres','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('melissa.loza','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('diego.torres','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('juan.torres','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('eduardo.loza','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
+INSERT INTO sunshine_andina_db.tsa_usuario(registro_usuario,pass_usuario,fecha_registro,estado_usuario) VALUES ('miguel.loza','156028e947febe2281f50363ffa9dfafcc6b0ef72293282c5e81b6809faec21b',NULL,1);
 
 /* TSA_USUARIO_PEFIL*/
 
@@ -50,13 +50,13 @@ INSERT INTO sunshine_andina_db.tsa_usuario_perfil(id_perfil,id_usuario) VALUES (
 /* TSA_CLIENTE */
 INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (1,'JEFFERSON','AGUSTIN','FARFAN','GUADALUPE',999988880,4421210,'AV. SEPARADORA INDUSTRIAL 1258 ATE','JEFFERSON.FARFAN@GMAIL.COM',78794547);
 INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (2,'JOSE','PAOLO','GUERRERO','GONZALES',999988889,4421210,'AV. CONQUISTADORES 208 SAN ISIDRO','PAOLO.GUERRERO@GMAIL.COM',78794546);
-INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (7,'JOSE',NULL,'DIAZ',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (8,'MARIA',NULL,'TORRES',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (9,'MELISSA',NULL,'LOZA',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (10,'DIEGO',NULL,'TORRES',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (11,'JUAN',NULL,'TORRES',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (12,'EDUARDO',NULL,'LOZA',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (13,'MIGUEL',NULL,'LOZA',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (7,'JOSE',NULL,'DIAZ',NULL,NULL,NULL,NULL,NULL,'11111112');
+INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (8,'MARIA',NULL,'TORRES',NULL,NULL,NULL,NULL,NULL,'11111113');
+INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (9,'MELISSA',NULL,'LOZA',NULL,NULL,NULL,NULL,NULL,'11111114');
+INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (10,'DIEGO',NULL,'TORRES',NULL,NULL,NULL,NULL,NULL,'11111115');
+INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (11,'JUAN',NULL,'TORRES',NULL,NULL,NULL,NULL,NULL,'11111116');
+INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (12,'EDUARDO',NULL,'LOZA',NULL,NULL,NULL,NULL,NULL,'11111117');
+INSERT INTO sunshine_andina_db.tsa_cliente(id_usuario,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,tel_celular,tel_fijo,direccion,email,dni) VALUES (13,'MIGUEL',NULL,'LOZA',NULL,NULL,NULL,NULL,NULL,'11111118');
 
 
 /* TSA_EMPLEADO */
